@@ -38,9 +38,16 @@ namespace SampleRepository
                                       AppointmentId = 100,
                                       StartDateTime = new DateTime(2019, 09, 01, 13, 0, 0),
                                       IsActive = true,
-                                      AppointmentType = new AppointmentType()
-
+                                      AppointmentType = this.GetAppointmentTypeId("new"),
+                                      Patient = this.GetPatient("PAT00010"),
+                                      Duration = this.GetAppointmentDurationId("Five minutes"),
+                                      Urgency = this.GetUrgency("routine"),
+                                      Clinic = this.GetClinicId("OAK"),
+                                      Specialty = this.GetSpecialty("352")
                                   };
+            this.unitOfWork.Session.Save(appointment);
+            this.unitOfWork.Session.Transaction.Commit();
+            return appointment;
         }
 
         /// <summary>
