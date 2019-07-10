@@ -29,6 +29,11 @@ namespace SampleRepository
             this.unitOfWork = unitOfWork;
         }
 
+        public Appointment SetAppointment()
+        {
+            
+        }
+
         /// <summary>
         /// Get a specific appointment id.
         /// </summary>
