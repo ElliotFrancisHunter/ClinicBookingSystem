@@ -61,24 +61,6 @@ namespace ClinicBookingApplication
             this.DropDownList1.DataBind();
         }
 
-        public void MakeStartDateAndTimeTable()
-        {
-            var dataTable = new DataTable();
-            dataTable.Columns.Add("AppointmentID");
-            dataTable.Columns.Add("StartDateTime");
-            var appointmentList = new ClinicBookingService.SampleServiceClient().GetAppointments();
-
-            foreach (var appointment in appointmentList)
-            {
-                dataTable.Rows.Add(appointment.AppointmentId, appointment.StartDateTime);
-            }
-
-            this.DropDownList2.DataSource = dataTable;
-            this.DropDownList2.DataTextField = "StartDateTime";
-            this.DropDownList2.DataValueField = "AppointmentID";
-            this.DropDownList2.DataBind();
-        }
-
         public void MakeDurationTable()
         {
             var dataTable = new DataTable();
@@ -176,6 +158,13 @@ namespace ClinicBookingApplication
                     appointment.Duration.AppointmentLength,
                     appointment.Clinic.CodeDescription);
             }
+            foreach (var appointment in appointments)
+            {
+                if (appointment.IsActive == false)
+                {
+                    
+                }
+            }
             this.SearchResultsGrid.DataSource = dataTable;
             this.SearchResultsGrid.DataBind();
         }
@@ -196,6 +185,11 @@ namespace ClinicBookingApplication
         }
 
         protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void TextBox1_TextChanged1(object sender, EventArgs e)
         {
 
         }
