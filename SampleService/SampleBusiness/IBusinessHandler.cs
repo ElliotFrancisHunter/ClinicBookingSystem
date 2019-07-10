@@ -11,6 +11,14 @@ namespace SampleBusiness
     public interface IBusinessHandler
     {
         /// <summary>
+        /// Sets a new appointment.
+        /// </summary>
+        /// <returns>
+        /// The new appointment.
+        /// </returns>
+        Appointment SetAppointment();
+
+        /// <summary>
         /// Get a specific appointment id.
         /// </summary>
         /// <param name="id">

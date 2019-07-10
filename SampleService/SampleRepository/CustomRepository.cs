@@ -1,4 +1,12 @@
-﻿
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="CustomRepository.cs" company="Servelec">
+//   Elliot Hunter 2019 
+// </copyright>
+// <summary>
+//   The custom repository.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
 namespace SampleRepository
 {
     using System;
@@ -30,7 +38,12 @@ namespace SampleRepository
             this.unitOfWork = unitOfWork;
         }
 
-
+        /// <summary>
+        /// Sets a new appointment TODO parameterize the function.
+        /// </summary>
+        /// <returns>
+        /// The new <see cref="Appointment" />
+        /// </returns>
         public Appointment SetAppointment()
         {
             var appointment = new Appointment
