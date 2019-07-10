@@ -48,8 +48,7 @@
     <asp:DropDownList ID="DropDownList1" runat="server" Height="45px" Width="127px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
     </asp:DropDownList>
 
-        <asp:DropDownList ID="DropDownList2" runat="server" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" Height="43px" Width="130px">
-        </asp:DropDownList>
+        <asp:TextBox ID="TextBox1" runat="server" BackColor="White" BorderColor="Black" BorderStyle="Double" OnTextChanged="TextBox1_TextChanged1">yyyy-MM-dd HH:mm</asp:TextBox>
 
         <asp:DropDownList ID="DropDownList3" runat="server">
         </asp:DropDownList>
@@ -59,12 +58,14 @@
         </asp:DropDownList>
         <asp:DropDownList ID="DropDownList6" runat="server">
         </asp:DropDownList>
-        <asp:DropDownList ID="DropDownList7" runat="server">
-        </asp:DropDownList>
 
         <asp:Button ID="SearchByTagButton" runat="server" Height="34px" OnClick="SearchByTagButton_Click" Text="Button" />
 
     </h3>
+    <p> &nbsp;</p>
+    <p> &nbsp;</p>
+    <p> &nbsp;</p>
+    <p> &nbsp;</p>
     <p> &nbsp;</p>
     <p> &nbsp;</p>
     <p> &nbsp;</p>

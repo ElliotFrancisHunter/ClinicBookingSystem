@@ -11,7 +11,7 @@ namespace ClinicBookingApplication
     using System.Data;
     using System.Data.SqlClient;
     using System.EnterpriseServices;
-    
+    using System.Xml.Linq;
 
     using ClinicBookingApplication.ClinicBookingService;
 
@@ -30,7 +30,6 @@ namespace ClinicBookingApplication
             }
 
             this.MakePatientTable();
-            this.MakeStartDateAndTimeTable();
             this.MakeDurationTable();
             this.MakeClinicTable();
             this.MakeUrgencyTable();
@@ -191,7 +190,8 @@ namespace ClinicBookingApplication
 
         protected void TextBox1_TextChanged1(object sender, EventArgs e)
         {
-
+            var inputDateTime = Convert.ToDateTime(this.TextBox1.Text);
+            var DateTimeString = inputDateTime.ToString("F");
         }
     }
 }
