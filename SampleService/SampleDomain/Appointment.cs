@@ -52,5 +52,50 @@ namespace SampleDomain
         /// Gets or sets the reference to Specialty to act as foreign key.
         /// </summary>
         public virtual Specialty Specialty { get; set; }
+
+        ////public virtual void AddAppointment()
+        ////{
+            
+        ////}
+
+        ////public virtual void AddStartDateTime()
+        ////{
+            
+        ////}
+
+        ////public virtual void AddActiveStatus()
+        ////{
+            
+        ////}
+
+        ////public void AddAppointmentType()
+        ////{
+            
+        ////}
+
+        ////public void AddPatient()
+        ////{
+            
+        ////}
+
+        ////public void AddDuration()
+        ////{
+            
+        ////}
+
+        ////public void AddUrgency()
+        ////{
+            
+        ////}
+
+        ////public void AddClinic()
+        ////{
+            
+        ////}
+
+        ////public void AddSpecialty()
+        ////{
+            
+        ////}
     }
 }
