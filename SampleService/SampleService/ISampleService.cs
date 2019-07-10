@@ -17,6 +17,15 @@ namespace SampleService
     public interface ISampleService
     {
         /// <summary>
+        /// Sets a new appointment.
+        /// </summary>
+        /// <returns>
+        /// The new appointment.
+        /// </returns>
+        [OperationContract]
+        AppointmentDataContract SetAppointment();
+
+        /// <summary>
         /// Get a specific appointment id.
         /// </summary>
         /// <param name="id">

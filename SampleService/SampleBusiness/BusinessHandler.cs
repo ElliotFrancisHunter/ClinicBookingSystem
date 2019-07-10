@@ -43,6 +43,18 @@ namespace SampleBusiness
         /// <returns>
         /// The <see cref="Appointment"/>
         /// </returns>
+
+        /// <summary>
+        /// Sets a new appointment.
+        /// </summary>
+        /// <returns>
+        /// The new appointment.
+        /// </returns>
+        public Appointment SetAppointment()
+        {
+            
+        }
+
         public Appointment GetAppointment(int id)
         {
             

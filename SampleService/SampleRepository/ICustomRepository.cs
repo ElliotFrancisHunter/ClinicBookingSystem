@@ -13,7 +13,7 @@ namespace SampleRepository
     public interface ICustomRepository
     {
         /// <summary>
-        /// Sets a new apopointment.
+        /// Sets a new appointment.
         /// </summary>
         /// <returns>
         /// The new appointment.

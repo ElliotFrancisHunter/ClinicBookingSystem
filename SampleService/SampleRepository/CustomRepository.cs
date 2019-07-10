@@ -1,6 +1,7 @@
 ﻿
 namespace SampleRepository
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -29,9 +30,17 @@ namespace SampleRepository
             this.unitOfWork = unitOfWork;
         }
 
+
         public Appointment SetAppointment()
         {
-            
+            var appointment = new Appointment
+                                  {
+                                      AppointmentId = 100,
+                                      StartDateTime = new DateTime(2019, 09, 01, 13, 0, 0),
+                                      IsActive = true,
+                                      AppointmentType = new AppointmentType()
+
+                                  };
         }
 
         /// <summary>

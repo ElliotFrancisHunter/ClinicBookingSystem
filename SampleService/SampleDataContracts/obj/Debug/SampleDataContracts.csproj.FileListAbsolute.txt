@@ -10,3 +10,10 @@ C:\environments\sandbox\ehunter\SampleService\SampleDataContracts\bin\Debug\Samp
 C:\environments\sandbox\ehunter\SampleService\SampleDataContracts\obj\Debug\SampleDataContracts.csprojResolveAssemblyReference.cache
 C:\environments\sandbox\ehunter\SampleService\SampleDataContracts\obj\Debug\SampleDataContracts.dll
 C:\environments\sandbox\ehunter\SampleService\SampleDataContracts\obj\Debug\SampleDataContracts.pdb
+C:\Users\Elliot.Hunter\Desktop\ClinicBookingSystem\SampleService\SampleDataContracts\bin\Debug\SampleDataContracts.dll
+C:\Users\Elliot.Hunter\Desktop\ClinicBookingSystem\SampleService\SampleDataContracts\bin\Debug\SampleDataContracts.pdb
+C:\Users\Elliot.Hunter\Desktop\ClinicBookingSystem\SampleService\SampleDataContracts\bin\Debug\SampleDomain.dll
+C:\Users\Elliot.Hunter\Desktop\ClinicBookingSystem\SampleService\SampleDataContracts\bin\Debug\SampleDomain.pdb
+C:\Users\Elliot.Hunter\Desktop\ClinicBookingSystem\SampleService\SampleDataContracts\obj\Debug\SampleDataContracts.csprojResolveAssemblyReference.cache
+C:\Users\Elliot.Hunter\Desktop\ClinicBookingSystem\SampleService\SampleDataContracts\obj\Debug\SampleDataContracts.dll
+C:\Users\Elliot.Hunter\Desktop\ClinicBookingSystem\SampleService\SampleDataContracts\obj\Debug\SampleDataContracts.pdb
