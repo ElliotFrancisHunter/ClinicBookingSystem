@@ -12,8 +12,9 @@ namespace SampleRepository
     using System;
     using System.Collections.Generic;
     using System.Linq;
-
     using Core;
+
+    using NHibernate.Exceptions;
 
     using SampleDomain;
 
@@ -48,18 +49,16 @@ namespace SampleRepository
         {
             var appointment = new Appointment
                                   {
-                                      AppointmentId = 100,
                                       StartDateTime = new DateTime(2019, 09, 01, 13, 0, 0),
                                       IsActive = true,
-                                      AppointmentType = this.GetAppointmentTypeId("new"),
-                                      Patient = this.GetPatient("PAT00010"),
+                                      AppointmentType = new AppointmentType{ AppointmentTypeId = "new" },
+                                      Patient = new Patient{ PatientId = "PAT00010" },
                                       Duration = this.GetAppointmentDurationId("Five minutes"),
                                       Urgency = this.GetUrgency("routine"),
                                       Clinic = this.GetClinicId("OAK"),
-                                      Specialty = this.GetSpecialty("352")
+                                      Specialty = new Specialty { SpecialtyId = "352"}
                                   };
             this.unitOfWork.Session.Save(appointment);
-            this.unitOfWork.Session.Transaction.Commit();
             return appointment;
         }
 
