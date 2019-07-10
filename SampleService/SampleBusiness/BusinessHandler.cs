@@ -1,16 +1,17 @@
-﻿
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="BusinessHandler.cs" company="Servelec">
+//   Elliot Hunter 2019
+// </copyright>
+// <summary>
+//   The BusinessHandler. Handles business logic.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
 namespace SampleBusiness
 {
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Security.Cryptography.X509Certificates;
-
     using Core;
-
-    using Microsoft.Win32;
-
     using SampleDomain;
-
     using SampleRepository;
 
     /// <summary>
@@ -35,6 +36,17 @@ namespace SampleBusiness
         }
 
         /// <summary>
+        /// Sets a new appointment.
+        /// </summary>
+        /// <returns>
+        /// The new appointment.
+        /// </returns>
+        public Appointment SetAppointment()
+        {
+            return new CustomRepository(this.unitOfWork).SetAppointment();
+        }
+
+        /// <summary>
         /// Get a specific appointment id.
         /// </summary>
         /// <param name="id">
@@ -45,7 +57,6 @@ namespace SampleBusiness
         /// </returns>
         public Appointment GetAppointment(int id)
         {
-            
             if (id == default(int))
             {
                 throw new ThisIsAnIssueException("AppointmentID is not valid.");

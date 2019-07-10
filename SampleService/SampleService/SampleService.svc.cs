@@ -1,17 +1,21 @@
-﻿
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="SampleService.svc.cs" company="Servelec">
+//   Elliot Hunter 2019
+// </copyright>
+// <summary>
+//   The sample service.
+//   NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "SampleService" in code, svc and config file together.
+//   NOTE: In order to launch WCF Test Client for testing this service, please select SampleService.svc or SampleService.svc.cs at the Solution Explorer and start debugging.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
 namespace SampleService
 {
-    using System;
     using System.Collections.Generic;
-    using System.Globalization;
     using System.Linq;
-    using System.Runtime.InteropServices;
     using System.ServiceModel;
-    using System.Web.UI.WebControls;
-
     using Core;
     using SampleBusiness;
-    using SampleDataContracts;
     using SampleDataContracts.DomainDataContracts;
     using SampleDataContracts.FaultDataContracts;
 
@@ -35,6 +39,28 @@ namespace SampleService
         public SampleService()
         {
             this.logger = new Logger();
+        }
+
+        /// <summary>
+        /// Sets a new appointment.
+        /// </summary>
+        /// <returns>
+        /// The new appointment.
+        /// </returns>
+        public AppointmentDataContract SetAppointment()
+        {
+            this.logger.Log("BEGIN - SetAppointment");
+
+            Appointment domainObject;
+
+            using (var unitOfWork = new UnitOfWork())
+            {
+                domainObject = new BusinessHandler(unitOfWork).SetAppointment();
+                unitOfWork.Close();
+            }
+
+            var mappedContract = this.MapToDataContract(domainObject);
+            return mappedContract;
         }
 
         /// <summary>
@@ -251,8 +277,7 @@ namespace SampleService
                 finally
                 {
                     unitOfWork.Close();
-                }
-                
+                }   
             }
 
             var mappedContract = this.MapToDataContract(domainObject);
@@ -314,7 +339,6 @@ namespace SampleService
                 {
                     unitOfWork.Close();
                 }
-                
             }
 
             var mappedContract = this.MapToDataContract(domainObject);

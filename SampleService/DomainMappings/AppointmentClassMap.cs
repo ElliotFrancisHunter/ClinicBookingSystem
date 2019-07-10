@@ -19,12 +19,12 @@ namespace DomainMappings
             this.Id(x => x.AppointmentId).Column("AppointmentID");
             this.Map(x => x.StartDateTime);
             this.Map(x => x.IsActive).Column("isActive");
-            this.References(x => x.AppointmentType).Column("AppointmentTypeID").Not.LazyLoad();
-            this.References(x => x.Patient).Column("PatientID").Not.LazyLoad();
-            this.References(x => x.Duration).Column("DurationID").Not.LazyLoad();
-            this.References(x => x.Urgency).Column("UrgencyID").Not.LazyLoad();
-            this.References(x => x.Clinic).Column("ClinicID").Not.LazyLoad();
-            this.References(x => x.Specialty).Column("SpecialtyID").Not.LazyLoad();
+            this.References(x => x.AppointmentType).Column("AppointmentTypeID").Not.LazyLoad().Cascade.None();
+            this.References(x => x.Patient).Column("PatientID").Not.LazyLoad().Cascade.None();
+            this.References(x => x.Duration).Column("DurationID").Not.LazyLoad().Cascade.None();
+            this.References(x => x.Urgency).Column("UrgencyID").Not.LazyLoad().Cascade.None();
+            this.References(x => x.Clinic).Column("ClinicID").Not.LazyLoad().Cascade.None();
+            this.References(x => x.Specialty).Column("SpecialtyID").Not.LazyLoad().Cascade.None();
         }
     }
 }
