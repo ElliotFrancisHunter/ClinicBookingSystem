@@ -1,0 +1,10 @@
+C:\environments\sandbox\amahmood\SampleService\SampleDomain\bin\Debug\SampleDomain.dll
+C:\environments\sandbox\amahmood\SampleService\SampleDomain\bin\Debug\SampleDomain.pdb
+C:\environments\sandbox\amahmood\SampleService\SampleDomain\obj\Debug\SampleDomain.csprojResolveAssemblyReference.cache
+C:\environments\sandbox\amahmood\SampleService\SampleDomain\obj\Debug\SampleDomain.dll
+C:\environments\sandbox\amahmood\SampleService\SampleDomain\obj\Debug\SampleDomain.pdb
+C:\environments\sandbox\ehunter\SampleService\SampleDomain\bin\Debug\SampleDomain.dll
+C:\environments\sandbox\ehunter\SampleService\SampleDomain\bin\Debug\SampleDomain.pdb
+C:\environments\sandbox\ehunter\SampleService\SampleDomain\obj\Debug\SampleDomain.dll
+C:\environments\sandbox\ehunter\SampleService\SampleDomain\obj\Debug\SampleDomain.pdb
+C:\environments\sandbox\ehunter\SampleService\SampleDomain\obj\Debug\SampleDomain.csprojResolveAssemblyReference.cache

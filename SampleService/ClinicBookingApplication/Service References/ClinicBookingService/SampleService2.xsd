@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:52718/SampleService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/SampleDomain" />
+  <xs:complexType name="AppointmentDataContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppointmentId" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/SampleDomain" minOccurs="0" name="AppointmentType" nillable="true" type="q1:AppointmentType" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/SampleDomain" minOccurs="0" name="Clinic" nillable="true" type="q2:Clinic" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SampleDomain" minOccurs="0" name="Duration" nillable="true" type="q3:AppointmentDuration" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SampleDomain" minOccurs="0" name="Patient" nillable="true" type="q4:Patient" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SampleDomain" minOccurs="0" name="Specialty" nillable="true" type="q5:Specialty" />
+      <xs:element minOccurs="0" name="StartDateTime" type="xs:dateTime" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SampleDomain" minOccurs="0" name="Urgency" nillable="true" type="q6:AppointmentUrgency" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AppointmentDataContract" nillable="true" type="tns:AppointmentDataContract" />
+  <xs:complexType name="ArrayOfAppointmentDataContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AppointmentDataContract" nillable="true" type="tns:AppointmentDataContract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAppointmentDataContract" nillable="true" type="tns:ArrayOfAppointmentDataContract" />
+  <xs:complexType name="AppointmentDurationDataContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppointmentLength" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DurationId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AppointmentDurationDataContract" nillable="true" type="tns:AppointmentDurationDataContract" />
+  <xs:complexType name="ArrayOfAppointmentDurationDataContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AppointmentDurationDataContract" nillable="true" type="tns:AppointmentDurationDataContract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAppointmentDurationDataContract" nillable="true" type="tns:ArrayOfAppointmentDurationDataContract" />
+  <xs:complexType name="AppointmentTypeDataContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppointmentTypeId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TypeDescriptor" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AppointmentTypeDataContract" nillable="true" type="tns:AppointmentTypeDataContract" />
+  <xs:complexType name="ArrayOfAppointmentTypeDataContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AppointmentTypeDataContract" nillable="true" type="tns:AppointmentTypeDataContract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAppointmentTypeDataContract" nillable="true" type="tns:ArrayOfAppointmentTypeDataContract" />
+  <xs:complexType name="AppointmentUrgencyDataContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="UrgencyDescriptor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UrgencyId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AppointmentUrgencyDataContract" nillable="true" type="tns:AppointmentUrgencyDataContract" />
+  <xs:complexType name="ArrayOfAppointmentUrgencyDataContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AppointmentUrgencyDataContract" nillable="true" type="tns:AppointmentUrgencyDataContract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAppointmentUrgencyDataContract" nillable="true" type="tns:ArrayOfAppointmentUrgencyDataContract" />
+  <xs:complexType name="ClinicDataContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClinicId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodeDescription" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClinicDataContract" nillable="true" type="tns:ClinicDataContract" />
+  <xs:complexType name="ArrayOfClinicDataContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClinicDataContract" nillable="true" type="tns:ClinicDataContract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfClinicDataContract" nillable="true" type="tns:ArrayOfClinicDataContract" />
+  <xs:complexType name="PatientDataContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Surname" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PatientDataContract" nillable="true" type="tns:PatientDataContract" />
+  <xs:complexType name="ArrayOfPatientDataContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PatientDataContract" nillable="true" type="tns:PatientDataContract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPatientDataContract" nillable="true" type="tns:ArrayOfPatientDataContract" />
+  <xs:complexType name="SpecialtyDataContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodeDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecialtyId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SpecialtyDataContract" nillable="true" type="tns:SpecialtyDataContract" />
+  <xs:complexType name="ArrayOfSpecialtyDataContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SpecialtyDataContract" nillable="true" type="tns:SpecialtyDataContract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSpecialtyDataContract" nillable="true" type="tns:ArrayOfSpecialtyDataContract" />
+  <xs:complexType name="ClinicSpecialtyDataContract">
+    <xs:sequence>
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SampleDomain" minOccurs="0" name="Clinic" nillable="true" type="q7:Clinic" />
+      <xs:element minOccurs="0" name="ClinicSpecialtyId" type="xs:int" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/SampleDomain" minOccurs="0" name="Specialty" nillable="true" type="q8:Specialty" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClinicSpecialtyDataContract" nillable="true" type="tns:ClinicSpecialtyDataContract" />
+  <xs:complexType name="ArrayOfClinicSpecialtyDataContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClinicSpecialtyDataContract" nillable="true" type="tns:ClinicSpecialtyDataContract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfClinicSpecialtyDataContract" nillable="true" type="tns:ArrayOfClinicSpecialtyDataContract" />
+</xs:schema>

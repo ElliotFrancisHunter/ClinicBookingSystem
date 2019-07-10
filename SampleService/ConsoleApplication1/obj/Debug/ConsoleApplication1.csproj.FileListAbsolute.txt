@@ -1,0 +1,6 @@
+C:\environments\sandbox\ehunter\SampleService\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\environments\sandbox\ehunter\SampleService\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\environments\sandbox\ehunter\SampleService\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\environments\sandbox\ehunter\SampleService\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+C:\environments\sandbox\ehunter\SampleService\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\environments\sandbox\ehunter\SampleService\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb

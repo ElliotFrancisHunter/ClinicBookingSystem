@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SampleService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:52718/SampleService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:52718/SampleService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" />
+      <xsd:import schemaLocation="http://localhost:52718/SampleService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:52718/SampleService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" />
+      <xsd:import schemaLocation="http://localhost:52718/SampleService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/SampleDomain" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISampleService_GetAppointment_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppointment" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetAppointment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppointmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetAppointment_InvalidAppointmentIdFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q1:InvalidAppointmentIdFault" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetAppointments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppointments" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetAppointments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppointmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetAppointmentDurationData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppointmentDurationData" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetAppointmentDurationData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppointmentDurationDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetAppointmentDurationData_InvalidDurationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q2:InvalidDurationFault" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetAllAppointmentDurationData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAppointmentDurationData" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetAllAppointmentDurationData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAppointmentDurationDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetAppointmentTypeId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppointmentTypeId" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetAppointmentTypeId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppointmentTypeIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetAppointmentTypeId_InvalidAppointmentTypeFaultFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q3:InvalidAppointmentTypeFault" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetAppointmentTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppointmentTypes" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetAppointmentTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppointmentTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetUrgency_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUrgency" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetUrgency_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUrgencyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetUrgency_InvalidDurationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q4:InvalidDurationFault" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetUrgencies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUrgencies" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetUrgencies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUrgenciesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetClinicId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClinicId" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetClinicId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClinicIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetClinicId_InvalidClinicFaultFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q5:InvalidClinicFault" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetClinics_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClinics" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetClinics_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClinicsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetPatient_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPatient" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetPatient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPatientResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetPatient_InvalidPatientFaultFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q6:InvalidPatientFault" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetPatients_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPatients" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetPatients_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPatientsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetSpecialty_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSpecialty" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetSpecialty_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSpecialtyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetSpecialty_InvalidSpecialtyFaultFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q7:InvalidSpecialtyFault" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetSpecialties_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSpecialties" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetSpecialties_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSpecialtiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetClinicSpecialty_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClinicSpecialty" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetClinicSpecialty_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClinicSpecialtyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetClinicSpecialty_InvalidClinicSpecialtyFaultFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q8:InvalidClinicSpecialtyFault" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetClinicSpecialties_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClinicSpecialties" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetClinicSpecialties_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClinicSpecialtiesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ISampleService">
+    <wsdl:operation name="GetAppointment">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetAppointment" message="tns:ISampleService_GetAppointment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetAppointmentResponse" message="tns:ISampleService_GetAppointment_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISampleService/GetAppointmentInvalidAppointmentIdFaultFault" name="InvalidAppointmentIdFaultFault" message="tns:ISampleService_GetAppointment_InvalidAppointmentIdFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppointments">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetAppointments" message="tns:ISampleService_GetAppointments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetAppointmentsResponse" message="tns:ISampleService_GetAppointments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppointmentDurationData">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetAppointmentDurationData" message="tns:ISampleService_GetAppointmentDurationData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetAppointmentDurationDataResponse" message="tns:ISampleService_GetAppointmentDurationData_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISampleService/GetAppointmentDurationDataInvalidDurationFaultFault" name="InvalidDurationFaultFault" message="tns:ISampleService_GetAppointmentDurationData_InvalidDurationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAppointmentDurationData">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetAllAppointmentDurationData" message="tns:ISampleService_GetAllAppointmentDurationData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetAllAppointmentDurationDataResponse" message="tns:ISampleService_GetAllAppointmentDurationData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppointmentTypeId">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetAppointmentTypeId" message="tns:ISampleService_GetAppointmentTypeId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetAppointmentTypeIdResponse" message="tns:ISampleService_GetAppointmentTypeId_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISampleService/GetAppointmentTypeIdInvalidAppointmentTypeFaultFault" name="InvalidAppointmentTypeFaultFault" message="tns:ISampleService_GetAppointmentTypeId_InvalidAppointmentTypeFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppointmentTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetAppointmentTypes" message="tns:ISampleService_GetAppointmentTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetAppointmentTypesResponse" message="tns:ISampleService_GetAppointmentTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUrgency">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetUrgency" message="tns:ISampleService_GetUrgency_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetUrgencyResponse" message="tns:ISampleService_GetUrgency_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISampleService/GetUrgencyInvalidDurationFaultFault" name="InvalidDurationFaultFault" message="tns:ISampleService_GetUrgency_InvalidDurationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUrgencies">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetUrgencies" message="tns:ISampleService_GetUrgencies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetUrgenciesResponse" message="tns:ISampleService_GetUrgencies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClinicId">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetClinicId" message="tns:ISampleService_GetClinicId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetClinicIdResponse" message="tns:ISampleService_GetClinicId_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISampleService/GetClinicIdInvalidClinicFaultFault" name="InvalidClinicFaultFault" message="tns:ISampleService_GetClinicId_InvalidClinicFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClinics">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetClinics" message="tns:ISampleService_GetClinics_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetClinicsResponse" message="tns:ISampleService_GetClinics_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPatient">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetPatient" message="tns:ISampleService_GetPatient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetPatientResponse" message="tns:ISampleService_GetPatient_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISampleService/GetPatientInvalidPatientFaultFault" name="InvalidPatientFaultFault" message="tns:ISampleService_GetPatient_InvalidPatientFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPatients">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetPatients" message="tns:ISampleService_GetPatients_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetPatientsResponse" message="tns:ISampleService_GetPatients_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSpecialty">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetSpecialty" message="tns:ISampleService_GetSpecialty_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetSpecialtyResponse" message="tns:ISampleService_GetSpecialty_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISampleService/GetSpecialtyInvalidSpecialtyFaultFault" name="InvalidSpecialtyFaultFault" message="tns:ISampleService_GetSpecialty_InvalidSpecialtyFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSpecialties">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetSpecialties" message="tns:ISampleService_GetSpecialties_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetSpecialtiesResponse" message="tns:ISampleService_GetSpecialties_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClinicSpecialty">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetClinicSpecialty" message="tns:ISampleService_GetClinicSpecialty_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetClinicSpecialtyResponse" message="tns:ISampleService_GetClinicSpecialty_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISampleService/GetClinicSpecialtyInvalidClinicSpecialtyFaultFault" name="InvalidClinicSpecialtyFaultFault" message="tns:ISampleService_GetClinicSpecialty_InvalidClinicSpecialtyFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClinicSpecialties">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetClinicSpecialties" message="tns:ISampleService_GetClinicSpecialties_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetClinicSpecialtiesResponse" message="tns:ISampleService_GetClinicSpecialties_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ISampleService" type="tns:ISampleService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAppointment">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetAppointment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="InvalidAppointmentIdFaultFault">
+        <soap:fault use="literal" name="InvalidAppointmentIdFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppointments">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetAppointments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppointmentDurationData">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetAppointmentDurationData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="InvalidDurationFaultFault">
+        <soap:fault use="literal" name="InvalidDurationFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAppointmentDurationData">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetAllAppointmentDurationData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppointmentTypeId">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetAppointmentTypeId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="InvalidAppointmentTypeFaultFault">
+        <soap:fault use="literal" name="InvalidAppointmentTypeFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppointmentTypes">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetAppointmentTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUrgency">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetUrgency" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="InvalidDurationFaultFault">
+        <soap:fault use="literal" name="InvalidDurationFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetUrgencies">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetUrgencies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClinicId">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetClinicId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="InvalidClinicFaultFault">
+        <soap:fault use="literal" name="InvalidClinicFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetClinics">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetClinics" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPatient">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetPatient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="InvalidPatientFaultFault">
+        <soap:fault use="literal" name="InvalidPatientFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetPatients">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetPatients" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpecialty">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetSpecialty" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="InvalidSpecialtyFaultFault">
+        <soap:fault use="literal" name="InvalidSpecialtyFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpecialties">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetSpecialties" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClinicSpecialty">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetClinicSpecialty" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="InvalidClinicSpecialtyFaultFault">
+        <soap:fault use="literal" name="InvalidClinicSpecialtyFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetClinicSpecialties">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetClinicSpecialties" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SampleService">
+    <wsdl:port name="BasicHttpBinding_ISampleService" binding="tns:BasicHttpBinding_ISampleService">
+      <soap:address location="http://localhost:52718/SampleService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

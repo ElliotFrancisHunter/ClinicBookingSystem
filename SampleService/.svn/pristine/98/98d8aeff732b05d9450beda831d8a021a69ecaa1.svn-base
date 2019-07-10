@@ -1,0 +1,18 @@
+﻿namespace SampleDomain
+{
+    /// <summary>
+    /// The sample data.
+    /// </summary>
+    public class SampleData : ISampleData
+    {
+        /// <summary>
+        /// Gets or sets the id.
+        /// </summary>
+        public virtual int Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sample property.
+        /// </summary>
+        public virtual string SampleProperty { get; set; }
+    }
+}

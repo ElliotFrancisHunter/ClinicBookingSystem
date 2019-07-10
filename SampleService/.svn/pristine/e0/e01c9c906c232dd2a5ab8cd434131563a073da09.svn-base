@@ -1,0 +1,21 @@
+﻿namespace DomainMappings
+{
+    using FluentNHibernate.Mapping;
+
+    using SampleDomain;
+
+    /// <summary>
+    /// The sample data class map. Maps the class to the database table.
+    /// </summary>
+    public class SampleDataClassMap : ClassMap<SampleData>
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SampleDataClassMap"/> class.
+        /// </summary>
+        public SampleDataClassMap()
+        {
+            this.Id(x => x.Id);
+            this.Map(x => x.SampleProperty);
+        }
+    }
+}

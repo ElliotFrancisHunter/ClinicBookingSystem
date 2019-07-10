@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/SampleDomain" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SampleDomain" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:52718/SampleService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="AppointmentType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppointmentTypeId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TypeDescriptor" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AppointmentType" nillable="true" type="tns:AppointmentType" />
+  <xs:complexType name="Clinic">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodeDescription" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Clinic" nillable="true" type="tns:Clinic" />
+  <xs:complexType name="AppointmentDuration">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppointmentLength" type="ser:duration" />
+      <xs:element minOccurs="0" name="DurationId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AppointmentDuration" nillable="true" type="tns:AppointmentDuration" />
+  <xs:complexType name="Patient">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Surname" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Patient" nillable="true" type="tns:Patient" />
+  <xs:complexType name="Specialty">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodeDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecialtyId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Specialty" nillable="true" type="tns:Specialty" />
+  <xs:complexType name="AppointmentUrgency">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="UrgencyDescriptor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UrgencyId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AppointmentUrgency" nillable="true" type="tns:AppointmentUrgency" />
+</xs:schema>

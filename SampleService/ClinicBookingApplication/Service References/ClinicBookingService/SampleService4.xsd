@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="InvalidAppointmentIdFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InvalidAppointmentIdFault" nillable="true" type="tns:InvalidAppointmentIdFault" />
+  <xs:complexType name="InvalidDurationFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InvalidDurationFault" nillable="true" type="tns:InvalidDurationFault" />
+  <xs:complexType name="InvalidAppointmentTypeFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InvalidAppointmentTypeFault" nillable="true" type="tns:InvalidAppointmentTypeFault" />
+  <xs:complexType name="InvalidClinicFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InvalidClinicFault" nillable="true" type="tns:InvalidClinicFault" />
+  <xs:complexType name="InvalidPatientFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InvalidPatientFault" nillable="true" type="tns:InvalidPatientFault" />
+  <xs:complexType name="InvalidSpecialtyFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InvalidSpecialtyFault" nillable="true" type="tns:InvalidSpecialtyFault" />
+  <xs:complexType name="InvalidClinicSpecialtyFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InvalidClinicSpecialtyFault" nillable="true" type="tns:InvalidClinicSpecialtyFault" />
+</xs:schema>
