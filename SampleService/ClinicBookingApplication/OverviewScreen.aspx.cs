@@ -157,13 +157,13 @@ namespace ClinicBookingApplication
                     appointment.Duration.AppointmentLength,
                     appointment.Clinic.CodeDescription);
             }
-            foreach (var appointment in appointments)
-            {
-                if (appointment.IsActive == false)
-                {
+            ////foreach (var appointment in appointments)
+            ////{
+            ////    if (appointment.IsActive == false)
+            ////    {
                     
-                }
-            }
+            ////    }
+            ////}
             this.SearchResultsGrid.DataSource = dataTable;
             this.SearchResultsGrid.DataBind();
         }
@@ -191,7 +191,14 @@ namespace ClinicBookingApplication
         protected void TextBox1_TextChanged1(object sender, EventArgs e)
         {
             var inputDateTime = Convert.ToDateTime(this.TextBox1.Text);
-            var DateTimeString = inputDateTime.ToString("F");
+
+            ////var DateTimeString = inputDateTime.ToString("F");
+        }
+
+        protected void CreateNewAppointment()
+        {
+            var dataTable = new DataTable();
+            this.DropDownList5.Text = Convert.ToString(this.DropDownList5.SelectedValue);
         }
     }
 }
