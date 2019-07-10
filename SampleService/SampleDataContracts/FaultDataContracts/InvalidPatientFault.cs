@@ -1,4 +1,12 @@
-﻿
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="InvalidPatientFault.cs" company="Servelec">
+//   Elliot Hunter
+// </copyright>
+// <summary>
+//   The InvalidPatientFault data contract.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
 namespace SampleDataContracts.FaultDataContracts
 {
     using System.Runtime.Serialization;
@@ -9,7 +17,6 @@ namespace SampleDataContracts.FaultDataContracts
     [DataContract]
     public class InvalidPatientFault
     {
-
         /// <summary>
         /// Gets or sets a value indicating whether there is a result.
         /// </summary>

@@ -1,4 +1,12 @@
-﻿
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="IBusinessHandler.cs" company="Servelec">
+//   Elliot Hunter
+// </copyright>
+// <summary>
+//   The custom business interface.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
 namespace SampleBusiness
 {
     using System.Collections.Generic;

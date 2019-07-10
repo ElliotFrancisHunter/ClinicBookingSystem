@@ -1,4 +1,11 @@
-﻿
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ClinicSpecialtyDataContract.cs" company="Servelec">
+//   Elliot Hunter
+// </copyright>
+// <summary>
+//   The ClinicSpecialty data contract.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace SampleDataContracts.DomainDataContracts
 {

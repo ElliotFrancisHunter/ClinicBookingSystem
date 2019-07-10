@@ -1,4 +1,12 @@
-﻿
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Appointment.cs" company="Servelec">
+//   Elliot Hunter
+// </copyright>
+// <summary>
+//   Initializes a new instance of the <see cref="Appointment" /> class.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
 namespace SampleDomain
 {
     using System;
