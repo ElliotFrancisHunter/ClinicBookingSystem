@@ -169,18 +169,8 @@ namespace ClinicBookingApplication
         }
 
         protected void NewAppointmentButtonClick(object sender, EventArgs e)
-        {
-            var createdAppointment = new AppointmentDataContract
-                                         {
-                                             IsActive        = true,
-                                             Patient         = new Patient { PatientId = this.PatientDropDownList.SelectedValue },
-                                             StartDateTime   = Convert.ToDateTime(this.DateTimeTextBox.Text),
-                                             Duration        = new AppointmentDuration { DurationId = this.DurationDropDownList.SelectedValue },
-                                             Clinic          = new Clinic { CodeDescription = this.ClinicDropDownList.SelectedValue },
-                                             Urgency         = new AppointmentUrgency { UrgencyId = this.UrgencyDropDownList.SelectedValue },
-                                             AppointmentType = new AppointmentType { AppointmentTypeId = this.AppointmentTypeDropDownList.SelectedValue }
-                                         };
-            new ClinicBookingService.SampleServiceClient().SetAppointment(
+        {                                        
+            new SampleServiceClient().SetAppointment(
                 true,
                 this.PatientDropDownList.SelectedValue,
                 Convert.ToDateTime(this.DateTimeTextBox.Text),
@@ -188,6 +178,7 @@ namespace ClinicBookingApplication
                 this.ClinicDropDownList.SelectedValue,
                 this.UrgencyDropDownList.SelectedValue,
                 this.AppointmentTypeDropDownList.SelectedValue);
+            this.MakeCurrentAppointmentsTable();
         }
 
         protected void SearchResultsGrid_SelectedIndexChanged(object sender, EventArgs e)
