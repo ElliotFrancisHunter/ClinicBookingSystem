@@ -74,13 +74,13 @@ namespace SampleRepository
         {
             var appointment = new Appointment
                                   {
-                                      StartDateTime = new DateTime(2019, 09, 01, 13, 0, 0),
+                                      StartDateTime = startDateTime,
                                       IsActive = true,
-                                      AppointmentType = new AppointmentType { AppointmentTypeId = "new" },
-                                      Patient = new Patient { PatientId = "PAT00010" },
-                                      Duration = this.GetAppointmentDurationId("Five minutes"),
-                                      Urgency = this.GetUrgency("routine"),
-                                      Clinic = this.GetClinicId("OAK"),
+                                      AppointmentType = new AppointmentType { AppointmentTypeId = appointmentTypeId },
+                                      Patient = new Patient { PatientId = patientId },
+                                      Duration = this.GetAppointmentDurationId(durationId),
+                                      Urgency = this.GetUrgency(urgencyId),
+                                      Clinic = this.GetClinicId(clinicId),
                                       Specialty = new Specialty { SpecialtyId = "352" }
                                   };
             this.unitOfWork.Session.Save(appointment);
