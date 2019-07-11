@@ -1,4 +1,12 @@
-﻿
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ClinicDataContract.cs" company="Servelec">
+//   Elliot Hunter
+// </copyright>
+// <summary>
+//   The clinic data contract.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
 namespace SampleDataContracts.DomainDataContracts
 {
     using System.Runtime.Serialization;

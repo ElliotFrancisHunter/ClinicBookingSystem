@@ -1,15 +1,15 @@
-﻿
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="AppointmentUrgencyClassMap.cs" company="Servelec">
+//   Elliot Hunter
+// </copyright>
+// <summary>
+//   AppointmentUrgency class map. Maps this class to the corresponding database table.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace DomainMappings
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
     using FluentNHibernate.Mapping;
-
     using SampleDomain;
 
     /// <summary>

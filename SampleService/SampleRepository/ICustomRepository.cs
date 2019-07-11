@@ -1,10 +1,15 @@
-﻿
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ICustomRepository.cs" company="Servelec">
+//   Elliot Hunter
+// </copyright>
+// <summary>
+//   The CustomRepository interface.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
 namespace SampleRepository
 {
     using System.Collections.Generic;
-
-    using NHibernate.Mapping;
-
     using SampleDomain;
 
     /// <summary>

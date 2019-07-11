@@ -31,66 +31,66 @@ namespace ClinicBookingApplication {
         protected global::System.Web.UI.WebControls.GridView SearchResultsGrid;
         
         /// <summary>
-        /// DropDownList1 control.
+        /// PatientDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList PatientDropDownList;
         
         /// <summary>
-        /// TextBox1 control.
+        /// DateTimeTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox DateTimeTextBox;
         
         /// <summary>
-        /// DropDownList3 control.
+        /// DurationDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
+        protected global::System.Web.UI.WebControls.DropDownList DurationDropDownList;
         
         /// <summary>
-        /// DropDownList4 control.
+        /// ClinicDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList4;
+        protected global::System.Web.UI.WebControls.DropDownList ClinicDropDownList;
         
         /// <summary>
-        /// DropDownList5 control.
+        /// UrgencyDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList5;
+        protected global::System.Web.UI.WebControls.DropDownList UrgencyDropDownList;
         
         /// <summary>
-        /// DropDownList6 control.
+        /// AppointmentTypeDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList6;
+        protected global::System.Web.UI.WebControls.DropDownList AppointmentTypeDropDownList;
         
         /// <summary>
-        /// SearchByTagButton control.
+        /// NewAppointmentButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SearchByTagButton;
+        protected global::System.Web.UI.WebControls.Button NewAppointmentButton;
     }
 }

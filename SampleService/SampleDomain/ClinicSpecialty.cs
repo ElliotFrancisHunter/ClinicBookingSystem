@@ -1,8 +1,14 @@
-﻿
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ClinicSpecialty.cs" company="Servelec">
+//   Elliot Hunter
+// </copyright>
+// <summary>
+//   Initializes a new instance of the <see cref="ClinicSpecialty" /> class.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace SampleDomain
 {
-
     /// <summary>
     /// Initializes a new instance of the <see cref="ClinicSpecialty"/> class.
     /// </summary>

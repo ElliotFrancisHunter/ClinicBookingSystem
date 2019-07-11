@@ -1,9 +1,15 @@
-﻿
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="AppointmentClassMap.cs" company="Servelec">
+//   Elliot Hunter
+// </copyright>
+// <summary>
+//   Appointment class map. Maps this class to the corresponding database table.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace DomainMappings
 {
     using FluentNHibernate.Mapping;
-
     using SampleDomain;
 
     /// <summary>

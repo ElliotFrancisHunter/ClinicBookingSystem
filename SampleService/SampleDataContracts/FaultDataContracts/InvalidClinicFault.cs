@@ -1,4 +1,12 @@
-﻿
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="InvalidClinicFault.cs" company="Servelec">
+//   Elliot Hunter
+// </copyright>
+// <summary>
+//   The InvalidClinicFault data contract.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
 namespace SampleDataContracts.FaultDataContracts
 {
     using System.Runtime.Serialization;

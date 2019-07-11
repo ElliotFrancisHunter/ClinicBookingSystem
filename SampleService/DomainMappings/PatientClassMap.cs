@@ -1,4 +1,11 @@
-﻿
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="PatientClassMap.cs" company="Servelec">
+//   Elliot Hunter
+// </copyright>
+// <summary>
+//   Patient class map. Maps this class to the corresponding database table.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace DomainMappings
 {
@@ -14,7 +21,6 @@ namespace DomainMappings
         /// <summary>
         /// Initializes a new instance of the <see cref="PatientClassMap"/> class.
         /// </summary>
-        /// 
         public PatientClassMap()
         {
             this.Id(x => x.PatientId).Column("PatientID");
