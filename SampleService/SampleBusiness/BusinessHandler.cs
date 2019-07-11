@@ -72,7 +72,14 @@ namespace SampleBusiness
             string urgencyId,
             string appointmentTypeId)
         {
-            return new CustomRepository(this.unitOfWork).SetAppointment();
+            return new CustomRepository(this.unitOfWork).SetAppointment(
+          isActive,
+          patientId,
+          startDateTime,
+          durationId,
+          clinicId,
+          urgencyId,
+          appointmentTypeId);
         }
 
         /// <summary>

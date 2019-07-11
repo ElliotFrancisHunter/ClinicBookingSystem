@@ -84,7 +84,14 @@ namespace SampleService
 
             using (var unitOfWork = new UnitOfWork())
             {
-                domainObject = new BusinessHandler(unitOfWork).SetAppointment();
+                domainObject = new BusinessHandler(unitOfWork).SetAppointment(
+                    isActive,
+                    patientId,
+                    startDateTime,
+                    durationId,
+                    clinicId,
+                    urgencyId,
+                    appointmentTypeId);
                 unitOfWork.Close();
             }
 
