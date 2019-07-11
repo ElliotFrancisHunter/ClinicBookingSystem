@@ -196,5 +196,10 @@ namespace ClinicBookingApplication
         {
 
         }
+
+        protected void SearchByTagTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
