@@ -3,6 +3,7 @@ namespace ClinicBookingApplication
 {
     using System;
     using System.Data;
+    using System.Web.Services.Description;
     using System.Web.UI;
     using ClinicBookingApplication.ClinicBookingService;
 
@@ -179,7 +180,14 @@ namespace ClinicBookingApplication
                                              Urgency         = new AppointmentUrgency { UrgencyId = this.UrgencyDropDownList.SelectedValue },
                                              AppointmentType = new AppointmentType { AppointmentTypeId = this.AppointmentTypeDropDownList.SelectedValue }
                                          };
-
+            new ClinicBookingService.SampleServiceClient().SetAppointment(
+                true,
+                this.PatientDropDownList.SelectedValue,
+                Convert.ToDateTime(this.DateTimeTextBox.Text),
+                this.DurationDropDownList.SelectedValue,
+                this.ClinicDropDownList.SelectedValue,
+                this.UrgencyDropDownList.SelectedValue,
+                this.AppointmentTypeDropDownList.SelectedValue);
         }
 
         protected void SearchResultsGrid_SelectedIndexChanged(object sender, EventArgs e)

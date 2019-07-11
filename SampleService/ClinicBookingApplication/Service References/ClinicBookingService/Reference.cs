@@ -1555,10 +1555,10 @@ namespace ClinicBookingApplication.ClinicBookingService {
     public interface ISampleService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/SetAppointment", ReplyAction="http://tempuri.org/ISampleService/SetAppointmentResponse")]
-        ClinicBookingApplication.ClinicBookingService.AppointmentDataContract SetAppointment();
+        ClinicBookingApplication.ClinicBookingService.AppointmentDataContract SetAppointment(bool isActive, string patientId, System.DateTime startDateTime, string durationId, string clinicId, string urgencyId, string appointmentTypeId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/SetAppointment", ReplyAction="http://tempuri.org/ISampleService/SetAppointmentResponse")]
-        System.Threading.Tasks.Task<ClinicBookingApplication.ClinicBookingService.AppointmentDataContract> SetAppointmentAsync();
+        System.Threading.Tasks.Task<ClinicBookingApplication.ClinicBookingService.AppointmentDataContract> SetAppointmentAsync(bool isActive, string patientId, System.DateTime startDateTime, string durationId, string clinicId, string urgencyId, string appointmentTypeId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/GetAppointment", ReplyAction="http://tempuri.org/ISampleService/GetAppointmentResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(ClinicBookingApplication.ClinicBookingService.InvalidAppointmentIdFault), Action="http://tempuri.org/ISampleService/GetAppointmentInvalidAppointmentIdFaultFault", Name="InvalidAppointmentIdFault", Namespace="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts")]
@@ -1695,12 +1695,12 @@ namespace ClinicBookingApplication.ClinicBookingService {
                 base(binding, remoteAddress) {
         }
         
-        public ClinicBookingApplication.ClinicBookingService.AppointmentDataContract SetAppointment() {
-            return base.Channel.SetAppointment();
+        public ClinicBookingApplication.ClinicBookingService.AppointmentDataContract SetAppointment(bool isActive, string patientId, System.DateTime startDateTime, string durationId, string clinicId, string urgencyId, string appointmentTypeId) {
+            return base.Channel.SetAppointment(isActive, patientId, startDateTime, durationId, clinicId, urgencyId, appointmentTypeId);
         }
         
-        public System.Threading.Tasks.Task<ClinicBookingApplication.ClinicBookingService.AppointmentDataContract> SetAppointmentAsync() {
-            return base.Channel.SetAppointmentAsync();
+        public System.Threading.Tasks.Task<ClinicBookingApplication.ClinicBookingService.AppointmentDataContract> SetAppointmentAsync(bool isActive, string patientId, System.DateTime startDateTime, string durationId, string clinicId, string urgencyId, string appointmentTypeId) {
+            return base.Channel.SetAppointmentAsync(isActive, patientId, startDateTime, durationId, clinicId, urgencyId, appointmentTypeId);
         }
         
         public ClinicBookingApplication.ClinicBookingService.AppointmentDataContract GetAppointment(int id) {
