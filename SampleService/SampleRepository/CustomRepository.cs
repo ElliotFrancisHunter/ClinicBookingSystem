@@ -37,12 +37,40 @@ namespace SampleRepository
         }
 
         /// <summary>
-        /// Sets a new appointment TODO parameterize the function.
+        /// Sets a new Appointment and passes it to Business layer for any necessary logic.
         /// </summary>
+        /// <param name="isActive">
+        /// A boolean value deciding whether appointment is active.
+        /// </param>
+        /// <param name="patientId">
+        /// A string containing the patientId to extract the correct patient from database.
+        /// </param>
+        /// <param name="startDateTime">
+        /// A DateTime containing desired appointment date and time time. 
+        /// </param>
+        /// <param name="durationId">
+        /// A string containing the id for the desired duration to be grabbed from the database.
+        /// </param>
+        /// <param name="clinicId">
+        /// A string containing the id for the desired clinic.
+        /// </param>
+        /// <param name="urgencyId">
+        /// A string containing the id for the correct urgency.
+        /// </param>
+        /// <param name="appointmentTypeId">
+        /// A string containing whether appointment is new or a follow up.
+        /// </param>
         /// <returns>
-        /// The new <see cref="Appointment" />
+        /// The SetAppointment AppointmentDataContract.
         /// </returns>
-        public Appointment SetAppointment()
+        public Appointment SetAppointment(
+            bool isActive,
+            string patientId,
+            DateTime startDateTime,
+            string durationId,
+            string clinicId,
+            string urgencyId,
+            string appointmentTypeId)
         {
             var appointment = new Appointment
                                   {
