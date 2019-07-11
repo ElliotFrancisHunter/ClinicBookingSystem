@@ -1,4 +1,13 @@
-﻿
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ISampleService.cs" company="Servelec">
+//   Elliot Hunter
+// </copyright>
+// <summary>
+//   The SampleService interface.
+//   NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "ISampleService" in both code and config file together.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
 namespace SampleService
 {
     using System.Collections.Generic;

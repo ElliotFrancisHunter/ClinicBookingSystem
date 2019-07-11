@@ -1,4 +1,12 @@
-﻿
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ThisIsAnIssueException.cs" company="Servelec">
+//   Elliot Hunter
+// </copyright>
+// <summary>
+//   Implements an exception when 'this' is an issue!
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
 namespace Core
 {
     using System;

@@ -1,27 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
+﻿
 namespace ClinicBookingApplication
 {
-    using System.Configuration;
+    using System;
     using System.Data;
-    using System.Data.SqlClient;
-    using System.EnterpriseServices;
-    using System.Xml.Linq;
-
+    using System.Web.UI;
     using ClinicBookingApplication.ClinicBookingService;
-
-    using Microsoft.Ajax.Utilities;
 
     /// <summary>
     /// The User interface.
     /// </summary>
     public partial class WebForm1 : Page
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (this.IsPostBack)
@@ -37,6 +31,11 @@ namespace ClinicBookingApplication
             this.MakeCurrentAppointmentsTable();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -54,10 +53,10 @@ namespace ClinicBookingApplication
                 dataTable.Rows.Add(patient.PatientId, string.Join(" ", patient.FirstName, patient.Surname));
             }
 
-            this.DropDownList1.DataSource = dataTable;
-            this.DropDownList1.DataTextField = "Patient Name";
-            this.DropDownList1.DataValueField = "PatientNo";
-            this.DropDownList1.DataBind();
+            this.PatientDropDownList.DataSource = dataTable;
+            this.PatientDropDownList.DataTextField = "Patient Name";
+            this.PatientDropDownList.DataValueField = "PatientNo";
+            this.PatientDropDownList.DataBind();
         }
 
         public void MakeDurationTable()
@@ -72,10 +71,10 @@ namespace ClinicBookingApplication
                 dataTable.Rows.Add(duration.DurationId, duration.AppointmentLength);
             }
 
-            this.DropDownList3.DataSource = dataTable;
-            this.DropDownList3.DataTextField = "AppointmentLength";
-            this.DropDownList3.DataValueField = "DurationID";
-            this.DropDownList3.DataBind();
+            this.DurationDropDownList.DataSource = dataTable;
+            this.DurationDropDownList.DataTextField = "AppointmentLength";
+            this.DurationDropDownList.DataValueField = "DurationID";
+            this.DurationDropDownList.DataBind();
 
         }
 
@@ -91,10 +90,10 @@ namespace ClinicBookingApplication
                 dataTable.Rows.Add(clinic.ClinicId, clinic.CodeDescription);
             }
 
-            this.DropDownList4.DataSource = dataTable;
-            this.DropDownList4.DataTextField = "CodeDescription";
-            this.DropDownList4.DataValueField = "ClinicID";
-            this.DropDownList4.DataBind();
+            this.ClinicDropDownList.DataSource = dataTable;
+            this.ClinicDropDownList.DataTextField = "CodeDescription";
+            this.ClinicDropDownList.DataValueField = "ClinicID";
+            this.ClinicDropDownList.DataBind();
         }
 
         public void MakeUrgencyTable()
@@ -109,10 +108,10 @@ namespace ClinicBookingApplication
                 dataTable.Rows.Add(urgency.UrgencyId, urgency.UrgencyDescriptor);
             }
 
-            this.DropDownList5.DataSource = dataTable;
-            this.DropDownList5.DataTextField = "UrgencyDescriptor";
-            this.DropDownList5.DataValueField = "UrgencyID";
-            this.DropDownList5.DataBind();
+            this.UrgencyDropDownList.DataSource = dataTable;
+            this.UrgencyDropDownList.DataTextField = "UrgencyDescriptor";
+            this.UrgencyDropDownList.DataValueField = "UrgencyID";
+            this.UrgencyDropDownList.DataBind();
         }
 
         public void MakeAppointmentTypeTable()
@@ -127,10 +126,10 @@ namespace ClinicBookingApplication
                 dataTable.Rows.Add(type.AppointmentTypeId, type.TypeDescriptor);
             }
 
-            this.DropDownList6.DataSource = dataTable;
-            this.DropDownList6.DataTextField = "TypeDescriptor";
-            this.DropDownList6.DataValueField = "AppointmentTypeID";
-            this.DropDownList6.DataBind();
+            this.AppointmentTypeDropDownList.DataSource = dataTable;
+            this.AppointmentTypeDropDownList.DataTextField = "TypeDescriptor";
+            this.AppointmentTypeDropDownList.DataValueField = "AppointmentTypeID";
+            this.AppointmentTypeDropDownList.DataBind();
         }
 
         public void MakeCurrentAppointmentsTable()
@@ -168,13 +167,18 @@ namespace ClinicBookingApplication
             this.SearchResultsGrid.DataBind();
         }
 
-        protected void SearchByTagButton_Click(object sender, EventArgs e)
+        protected void NewAppointmentButtonClick(object sender, EventArgs e)
         {
-           
-        }
-
-        protected void TextBox1_TextChanged(object sender, EventArgs e)
-        {
+            var createdAppointment = new AppointmentDataContract
+                                         {
+                                             IsActive        = true,
+                                             Patient         = new Patient { PatientId = this.PatientDropDownList.SelectedValue },
+                                             StartDateTime   = Convert.ToDateTime(this.DateTimeTextBox.Text),
+                                             Duration        = new AppointmentDuration { DurationId = this.DurationDropDownList.SelectedValue },
+                                             Clinic          = new Clinic { CodeDescription = this.ClinicDropDownList.SelectedValue },
+                                             Urgency         = new AppointmentUrgency { UrgencyId = this.UrgencyDropDownList.SelectedValue },
+                                             AppointmentType = new AppointmentType { AppointmentTypeId = this.AppointmentTypeDropDownList.SelectedValue }
+                                         };
 
         }
 
@@ -183,22 +187,14 @@ namespace ClinicBookingApplication
 
         }
 
-        protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
+        protected void DateTimeTextBoxTextChanged(object sender, EventArgs e)
         {
-
+            var inputDateTime = Convert.ToDateTime(this.DateTimeTextBox.Text);
         }
 
-        protected void TextBox1_TextChanged1(object sender, EventArgs e)
+        protected void DateTimeTextBox_TextChanged(object sender, EventArgs e)
         {
-            var inputDateTime = Convert.ToDateTime(this.TextBox1.Text);
 
-            ////var DateTimeString = inputDateTime.ToString("F");
-        }
-
-        protected void CreateNewAppointment()
-        {
-            var dataTable = new DataTable();
-            this.DropDownList5.Text = Convert.ToString(this.DropDownList5.SelectedValue);
         }
     }
 }

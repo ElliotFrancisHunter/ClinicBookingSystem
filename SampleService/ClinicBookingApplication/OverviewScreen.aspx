@@ -11,8 +11,8 @@
     
     
     <h3> Search Criteria</h3>
-    <h3> &nbsp;<asp:TextBox ID="SearchByTagTextBox" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
-
+    <h3> &nbsp;<asp:TextBox ID="SearchByTagTextBox" runat="server" OnTextChanged="SearchByTagTextBox_TextChanged"></asp:TextBox>
+        
         <asp:GridView ID="SearchResultsGrid" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="SearchResultsGrid_SelectedIndexChanged" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
             <Columns>
                 <asp:BoundField DataField="AppointmentID" HeaderText="AppointmentNo." ItemStyle-Width ="30" Visible="False">
@@ -45,21 +45,21 @@
             <SortedDescendingHeaderStyle BackColor="#383838" />
         </asp:GridView>
         <br/>
-    <asp:DropDownList ID="DropDownList1" runat="server" Height="45px" Width="127px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+    <asp:DropDownList ID="PatientDropDownList" runat="server" Height="45px" Width="127px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
     </asp:DropDownList>
 
-        <asp:TextBox ID="TextBox1" runat="server" BackColor="White" BorderColor="Black" BorderStyle="Double" OnTextChanged="TextBox1_TextChanged1">yyyy-MM-dd HH:mm</asp:TextBox>
+        <asp:TextBox ID="DateTimeTextBox" runat="server" BackColor="White" BorderColor="Black" BorderStyle="Double" OnTextChanged="DateTimeTextBox_TextChanged">yyyy-MM-dd HH:mm</asp:TextBox>
 
-        <asp:DropDownList ID="DropDownList3" runat="server">
+        <asp:DropDownList ID="DurationDropDownList" runat="server">
         </asp:DropDownList>
-        <asp:DropDownList ID="DropDownList4" runat="server">
+        <asp:DropDownList ID="ClinicDropDownList" runat="server">
         </asp:DropDownList>
-        <asp:DropDownList ID="DropDownList5" runat="server">
+        <asp:DropDownList ID="UrgencyDropDownList" runat="server">
         </asp:DropDownList>
-        <asp:DropDownList ID="DropDownList6" runat="server">
+        <asp:DropDownList ID="AppointmentTypeDropDownList" runat="server">
         </asp:DropDownList>
 
-        <asp:Button ID="SearchByTagButton" runat="server" Height="34px" OnClick="SearchByTagButton_Click" Text="Button" />
+        <asp:Button ID="NewAppointmentButton" runat="server" Height="34px" OnClick="NewAppointmentButtonClick" Text="Button" />
 
     </h3>
     <p> &nbsp;</p>

@@ -1,4 +1,12 @@
-﻿
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="AppointmentDataContract.cs" company="Servelec">
+//   Elliot Hunter
+// </copyright>
+// <summary>
+//   The Appointment data contract.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
 namespace SampleDataContracts.DomainDataContracts
 {
     using System;
@@ -23,7 +31,6 @@ namespace SampleDataContracts.DomainDataContracts
         /// </summary>
         [DataMember]
         public virtual DateTime StartDateTime { get; set; }
-
 
         /// <summary>
         /// Gets or sets a value indicating whether a logical deletion has occurred. 

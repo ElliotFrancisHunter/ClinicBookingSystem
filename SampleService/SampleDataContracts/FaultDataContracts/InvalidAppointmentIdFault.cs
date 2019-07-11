@@ -1,4 +1,12 @@
-﻿
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="InvalidAppointmentIdFault.cs" company="Servelec">
+//   Elliot Hunter
+// </copyright>
+// <summary>
+//   The InvalidAppointmentIdFault data contract.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
 namespace SampleDataContracts.FaultDataContracts
 {
     using System.Runtime.Serialization;

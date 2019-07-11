@@ -17,7 +17,14 @@ select,
 textarea {
     max-width: 280px;
 }
-
+/*div {
+    -webkit-box-shadow: 0 4px 8px 0 #000000, 0 6px 20px 0 #000000;
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -ms-box-shadow: 0 4px 8px 0 #000000, 0 6px 20px 0 #000000;
+    -ms-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 #000000, 0 6px 20px 0 #000000;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}*/
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

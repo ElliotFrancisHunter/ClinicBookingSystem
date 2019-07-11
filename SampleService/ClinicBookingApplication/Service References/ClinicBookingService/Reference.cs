@@ -1554,6 +1554,12 @@ namespace ClinicBookingApplication.ClinicBookingService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ClinicBookingService.ISampleService")]
     public interface ISampleService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/SetAppointment", ReplyAction="http://tempuri.org/ISampleService/SetAppointmentResponse")]
+        ClinicBookingApplication.ClinicBookingService.AppointmentDataContract SetAppointment();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/SetAppointment", ReplyAction="http://tempuri.org/ISampleService/SetAppointmentResponse")]
+        System.Threading.Tasks.Task<ClinicBookingApplication.ClinicBookingService.AppointmentDataContract> SetAppointmentAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/GetAppointment", ReplyAction="http://tempuri.org/ISampleService/GetAppointmentResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(ClinicBookingApplication.ClinicBookingService.InvalidAppointmentIdFault), Action="http://tempuri.org/ISampleService/GetAppointmentInvalidAppointmentIdFaultFault", Name="InvalidAppointmentIdFault", Namespace="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts")]
         ClinicBookingApplication.ClinicBookingService.AppointmentDataContract GetAppointment(int id);
@@ -1687,6 +1693,14 @@ namespace ClinicBookingApplication.ClinicBookingService {
         
         public SampleServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public ClinicBookingApplication.ClinicBookingService.AppointmentDataContract SetAppointment() {
+            return base.Channel.SetAppointment();
+        }
+        
+        public System.Threading.Tasks.Task<ClinicBookingApplication.ClinicBookingService.AppointmentDataContract> SetAppointmentAsync() {
+            return base.Channel.SetAppointmentAsync();
         }
         
         public ClinicBookingApplication.ClinicBookingService.AppointmentDataContract GetAppointment(int id) {
