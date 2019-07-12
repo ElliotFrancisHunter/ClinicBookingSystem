@@ -178,6 +178,7 @@ namespace ClinicBookingApplication
                 this.ClinicDropDownList.SelectedValue,
                 this.UrgencyDropDownList.SelectedValue,
                 this.AppointmentTypeDropDownList.SelectedValue);
+
             this.MakeCurrentAppointmentsTable();
         }
 
