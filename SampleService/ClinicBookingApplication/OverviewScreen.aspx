@@ -69,6 +69,7 @@
         </asp:DropDownList>
         <asp:DropDownList ID="ClinicDropDownList" runat="server">
         </asp:DropDownList>
+        <asp:DropDownList ID="SpecialtyDropDownList" runat="server"/>
         <asp:DropDownList ID="UrgencyDropDownList" runat="server">
         </asp:DropDownList>
         <asp:DropDownList ID="AppointmentTypeDropDownList" runat="server">
