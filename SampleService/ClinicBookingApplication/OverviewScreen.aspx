@@ -3,17 +3,34 @@
 
     <!DOCTYPE html>   
     <meta name="viewport" content ="width=device-width, initial-scale = 1.0">
+    <script>
+        $(function () {
+            $('#DateTimeTextBox').popover();
+        });
+
+        $(function waitFunction() {
+            var myTimeout = setTimeout(window.showPage, 3000);
+        });
+
+        $(function showPage() {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("LoadDone").style.display = "block";
+        });
+    </script>
+
+    
+    <div id="loader"></div>
+    <div style="display: none;" id="LoadDone" class="animate-bottom">
     <h1> OVERVIEW SCREEN</h1>
     
           
     <h2>Welcome!</h2>
-        
     
     
     <h3> Search Criteria</h3>
-    <h3> &nbsp;<asp:TextBox ID="SearchByTagTextBox" runat="server" OnTextChanged="SearchByTagTextBox_TextChanged"></asp:TextBox>
+    <h3> &nbsp;<asp:TextBox ID="SearchByTagTextBox" runat="server" OnTextChanged="SearchByTagTextBoxTextChanged"></asp:TextBox>
         
-        <asp:GridView ID="SearchResultsGrid" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="SearchResultsGrid_SelectedIndexChanged" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
+        <asp:GridView ID="SearchResultsGrid" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="SearchResultsGridSelectedIndexChanged" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
             <Columns>
                 <asp:BoundField DataField="AppointmentID" HeaderText="AppointmentNo." ItemStyle-Width ="30" Visible="False">
 <ItemStyle Width="30px"></ItemStyle>
@@ -24,7 +41,7 @@
                 <asp:BoundField DataField="PatientID" HeaderText="Patient" ItemStyle-Width="150" >
 <ItemStyle Width="150px"></ItemStyle>
                 </asp:BoundField>
-                <asp:BoundField DataField="StartDateTime" HeaderText="Date/Time" ItemStyle-Width="150" >
+                <asp:BoundField DataField="StartDateTime" HeaderText="Date/Time" ItemStyle-Width="150">
 <ItemStyle Width="150px"></ItemStyle>
                 </asp:BoundField>
                 <asp:BoundField DataField="DurationID" HeaderText="Duration" ItemStyle-Width="150" >
@@ -45,10 +62,11 @@
             <SortedDescendingHeaderStyle BackColor="#383838" />
         </asp:GridView>
         <br/>
-    <asp:DropDownList ID="PatientDropDownList" runat="server" Height="45px" Width="127px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+    <asp:DropDownList ID="PatientDropDownList" runat="server" Height="45px" Width="127px" OnSelectedIndexChanged="DropDownList1SelectedIndexChanged">
     </asp:DropDownList>
 
-        <asp:TextBox ID="DateTimeTextBox" runat="server" BackColor="White" BorderColor="Black" BorderStyle="Double" OnTextChanged="DateTimeTextBox_TextChanged">yyyy-MM-dd HH:mm</asp:TextBox>
+        <asp:TextBox ID="DateTimeTextBox" runat="server" BackColor="White" BorderColor="Black" OnTextChanged="DateTimeTextBoxTextChanged" OnClientClick= "return false"
+             title="User Guide" data-content="yyyy-MM-dd HH:mm" data-placement="top" TabIndex="0" data-trigger="focus"></asp:TextBox>
 
         <asp:DropDownList ID="DurationDropDownList" runat="server">
         </asp:DropDownList>
@@ -71,5 +89,6 @@
     <p> &nbsp;</p>
     <p> &nbsp;</p>
     <p> &nbsp;</p>
- 
+
+    </div>
 </asp:Content>

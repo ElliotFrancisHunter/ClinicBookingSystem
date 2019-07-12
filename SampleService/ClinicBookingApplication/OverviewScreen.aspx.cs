@@ -11,6 +11,7 @@ namespace ClinicBookingApplication
 {
     using System;
     using System.Data;
+    using System.Web.Script.Serialization;
     using System.Web.UI;
     using ClinicBookingApplication.ClinicBookingService;
 
@@ -178,6 +179,11 @@ namespace ClinicBookingApplication
                 return;
             }
 
+            var scriptRef = "waitFunction";
+            var scriptType = this.GetType();
+            var manager = Page.ClientScript;
+
+            ClientScript.RegisterStartupScript(this.GetType(), "JavaScript", "waitFunction");
             this.MakePatientTable();
             this.MakeDurationTable();
             this.MakeClinicTable();
