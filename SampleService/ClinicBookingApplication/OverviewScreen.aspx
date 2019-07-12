@@ -61,7 +61,7 @@
             <SortedDescendingHeaderStyle BackColor="#383838" />
         </asp:GridView>
         <br/>
-    <asp:DropDownList ID="PatientDropDownList" runat="server" Height="45px" Width="127px" OnSelectedIndexChanged="DropDownList1SelectedIndexChanged">
+    <asp:DropDownList ID="PatientDropDownList" runat="server" OnSelectedIndexChanged="DropDownList1SelectedIndexChanged">
     </asp:DropDownList>
 
         <asp:TextBox ID="DateTimeTextBox" runat="server" BackColor="White" BorderColor="Black" OnTextChanged="DateTimeTextBoxTextChanged" OnClientClick= "return false"
@@ -71,10 +71,12 @@
         </asp:DropDownList>
         <asp:DropDownList ID="ClinicDropDownList" runat="server">
         </asp:DropDownList>
+        <asp:DropDownList ID="SpecialtyTypeDropList" runat="server" />
         <asp:DropDownList ID="UrgencyDropDownList" runat="server">
         </asp:DropDownList>
         <asp:DropDownList ID="AppointmentTypeDropDownList" runat="server">
         </asp:DropDownList>
+        
 
         <asp:Button ID="NewAppointmentButton" runat="server" Height="34px" OnClick="NewAppointmentButtonClick" Text="Button" />
 
