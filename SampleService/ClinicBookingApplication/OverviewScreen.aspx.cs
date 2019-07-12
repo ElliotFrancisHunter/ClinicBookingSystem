@@ -83,6 +83,11 @@ namespace ClinicBookingApplication
             this.ClinicDropDownList.DataBind();
         }
 
+        public void MakeClinicSpecialtyTable()
+        {
+            
+        }
+
         /// <summary>
         /// Creates data table for all appointment urgencies stored on database.
         /// </summary>
@@ -139,7 +144,8 @@ namespace ClinicBookingApplication
                                                new DataColumn("PatientID", typeof(string)),
                                                new DataColumn("StartDateTime", typeof(string)),
                                                new DataColumn("DurationID", typeof(string)),
-                                               new DataColumn("ClinicID", typeof(string))
+                                               new DataColumn("ClinicID", typeof(string)),
+                                               new DataColumn("SpecialtyID", typeof(string))
                                            });
              
             foreach (var appointment in appointments)
@@ -150,7 +156,8 @@ namespace ClinicBookingApplication
                     string.Join(" ", appointment.Patient.FirstName, appointment.Patient.Surname),
                     appointment.StartDateTime,
                     appointment.Duration.AppointmentLength,
-                    appointment.Clinic.CodeDescription);
+                    appointment.Clinic.CodeDescription,
+                    appointment.Specialty.CodeDescription);
             }
             ////foreach (var appointment in appointments)
             ////{
