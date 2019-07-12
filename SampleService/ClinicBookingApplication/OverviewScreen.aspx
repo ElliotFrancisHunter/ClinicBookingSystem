@@ -7,15 +7,14 @@
         $(function () {
             $('#DateTimeTextBox').popover();
         });
-
+        var myTimeout;
         $(function waitFunction() {
-            var myTimeout = setTimeout(window.showPage, 3000);
+            myTimeout = setTimeout(function() {
+                document.getElementById("loader").style.display = "none";
+                document.getElementById("LoadDone").style.display = "block";
+            }, 1500);
         });
-
-        $(function showPage() {
-            document.getElementById("loader").style.display = "none";
-            document.getElementById("LoadDone").style.display = "block";
-        });
+        
     </script>
 
     

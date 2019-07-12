@@ -30,7 +30,15 @@
 
 .animate-bottom {
     position: relative;
+    -webkit-animation-name: animatebottom;
+    -moz-animation-name: animatebottom;
+    -ms-animation-name: animatebottom;
+    -o-animation-name: animatebottom;
     animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    -ms-animation-duration: 1s;
+    -o-animation-duration: 1s;
     animation-duration: 1s;
 }
 
