@@ -9,12 +9,9 @@
         });
 
         $(function waitFunction() {
-            var myTimeout = setTimeout(window.showPage, 3000);
-        });
-
-        $(function showPage() {
-            document.getElementById("loader").style.display = "none";
-            document.getElementById("LoadDone").style.display = "block";
+            var myTimeout = setTimeout(function () {
+                document.getElementById("loader").style.display = "none";
+                document.getElementById("LoadDone").style.display = "block";  }, 1500);
         });
     </script>
 

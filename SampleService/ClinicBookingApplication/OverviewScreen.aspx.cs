@@ -179,11 +179,11 @@ namespace ClinicBookingApplication
                 return;
             }
 
-            var scriptRef = "waitFunction";
+            const string ScriptRef = "waitFunction";
             var scriptType = this.GetType();
             var manager = Page.ClientScript;
 
-            ClientScript.RegisterStartupScript(this.GetType(), "JavaScript", "waitFunction");
+            manager.RegisterStartupScript(scriptType, ScriptRef , string.Empty);
             this.MakePatientTable();
             this.MakeDurationTable();
             this.MakeClinicTable();
