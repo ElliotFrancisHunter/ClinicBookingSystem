@@ -13,6 +13,7 @@ namespace ClinicBookingApplication
     using System.Data;
     using System.Globalization;
     using System.Runtime.Serialization;
+    using System.ServiceModel;
     using System.Web.UI;
     using ClinicBookingApplication.ClinicBookingService;
 
@@ -236,10 +237,11 @@ namespace ClinicBookingApplication
                     DateTimeStyles.None,
                     out textBoxDateTime);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
-            }              
+                throw new FaultException(new FaultReason("MUST BE IN FORMAT: dd MM yyyy HH:mm:ss"));
+            }
+              
             new SampleServiceClient().SetAppointment(
                 true,
                 this.PatientDropDownList.SelectedValue,
