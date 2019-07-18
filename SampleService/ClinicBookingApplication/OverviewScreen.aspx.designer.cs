@@ -67,6 +67,15 @@ namespace ClinicBookingApplication {
         protected global::System.Web.UI.WebControls.DropDownList ClinicDropDownList;
         
         /// <summary>
+        /// SpecialtyDropDownList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList SpecialtyDropDownList;
+        
+        /// <summary>
         /// UrgencyDropDownList control.
         /// </summary>
         /// <remarks>
@@ -101,5 +110,14 @@ namespace ClinicBookingApplication {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button NewAppointmentButton;
+        
+        /// <summary>
+        /// rfvDateTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDateTime;
     }
 }

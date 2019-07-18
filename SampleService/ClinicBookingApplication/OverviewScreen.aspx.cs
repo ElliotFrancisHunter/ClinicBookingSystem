@@ -11,7 +11,6 @@ namespace ClinicBookingApplication
 {
     using System;
     using System.Data;
-    using System.Web.Script.Serialization;
     using System.Web.UI;
     using ClinicBookingApplication.ClinicBookingService;
 
@@ -84,6 +83,24 @@ namespace ClinicBookingApplication
         }
 
         /// <summary>
+        /// Creates data table for list of specialties linked to clinics ///TODO ACTUALLY MAKE THIS FUNCTION AS DESIRED ///
+        /// </summary>
+        public void MakeClinicSpecialtyTable()
+        {
+            var dataTable = new DataTable();
+            dataTable.Columns.Add("ClinicSpecialtyID");
+            dataTable.Columns.Add("Clinic");
+            dataTable.Columns.Add("Specialty");
+
+            var clinicSpecialtyList = new SampleServiceClient().GetClinicSpecialties();
+
+            foreach (var clinicSpecialty in clinicSpecialtyList)
+            {
+                dataTable.Rows.Add(clinicSpecialty.ClinicSpecialtyId, clinicSpecialty.Clinic, clinicSpecialty.Specialty);
+            }
+        }
+
+        /// <summary>
         /// Creates data table for all appointment urgencies stored on database.
         /// </summary>
         public void MakeUrgencyTable()
@@ -139,7 +156,8 @@ namespace ClinicBookingApplication
                                                new DataColumn("PatientID", typeof(string)),
                                                new DataColumn("StartDateTime", typeof(string)),
                                                new DataColumn("DurationID", typeof(string)),
-                                               new DataColumn("ClinicID", typeof(string))
+                                               new DataColumn("ClinicID", typeof(string)),
+                                               new DataColumn("SpecialtyID", typeof(string))
                                            });
              
             foreach (var appointment in appointments)
@@ -150,7 +168,8 @@ namespace ClinicBookingApplication
                     string.Join(" ", appointment.Patient.FirstName, appointment.Patient.Surname),
                     appointment.StartDateTime,
                     appointment.Duration.AppointmentLength,
-                    appointment.Clinic.CodeDescription);
+                    appointment.Clinic.CodeDescription,
+                    appointment.Specialty.CodeDescription);
             }
             ////foreach (var appointment in appointments)
             ////{

@@ -9,12 +9,10 @@
         });
         var myTimeout;
         $(function waitFunction() {
-            myTimeout = setTimeout(function() {
+            var myTimeout = setTimeout(function () {
                 document.getElementById("loader").style.display = "none";
-                document.getElementById("LoadDone").style.display = "block";
-            }, 1500);
+                document.getElementById("LoadDone").style.display = "block";  }, 1500);
         });
-        
     </script>
 
     
@@ -63,7 +61,6 @@
         <br/>
     <asp:DropDownList ID="PatientDropDownList" runat="server" OnSelectedIndexChanged="DropDownList1SelectedIndexChanged">
     </asp:DropDownList>
-
         <asp:TextBox ID="DateTimeTextBox" runat="server" BackColor="White" BorderColor="Black" OnTextChanged="DateTimeTextBoxTextChanged" OnClientClick= "return false"
              title="User Guide" data-content="yyyy-MM-dd HH:mm" data-placement="top" TabIndex="0" data-trigger="focus"></asp:TextBox>
 
@@ -71,7 +68,7 @@
         </asp:DropDownList>
         <asp:DropDownList ID="ClinicDropDownList" runat="server">
         </asp:DropDownList>
-        <asp:DropDownList ID="SpecialtyTypeDropList" runat="server" />
+        <asp:DropDownList ID="SpecialtyDropDownList" runat="server"/>
         <asp:DropDownList ID="UrgencyDropDownList" runat="server">
         </asp:DropDownList>
         <asp:DropDownList ID="AppointmentTypeDropDownList" runat="server">
@@ -79,6 +76,12 @@
         
 
         <asp:Button ID="NewAppointmentButton" runat="server" Height="34px" OnClick="NewAppointmentButtonClick" Text="Button" />
+        <asp:RequiredFieldValidator
+         ControlToValidate = "PatientDropDownList" Display="Static" 
+         ErrorMessage="Please enter a valid DATE and TIME." ID="rfvDateTime"
+         runat="server">
+       
+    </asp:RequiredFieldValidator>
 
     </h3>
     <p> &nbsp;</p>
