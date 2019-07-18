@@ -61,7 +61,6 @@
         <br/>
     <asp:DropDownList ID="PatientDropDownList" runat="server" Height="45px" Width="127px" OnSelectedIndexChanged="DropDownList1SelectedIndexChanged">
     </asp:DropDownList>
-
         <asp:TextBox ID="DateTimeTextBox" runat="server" BackColor="White" BorderColor="Black" OnTextChanged="DateTimeTextBoxTextChanged" OnClientClick= "return false"
              title="User Guide" data-content="yyyy-MM-dd HH:mm" data-placement="top" TabIndex="0" data-trigger="focus"></asp:TextBox>
 
@@ -76,6 +75,12 @@
         </asp:DropDownList>
 
         <asp:Button ID="NewAppointmentButton" runat="server" Height="34px" OnClick="NewAppointmentButtonClick" Text="Button" />
+        <asp:RequiredFieldValidator
+         ControlToValidate = "PatientDropDownList" Display="Static" 
+         ErrorMessage="Please enter a valid DATE and TIME." ID="rfvDateTime"
+         runat="server">
+       
+    </asp:RequiredFieldValidator>
 
     </h3>
     <p> &nbsp;</p>
