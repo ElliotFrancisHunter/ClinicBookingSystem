@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:52718/SampleService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" />
+  <xs:element name="SetAppointment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="isActive" type="xs:boolean" />
+        <xs:element minOccurs="0" name="patientId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="startDateTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="durationId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clinicId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="urgencyId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="appointmentTypeId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetAppointmentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="SetAppointmentResult" nillable="true" type="q1:AppointmentDataContract" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetAppointment">
     <xs:complexType>
       <xs:sequence>
@@ -11,7 +31,7 @@
   <xs:element name="GetAppointmentResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetAppointmentResult" nillable="true" type="q1:AppointmentDataContract" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetAppointmentResult" nillable="true" type="q2:AppointmentDataContract" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -23,7 +43,7 @@
   <xs:element name="GetAppointmentsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetAppointmentsResult" nillable="true" type="q2:ArrayOfAppointmentDataContract" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetAppointmentsResult" nillable="true" type="q3:ArrayOfAppointmentDataContract" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -37,7 +57,7 @@
   <xs:element name="GetAppointmentDurationDataResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetAppointmentDurationDataResult" nillable="true" type="q3:AppointmentDurationDataContract" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetAppointmentDurationDataResult" nillable="true" type="q4:AppointmentDurationDataContract" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -49,7 +69,7 @@
   <xs:element name="GetAllAppointmentDurationDataResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetAllAppointmentDurationDataResult" nillable="true" type="q4:ArrayOfAppointmentDurationDataContract" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetAllAppointmentDurationDataResult" nillable="true" type="q5:ArrayOfAppointmentDurationDataContract" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -63,7 +83,7 @@
   <xs:element name="GetAppointmentTypeIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetAppointmentTypeIdResult" nillable="true" type="q5:AppointmentTypeDataContract" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetAppointmentTypeIdResult" nillable="true" type="q6:AppointmentTypeDataContract" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -75,7 +95,7 @@
   <xs:element name="GetAppointmentTypesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetAppointmentTypesResult" nillable="true" type="q6:ArrayOfAppointmentTypeDataContract" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetAppointmentTypesResult" nillable="true" type="q7:ArrayOfAppointmentTypeDataContract" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -89,7 +109,7 @@
   <xs:element name="GetUrgencyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetUrgencyResult" nillable="true" type="q7:AppointmentUrgencyDataContract" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetUrgencyResult" nillable="true" type="q8:AppointmentUrgencyDataContract" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -101,7 +121,7 @@
   <xs:element name="GetUrgenciesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetUrgenciesResult" nillable="true" type="q8:ArrayOfAppointmentUrgencyDataContract" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetUrgenciesResult" nillable="true" type="q9:ArrayOfAppointmentUrgencyDataContract" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -115,7 +135,7 @@
   <xs:element name="GetClinicIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetClinicIdResult" nillable="true" type="q9:ClinicDataContract" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetClinicIdResult" nillable="true" type="q10:ClinicDataContract" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -127,7 +147,7 @@
   <xs:element name="GetClinicsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetClinicsResult" nillable="true" type="q10:ArrayOfClinicDataContract" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetClinicsResult" nillable="true" type="q11:ArrayOfClinicDataContract" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -141,7 +161,7 @@
   <xs:element name="GetPatientResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetPatientResult" nillable="true" type="q11:PatientDataContract" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetPatientResult" nillable="true" type="q12:PatientDataContract" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -153,7 +173,7 @@
   <xs:element name="GetPatientsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetPatientsResult" nillable="true" type="q12:ArrayOfPatientDataContract" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetPatientsResult" nillable="true" type="q13:ArrayOfPatientDataContract" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -167,7 +187,7 @@
   <xs:element name="GetSpecialtyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetSpecialtyResult" nillable="true" type="q13:SpecialtyDataContract" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetSpecialtyResult" nillable="true" type="q14:SpecialtyDataContract" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -179,7 +199,7 @@
   <xs:element name="GetSpecialtiesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetSpecialtiesResult" nillable="true" type="q14:ArrayOfSpecialtyDataContract" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetSpecialtiesResult" nillable="true" type="q15:ArrayOfSpecialtyDataContract" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -193,7 +213,7 @@
   <xs:element name="GetClinicSpecialtyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetClinicSpecialtyResult" nillable="true" type="q15:ClinicSpecialtyDataContract" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetClinicSpecialtyResult" nillable="true" type="q16:ClinicSpecialtyDataContract" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -205,7 +225,7 @@
   <xs:element name="GetClinicSpecialtiesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetClinicSpecialtiesResult" nillable="true" type="q16:ArrayOfClinicSpecialtyDataContract" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetClinicSpecialtiesResult" nillable="true" type="q17:ArrayOfClinicSpecialtyDataContract" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

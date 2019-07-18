@@ -11,6 +11,7 @@
 
 namespace SampleService
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.ServiceModel;
@@ -42,12 +43,40 @@ namespace SampleService
         }
 
         /// <summary>
-        /// Sets a new appointment.
+        /// Sets a new Appointment and passes it to Business layer for any necessary logic.
         /// </summary>
+        /// <param name="isActive">
+        /// A boolean value deciding whether appointment is active.
+        /// </param>
+        /// <param name="patientId">
+        /// A string containing the patientId to extract the correct patient from database.
+        /// </param>
+        /// <param name="startDateTime">
+        /// A DateTime containing desired appointment date and time time. 
+        /// </param>
+        /// <param name="durationId">
+        /// A string containing the id for the desired duration to be grabbed from the database.
+        /// </param>
+        /// <param name="clinicId">
+        /// A string containing the id for the desired clinic.
+        /// </param>
+        /// <param name="urgencyId">
+        /// A string containing the id for the correct urgency.
+        /// </param>
+        /// <param name="appointmentTypeId">
+        /// A string containing whether appointment is new or a follow up.
+        /// </param>
         /// <returns>
-        /// The new appointment.
+        /// The SetAppointment AppointmentDataContract.
         /// </returns>
-        public AppointmentDataContract SetAppointment()
+        public AppointmentDataContract SetAppointment(
+            bool isActive,
+            string patientId,
+            DateTime startDateTime,
+            string durationId,
+            string clinicId,
+            string urgencyId,
+            string appointmentTypeId)
         {
             this.logger.Log("BEGIN - SetAppointment");
 
@@ -55,7 +84,14 @@ namespace SampleService
 
             using (var unitOfWork = new UnitOfWork())
             {
-                domainObject = new BusinessHandler(unitOfWork).SetAppointment();
+                domainObject = new BusinessHandler(unitOfWork).SetAppointment(
+                    isActive,
+                    patientId,
+                    startDateTime,
+                    durationId,
+                    clinicId,
+                    urgencyId,
+                    appointmentTypeId);
                 unitOfWork.Close();
             }
 
