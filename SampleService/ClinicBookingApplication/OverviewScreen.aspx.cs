@@ -225,27 +225,25 @@ namespace ClinicBookingApplication
         /// </param>
         protected void NewAppointmentButtonClick(object sender, EventArgs e)
         {
-            string[] formats = { "dd/MM/yyyy HH:mm:ss", "dd MM yyyy HH:mm:ss" };
+            const string Formats = "dd/MM/yyyy HH:mm:ss";
             var input = this.DateTimeTextBox.Text;
+            DateTime textBoxDateTime;
             try
             {
-                DateTime textBoxDateTime;
-                DateTime.TryParseExact(
+                textBoxDateTime = DateTime.ParseExact(
                     input,
-                    formats,
-                    CultureInfo.InvariantCulture,
-                    DateTimeStyles.None,
-                    out textBoxDateTime);
+                    Formats,
+                    CultureInfo.InvariantCulture);
             }
             catch (Exception ex)
             {
-                throw new FaultException(new FaultReason("MUST BE IN FORMAT: dd MM yyyy HH:mm:ss"));
+                throw new Exception("MUST BE IN FORMAT: dd MM yyyy HH:mm:ss");
             }
               
             new SampleServiceClient().SetAppointment(
                 true,
                 this.PatientDropDownList.SelectedValue,
-                Convert.ToDateTime(this.DateTimeTextBox.Text),
+                textBoxDateTime,
                 this.DurationDropDownList.SelectedValue,
                 this.ClinicDropDownList.SelectedValue,
                 this.UrgencyDropDownList.SelectedValue,
