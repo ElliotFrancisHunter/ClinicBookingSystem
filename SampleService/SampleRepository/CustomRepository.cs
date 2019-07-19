@@ -263,6 +263,21 @@ namespace SampleRepository
         }
 
         /// <summary>
+        /// Gets a filtered list of specialties based on a clinic code.
+        /// </summary>
+        /// <param name="clinicCode">
+        /// The clinic code.
+        /// </param>
+        /// <returns>
+        /// A list of specialties related to the clinic code.
+        /// </returns>
+        public List<ClinicSpecialty> GetFilteredClinicSpecialties(string clinicCode)
+        {
+            return this.unitOfWork.Session.QueryOver<ClinicSpecialty>()
+                .Where(x => x.Clinic.ClinicId.Equals(clinicCode)).List<ClinicSpecialty>().ToList();
+        }
+
+        /// <summary>
         /// Gets a specific clinic's specialty.
         /// </summary>
         /// <param name="id">
@@ -277,11 +292,6 @@ namespace SampleRepository
                 .Where(x => x.ClinicSpecialtyId == id).SingleOrDefault();
         }
 
-        public List<ClinicSpecialty> GetFilteredClinicSpecialties(string clinicCode)
-        {
-            return this.unitOfWork.Session.QueryOver<ClinicSpecialty>()
-                .Where(x => x.Clinic.ClinicId.Equals(clinicCode)).List<ClinicSpecialty>().ToList();
-        }
         /// <summary>
         /// Gets the specialties of all clinics.
         /// </summary>
