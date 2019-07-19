@@ -12,9 +12,10 @@ namespace ClinicBookingApplication
     using System;
     using System.Data;
     using System.Globalization;
-    using System.Runtime.Serialization;
-    using System.ServiceModel;
+    using System.Linq;
     using System.Web.UI;
+    using System.Web.UI.WebControls;
+
     using ClinicBookingApplication.ClinicBookingService;
 
     /// <summary>
@@ -155,7 +156,7 @@ namespace ClinicBookingApplication
             dataTable.Columns.AddRange(new[]
                                            {
                                                new DataColumn("AppointmentID", typeof(string)),
-                                               new DataColumn("IsActive", typeof(bool)),
+                                               new DataColumn("IsActive", typeof(string)),
                                                new DataColumn("PatientID", typeof(string)),
                                                new DataColumn("StartDateTime", typeof(string)),
                                                new DataColumn("DurationID", typeof(string)),
@@ -167,20 +168,13 @@ namespace ClinicBookingApplication
             {
                 dataTable.Rows.Add(
                     appointment.AppointmentId,
-                    appointment.IsActive,
+                    appointment.IsActive ? "Active" : "Cancelled",
                     string.Join(" ", appointment.Patient.FirstName, appointment.Patient.Surname),
                     appointment.StartDateTime,
                     appointment.Duration.AppointmentLength,
                     appointment.Clinic.CodeDescription,
                     appointment.Specialty.CodeDescription);
             }
-            ////foreach (var appointment in appointments)
-            ////{
-            ////    if (appointment.IsActive == false)
-            ////    {
-                    
-            ////    }
-            ////}
             this.SearchResultsGrid.DataSource = dataTable;
             this.SearchResultsGrid.DataBind();
         }
@@ -212,6 +206,7 @@ namespace ClinicBookingApplication
             this.MakeUrgencyTable();
             this.MakeAppointmentTypeTable();
             this.MakeCurrentAppointmentsTable();
+            this.ClinicDropDownListSelectedIndexChanged(sender, e);
         }
 
         /// <summary>
@@ -235,7 +230,7 @@ namespace ClinicBookingApplication
                     Formats,
                     CultureInfo.InvariantCulture);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("MUST BE IN FORMAT: dd MM yyyy HH:mm:ss");
             }
@@ -253,6 +248,35 @@ namespace ClinicBookingApplication
         }
 
         /// <summary>
+        /// Actions taken when index of clinic drop down is changed. 
+        /// This will change values stored in specialty drop down,
+        /// simulating our clinic specialties.
+        /// </summary>
+        /// <param name="sender">
+        /// The object that performs the required actions.
+        /// </param>
+        /// <param name="e">
+        /// The event that acts as a trigger.
+        /// </param>
+        protected void ClinicDropDownListSelectedIndexChanged(object sender, EventArgs e)
+        {          
+            var dataTable = new DataTable();
+            dataTable.Columns.Add("ClinicSpecialtyID");
+            dataTable.Columns.Add("CodeDescription");
+            var clinicSpecialtyList = new SampleServiceClient().GetFilteredClinicSpecialties(this.ClinicDropDownList.SelectedValue);
+
+            foreach (var clinicSpecialty in clinicSpecialtyList)
+            {
+                dataTable.Rows.Add(clinicSpecialty.Specialty.SpecialtyId, clinicSpecialty.Specialty.CodeDescription);
+            }
+
+            this.SpecialtyDropDownList.DataSource = dataTable;
+            this.SpecialtyDropDownList.DataTextField = "CodeDescription";
+            this.SpecialtyDropDownList.DataValueField = "ClinicSpecialtyID";
+            this.SpecialtyDropDownList.DataBind();
+        }
+
+        /// <summary>
         /// Functions carried out once value in drop down is changed.
         /// </summary>
         /// <param name="sender">
@@ -263,6 +287,24 @@ namespace ClinicBookingApplication
         /// </param>
         protected void DropDownList1SelectedIndexChanged(object sender, EventArgs e)
         {
+        }
+
+
+        /// <summary>
+        /// Function that will handle all sorting of GridView.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void AppointmentsSorting(object sender, EventArgs e)
+        {
+            this.SetSortDirection(sortDirection: "ASC");
+            this.MakeCurrentAppointmentsTable();
+            
+        }
+
+        protected void SetSortDirection(string sortDirection)
+        {
+            sortDirection = sortDirection == "ASC" ? "DESC" : "ASC";
         }
 
         /// <summary>
@@ -302,6 +344,21 @@ namespace ClinicBookingApplication
         /// </param>
         protected void SearchByTagTextBoxTextChanged(object sender, EventArgs e)
         {
+        }
+
+        /// <summary>
+        /// blkhaskfhd
+        /// </summary>
+        /// <param name="sender">
+        /// 
+        /// </param>
+        /// <param name="e"></param>
+        protected void ClinicDropDownList_OnDataBound(object sender, EventArgs e)
+        {
+            if (this.ClinicDropDownList.Items.Count > 0)
+            {
+                this.ClinicDropDownList.SelectedIndex = 0;
+            }
         }
     }
 }

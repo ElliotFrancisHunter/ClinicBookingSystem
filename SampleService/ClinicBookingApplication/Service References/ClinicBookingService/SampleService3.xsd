@@ -10,6 +10,7 @@
   <xs:element name="AppointmentType" nillable="true" type="tns:AppointmentType" />
   <xs:complexType name="Clinic">
     <xs:sequence>
+      <xs:element minOccurs="0" name="ClinicId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CodeDescription" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
