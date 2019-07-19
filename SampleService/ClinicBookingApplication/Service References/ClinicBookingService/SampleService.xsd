@@ -229,4 +229,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetFilteredClinicSpecialties">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="clinicCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFilteredClinicSpecialtiesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" minOccurs="0" name="GetFilteredClinicSpecialtiesResult" nillable="true" type="q18:ArrayOfClinicSpecialtyDataContract" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

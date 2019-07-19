@@ -135,6 +135,12 @@
   <wsdl:message name="ISampleService_GetClinicSpecialties_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetClinicSpecialtiesResponse" />
   </wsdl:message>
+  <wsdl:message name="ISampleService_GetFilteredClinicSpecialties_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilteredClinicSpecialties" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetFilteredClinicSpecialties_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilteredClinicSpecialtiesResponse" />
+  </wsdl:message>
   <wsdl:portType name="ISampleService">
     <wsdl:operation name="SetAppointment">
       <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/SetAppointment" message="tns:ISampleService_SetAppointment_InputMessage" />
@@ -211,6 +217,10 @@
     <wsdl:operation name="GetClinicSpecialties">
       <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetClinicSpecialties" message="tns:ISampleService_GetClinicSpecialties_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetClinicSpecialtiesResponse" message="tns:ISampleService_GetClinicSpecialties_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFilteredClinicSpecialties">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetFilteredClinicSpecialties" message="tns:ISampleService_GetFilteredClinicSpecialties_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetFilteredClinicSpecialtiesResponse" message="tns:ISampleService_GetFilteredClinicSpecialties_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ISampleService" type="tns:ISampleService">
@@ -385,6 +395,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetClinicSpecialties">
       <soap:operation soapAction="http://tempuri.org/ISampleService/GetClinicSpecialties" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFilteredClinicSpecialties">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetFilteredClinicSpecialties" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
