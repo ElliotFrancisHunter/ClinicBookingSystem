@@ -277,6 +277,11 @@ namespace SampleRepository
                 .Where(x => x.ClinicSpecialtyId == id).SingleOrDefault();
         }
 
+        public List<ClinicSpecialty> GetFilteredClinicSpecialties(string clinicCode)
+        {
+            return this.unitOfWork.Session.QueryOver<ClinicSpecialty>()
+                .Where(x => x.Clinic.ClinicId.Equals(clinicCode)).List<ClinicSpecialty>().ToList();
+        }
         /// <summary>
         /// Gets the specialties of all clinics.
         /// </summary>

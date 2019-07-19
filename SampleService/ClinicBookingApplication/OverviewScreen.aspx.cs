@@ -12,6 +12,7 @@ namespace ClinicBookingApplication
     using System;
     using System.Data;
     using System.Globalization;
+    using System.Linq;
     using System.Web.UI;
     using ClinicBookingApplication.ClinicBookingService;
 
@@ -204,7 +205,7 @@ namespace ClinicBookingApplication
             this.MakeUrgencyTable();
             this.MakeAppointmentTypeTable();
             this.MakeCurrentAppointmentsTable();
-            this.ClinicSpecialtyDropDownListSelectedIndexChanged(sender, e);
+            this.ClinicDropDownListSelectedIndexChanged(sender, e);
         }
 
         /// <summary>
@@ -256,24 +257,28 @@ namespace ClinicBookingApplication
         /// <param name="e">
         /// The event that acts as a trigger.
         /// </param>
-        protected void ClinicSpecialtyDropDownListSelectedIndexChanged(object sender, EventArgs e)
+        protected void ClinicDropDownListSelectedIndexChanged(object sender, EventArgs e)
         {
+            this.MakeClinicTable();
             var dataTable = new DataTable();
             dataTable.Columns.Add("ClinicSpecialtyID");
             dataTable.Columns.Add("ClinicID");
-            dataTable.Columns.Add("SpecialtyID");
+            dataTable.Columns.Add("CodeDescription");
             var clinicSpecialtyList = new SampleServiceClient().GetClinicSpecialties();
+
+
 
             foreach (var clinicSpecialty in clinicSpecialtyList)
             {
                 dataTable.Rows.Add(
                     clinicSpecialty.ClinicSpecialtyId,
-                    this.ClinicDropDownList.SelectedIndex,
-                    clinicSpecialty.Specialty);
+                    this.ClinicDropDownList.SelectedValue,
+                    clinicSpecialty.Specialty.CodeDescription.Where(
+                        ClinicID => true));
             }
 
             this.SpecialtyDropDownList.DataSource = dataTable;
-            this.SpecialtyDropDownList.DataTextField = "SpecialtyID";
+            this.SpecialtyDropDownList.DataTextField = "CodeDescription";
             this.SpecialtyDropDownList.DataValueField = "ClinicID";
             this.SpecialtyDropDownList.DataBind();
         }
