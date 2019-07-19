@@ -595,8 +595,24 @@ namespace SampleService
 
             using (var unitOfWork = new UnitOfWork())
             {
-                clinicSpecialties = new BusinessHandler(unitOfWork).GetFilteredClinicSpecialties(clinicCode);
-                unitOfWork.Close();
+                try
+                {
+                    clinicSpecialties = new BusinessHandler(unitOfWork).GetFilteredClinicSpecialties(clinicCode);
+                }
+                catch (ThisIsAnIssueException e)
+                {
+                    throw new FaultException<InvalidClinicSpecialtyFault>(
+                        new InvalidClinicSpecialtyFault
+                            {
+                                Result = false,
+                                Message = e.Message,
+                                Description = "Clinic Specialty not found."
+                            });
+                }
+                finally
+                {
+                    unitOfWork.Close();
+                }
             }
 
             return clinicSpecialties.Select(this.MapToDataContract).ToList();
