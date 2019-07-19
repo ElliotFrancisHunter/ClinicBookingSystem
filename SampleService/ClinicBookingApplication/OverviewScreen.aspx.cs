@@ -11,6 +11,9 @@ namespace ClinicBookingApplication
 {
     using System;
     using System.Data;
+    using System.Globalization;
+    using System.Runtime.Serialization;
+    using System.ServiceModel;
     using System.Web.UI;
     using ClinicBookingApplication.ClinicBookingService;
 
@@ -221,11 +224,26 @@ namespace ClinicBookingApplication
         /// The trigger. Clicking the button.
         /// </param>
         protected void NewAppointmentButtonClick(object sender, EventArgs e)
-        {                                        
+        {
+            const string Formats = "dd/MM/yyyy HH:mm:ss";
+            var input = this.DateTimeTextBox.Text;
+            DateTime textBoxDateTime;
+            try
+            {
+                textBoxDateTime = DateTime.ParseExact(
+                    input,
+                    Formats,
+                    CultureInfo.InvariantCulture);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("MUST BE IN FORMAT: dd MM yyyy HH:mm:ss");
+            }
+              
             new SampleServiceClient().SetAppointment(
                 true,
                 this.PatientDropDownList.SelectedValue,
-                Convert.ToDateTime(this.DateTimeTextBox.Text),
+                textBoxDateTime,
                 this.DurationDropDownList.SelectedValue,
                 this.ClinicDropDownList.SelectedValue,
                 this.UrgencyDropDownList.SelectedValue,
