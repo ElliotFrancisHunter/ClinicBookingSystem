@@ -253,6 +253,7 @@ namespace SampleService
         /// A list of specialties related to the clinic code.
         /// </returns>
         [OperationContract]
+        [FaultContract(typeof(InvalidClinicSpecialtyFault))]
         List<ClinicSpecialtyDataContract> GetFilteredClinicSpecialties(string clinicCode);
     }
 }

@@ -264,17 +264,13 @@ namespace ClinicBookingApplication
             dataTable.Columns.Add("ClinicSpecialtyID");
             dataTable.Columns.Add("ClinicID");
             dataTable.Columns.Add("CodeDescription");
-            var clinicSpecialtyList = new SampleServiceClient().GetClinicSpecialties();
+            var clinicSpecialtyList = new SampleServiceClient().GetFilteredClinicSpecialties(this.ClinicDropDownList.SelectedValue);
 
 
 
             foreach (var clinicSpecialty in clinicSpecialtyList)
             {
-                dataTable.Rows.Add(
-                    clinicSpecialty.ClinicSpecialtyId,
-                    this.ClinicDropDownList.SelectedValue,
-                    clinicSpecialty.Specialty.CodeDescription.Where(
-                        ClinicID => true));
+                dataTable.Rows.Add(clinicSpecialty.ClinicSpecialtyId, clinicSpecialty.Specialty.CodeDescription);
             }
 
             this.SpecialtyDropDownList.DataSource = dataTable;

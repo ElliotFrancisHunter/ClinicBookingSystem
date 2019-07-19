@@ -257,6 +257,9 @@ namespace ClinicBookingApplication.ClinicBookingService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ClinicIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CodeDescriptionField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -266,6 +269,19 @@ namespace ClinicBookingApplication.ClinicBookingService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ClinicId {
+            get {
+                return this.ClinicIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ClinicIdField, value) != true)) {
+                    this.ClinicIdField = value;
+                    this.RaisePropertyChanged("ClinicId");
+                }
             }
         }
         
@@ -1666,6 +1682,12 @@ namespace ClinicBookingApplication.ClinicBookingService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/GetClinicSpecialties", ReplyAction="http://tempuri.org/ISampleService/GetClinicSpecialtiesResponse")]
         System.Threading.Tasks.Task<ClinicBookingApplication.ClinicBookingService.ClinicSpecialtyDataContract[]> GetClinicSpecialtiesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/GetFilteredClinicSpecialties", ReplyAction="http://tempuri.org/ISampleService/GetFilteredClinicSpecialtiesResponse")]
+        ClinicBookingApplication.ClinicBookingService.ClinicSpecialtyDataContract[] GetFilteredClinicSpecialties(string clinicCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/GetFilteredClinicSpecialties", ReplyAction="http://tempuri.org/ISampleService/GetFilteredClinicSpecialtiesResponse")]
+        System.Threading.Tasks.Task<ClinicBookingApplication.ClinicBookingService.ClinicSpecialtyDataContract[]> GetFilteredClinicSpecialtiesAsync(string clinicCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1829,6 +1851,14 @@ namespace ClinicBookingApplication.ClinicBookingService {
         
         public System.Threading.Tasks.Task<ClinicBookingApplication.ClinicBookingService.ClinicSpecialtyDataContract[]> GetClinicSpecialtiesAsync() {
             return base.Channel.GetClinicSpecialtiesAsync();
+        }
+        
+        public ClinicBookingApplication.ClinicBookingService.ClinicSpecialtyDataContract[] GetFilteredClinicSpecialties(string clinicCode) {
+            return base.Channel.GetFilteredClinicSpecialties(clinicCode);
+        }
+        
+        public System.Threading.Tasks.Task<ClinicBookingApplication.ClinicBookingService.ClinicSpecialtyDataContract[]> GetFilteredClinicSpecialtiesAsync(string clinicCode) {
+            return base.Channel.GetFilteredClinicSpecialtiesAsync(clinicCode);
         }
     }
 }
