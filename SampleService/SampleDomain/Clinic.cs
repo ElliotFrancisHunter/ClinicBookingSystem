@@ -17,7 +17,7 @@ namespace SampleDomain
         /// <summary>
         /// Gets or sets the id for the class.
         /// </summary>
-        public virtual string ClinicId { get; protected set; }
+        public virtual string ClinicId { get; set; }
 
         /// <summary>
         /// Gets or sets the CodeDescription.
