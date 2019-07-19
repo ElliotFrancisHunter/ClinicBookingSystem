@@ -66,7 +66,7 @@
 
         <asp:DropDownList ID="DurationDropDownList" runat="server">
         </asp:DropDownList>
-        <asp:DropDownList ID="ClinicDropDownList" runat="server">
+        <asp:DropDownList ID="ClinicDropDownList" AutoPostBack="True" OnSelectedIndexChanged="ClinicDropDownListSelectedIndexChanged" runat="server">
         </asp:DropDownList>
         <asp:DropDownList ID="SpecialtyDropDownList" runat="server"/>
         <asp:DropDownList ID="UrgencyDropDownList" runat="server">
