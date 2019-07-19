@@ -253,6 +253,22 @@ namespace ClinicBookingApplication
         }
 
         /// <summary>
+        /// Actions taken when index of clinic drop down is changed. 
+        /// This will change values stored in specialty drop down,
+        /// simulating our clinic specialties.
+        /// </summary>
+        /// <param name="sender">
+        /// The object that performs the required actions.
+        /// </param>
+        /// <param name="e">
+        /// The event that acts as a trigger.
+        /// </param>
+        protected void ClinicDropDownListSelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        /// <summary>
         /// Functions carried out once value in drop down is changed.
         /// </summary>
         /// <param name="sender">
