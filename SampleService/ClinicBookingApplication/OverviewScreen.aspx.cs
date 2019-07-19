@@ -172,13 +172,7 @@ namespace ClinicBookingApplication
                     appointment.Clinic.CodeDescription,
                     appointment.Specialty.CodeDescription);
             }
-            ////foreach (var appointment in appointments)
-            ////{
-            ////    if (appointment.IsActive == false)
-            ////    {
-                    
-            ////    }
-            ////}
+
             this.SearchResultsGrid.DataSource = dataTable;
             this.SearchResultsGrid.DataBind();
         }
@@ -210,6 +204,7 @@ namespace ClinicBookingApplication
             this.MakeUrgencyTable();
             this.MakeAppointmentTypeTable();
             this.MakeCurrentAppointmentsTable();
+            this.ClinicSpecialtyDropDownListSelectedIndexChanged(sender, e);
         }
 
         /// <summary>
