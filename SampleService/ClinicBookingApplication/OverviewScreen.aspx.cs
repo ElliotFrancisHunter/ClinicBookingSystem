@@ -12,8 +12,6 @@ namespace ClinicBookingApplication
     using System;
     using System.Data;
     using System.Globalization;
-    using System.Runtime.Serialization;
-    using System.ServiceModel;
     using System.Web.UI;
     using ClinicBookingApplication.ClinicBookingService;
 
@@ -235,7 +233,7 @@ namespace ClinicBookingApplication
                     Formats,
                     CultureInfo.InvariantCulture);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("MUST BE IN FORMAT: dd MM yyyy HH:mm:ss");
             }
@@ -263,9 +261,26 @@ namespace ClinicBookingApplication
         /// <param name="e">
         /// The event that acts as a trigger.
         /// </param>
-        protected void ClinicDropDownListSelectedIndexChanged(object sender, EventArgs e)
+        protected void ClinicSpecialtyDropDownListSelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            var dataTable = new DataTable();
+            dataTable.Columns.Add("ClinicSpecialtyID");
+            dataTable.Columns.Add("ClinicID");
+            dataTable.Columns.Add("SpecialtyID");
+            var clinicSpecialtyList = new SampleServiceClient().GetClinicSpecialties();
+
+            foreach (var clinicSpecialty in clinicSpecialtyList)
+            {
+                dataTable.Rows.Add(
+                    clinicSpecialty.ClinicSpecialtyId,
+                    this.ClinicDropDownList.SelectedIndex,
+                    clinicSpecialty.Specialty);
+            }
+
+            this.SpecialtyDropDownList.DataSource = dataTable;
+            this.SpecialtyDropDownList.DataTextField = "SpecialtyID";
+            this.SpecialtyDropDownList.DataValueField = "ClinicID";
+            this.SpecialtyDropDownList.DataBind();
         }
 
         /// <summary>
