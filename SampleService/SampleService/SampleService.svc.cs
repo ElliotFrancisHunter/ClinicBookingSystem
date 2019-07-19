@@ -580,6 +580,29 @@ namespace SampleService
         }
 
         /// <summary>
+        /// Gets a filtered list of specialties based on a clinic code.
+        /// </summary>
+        /// <param name="clinicCode">
+        /// The clinic code.
+        /// </param>
+        /// <returns>
+        /// A list of specialties related to the clinic code.
+        /// </returns>
+        public List<ClinicSpecialtyDataContract> GetFilteredClinicSpecialties(string clinicCode)
+        {
+            this.logger.Log("BEGIN - GetFilteredClinicSpecialties");
+            List<ClinicSpecialty> clinicSpecialties;
+
+            using (var unitOfWork = new UnitOfWork())
+            {
+                clinicSpecialties = new BusinessHandler(unitOfWork).GetFilteredClinicSpecialties(clinicCode);
+                unitOfWork.Close();
+            }
+
+            return clinicSpecialties.Select(this.MapToDataContract).ToList();
+        }
+
+        /// <summary>
         /// Maps the domain object to the data contract.
         /// </summary>
         /// <param name="domainObject">
