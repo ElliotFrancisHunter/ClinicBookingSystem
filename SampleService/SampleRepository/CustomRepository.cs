@@ -300,7 +300,7 @@ namespace SampleRepository
         public List<ClinicSpecialty> GetFilteredClinicSpecialties(string clinicCode)
         {
             return this.unitOfWork.Session.QueryOver<ClinicSpecialty>()
-                .Where(x => x.Clinic.ClinicId.Equals(clinicCode)).List<ClinicSpecialty>().ToList();
+                .Where(x => x.Clinic.ClinicId == clinicCode).List<ClinicSpecialty>().ToList();
         }
     }
 }

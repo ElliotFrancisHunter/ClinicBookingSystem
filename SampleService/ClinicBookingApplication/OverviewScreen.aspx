@@ -27,7 +27,7 @@
     <h3> Search Criteria</h3>
     <h3> &nbsp;<asp:TextBox ID="SearchByTagTextBox" runat="server" OnTextChanged="SearchByTagTextBoxTextChanged"></asp:TextBox>
         
-        <asp:GridView ID="SearchResultsGrid" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="SearchResultsGridSelectedIndexChanged" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
+        <asp:GridView ID="SearchResultsGrid" CssClass="GridChanges" runat="server" AutoGenerateColumns="False" AllowSorting="true" OnSorting="AppointmentsSorting" OnSelectedIndexChanged="SearchResultsGridSelectedIndexChanged" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
             <Columns>
                 <asp:BoundField DataField="AppointmentID" HeaderText="AppointmentNo." ItemStyle-Width ="30" Visible="False">
 <ItemStyle Width="30px"></ItemStyle>
@@ -66,7 +66,7 @@
 
         <asp:DropDownList ID="DurationDropDownList" runat="server">
         </asp:DropDownList>
-        <asp:DropDownList ID="ClinicDropDownList" AutoPostBack="True" OnSelectedIndexChanged="ClinicDropDownListSelectedIndexChanged" runat="server">
+        <asp:DropDownList ID="ClinicDropDownList" AutoPostBack="True" OnSelectedIndexChanged="ClinicDropDownListSelectedIndexChanged" OnDataBound="ClinicDropDownList_OnDataBound" runat="server">
         </asp:DropDownList>
         <asp:DropDownList ID="SpecialtyDropDownList" runat="server"/>
         <asp:DropDownList ID="UrgencyDropDownList" runat="server">

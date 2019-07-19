@@ -14,6 +14,8 @@ namespace ClinicBookingApplication
     using System.Globalization;
     using System.Linq;
     using System.Web.UI;
+    using System.Web.UI.WebControls;
+
     using ClinicBookingApplication.ClinicBookingService;
 
     /// <summary>
@@ -154,7 +156,7 @@ namespace ClinicBookingApplication
             dataTable.Columns.AddRange(new[]
                                            {
                                                new DataColumn("AppointmentID", typeof(string)),
-                                               new DataColumn("IsActive", typeof(bool)),
+                                               new DataColumn("IsActive", typeof(string)),
                                                new DataColumn("PatientID", typeof(string)),
                                                new DataColumn("StartDateTime", typeof(string)),
                                                new DataColumn("DurationID", typeof(string)),
@@ -166,14 +168,13 @@ namespace ClinicBookingApplication
             {
                 dataTable.Rows.Add(
                     appointment.AppointmentId,
-                    appointment.IsActive,
+                    appointment.IsActive ? "Active" : "Cancelled",
                     string.Join(" ", appointment.Patient.FirstName, appointment.Patient.Surname),
                     appointment.StartDateTime,
                     appointment.Duration.AppointmentLength,
                     appointment.Clinic.CodeDescription,
                     appointment.Specialty.CodeDescription);
             }
-
             this.SearchResultsGrid.DataSource = dataTable;
             this.SearchResultsGrid.DataBind();
         }
@@ -258,24 +259,20 @@ namespace ClinicBookingApplication
         /// The event that acts as a trigger.
         /// </param>
         protected void ClinicDropDownListSelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.MakeClinicTable();
+        {          
             var dataTable = new DataTable();
             dataTable.Columns.Add("ClinicSpecialtyID");
-            dataTable.Columns.Add("ClinicID");
             dataTable.Columns.Add("CodeDescription");
             var clinicSpecialtyList = new SampleServiceClient().GetFilteredClinicSpecialties(this.ClinicDropDownList.SelectedValue);
 
-
-
             foreach (var clinicSpecialty in clinicSpecialtyList)
             {
-                dataTable.Rows.Add(clinicSpecialty.ClinicSpecialtyId, clinicSpecialty.Specialty.CodeDescription);
+                dataTable.Rows.Add(clinicSpecialty.Specialty.SpecialtyId, clinicSpecialty.Specialty.CodeDescription);
             }
 
             this.SpecialtyDropDownList.DataSource = dataTable;
             this.SpecialtyDropDownList.DataTextField = "CodeDescription";
-            this.SpecialtyDropDownList.DataValueField = "ClinicID";
+            this.SpecialtyDropDownList.DataValueField = "ClinicSpecialtyID";
             this.SpecialtyDropDownList.DataBind();
         }
 
@@ -290,6 +287,24 @@ namespace ClinicBookingApplication
         /// </param>
         protected void DropDownList1SelectedIndexChanged(object sender, EventArgs e)
         {
+        }
+
+
+        /// <summary>
+        /// Function that will handle all sorting of GridView.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void AppointmentsSorting(object sender, EventArgs e)
+        {
+            this.SetSortDirection(sortDirection: "ASC");
+            this.MakeCurrentAppointmentsTable();
+            
+        }
+
+        protected void SetSortDirection(string sortDirection)
+        {
+            sortDirection = sortDirection == "ASC" ? "DESC" : "ASC";
         }
 
         /// <summary>
@@ -329,6 +344,21 @@ namespace ClinicBookingApplication
         /// </param>
         protected void SearchByTagTextBoxTextChanged(object sender, EventArgs e)
         {
+        }
+
+        /// <summary>
+        /// blkhaskfhd
+        /// </summary>
+        /// <param name="sender">
+        /// 
+        /// </param>
+        /// <param name="e"></param>
+        protected void ClinicDropDownList_OnDataBound(object sender, EventArgs e)
+        {
+            if (this.ClinicDropDownList.Items.Count > 0)
+            {
+                this.ClinicDropDownList.SelectedIndex = 0;
+            }
         }
     }
 }
