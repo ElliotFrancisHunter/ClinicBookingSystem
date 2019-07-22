@@ -13,6 +13,15 @@ namespace ClinicBookingApplication {
     public partial class WebForm1 {
         
         /// <summary>
+        /// SeatchCriteria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList SeatchCriteria;
+        
+        /// <summary>
         /// SearchByTagTextBox control.
         /// </summary>
         /// <remarks>
@@ -20,6 +29,15 @@ namespace ClinicBookingApplication {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox SearchByTagTextBox;
+        
+        /// <summary>
+        /// FilterButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button FilterButton;
         
         /// <summary>
         /// SearchResultsGrid control.

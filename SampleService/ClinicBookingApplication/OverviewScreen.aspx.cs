@@ -249,6 +249,20 @@ namespace ClinicBookingApplication
         }
 
         /// <summary>
+        /// Function that governs behavior after filter button has been clicked.
+        /// </summary>
+        /// <param name="sender">
+        /// The object that handles the behavior.
+        /// </param>
+        /// <param name="e">
+        /// The event trigger.
+        /// </param>
+        protected void FilterGridViewClick(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
         /// Actions taken when index of clinic drop down is changed. 
         /// This will change values stored in specialty drop down,
         /// simulating our clinic specialties.
