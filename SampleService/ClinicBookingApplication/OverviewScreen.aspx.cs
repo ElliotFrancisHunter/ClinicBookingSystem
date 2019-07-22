@@ -12,9 +12,7 @@ namespace ClinicBookingApplication
     using System;
     using System.Data;
     using System.Globalization;
-    using System.Linq;
     using System.Web.UI;
-    using System.Web.UI.WebControls;
 
     using ClinicBookingApplication.ClinicBookingService;
 
@@ -176,6 +174,13 @@ namespace ClinicBookingApplication
                     appointment.Specialty.CodeDescription);
             }
             this.SearchResultsGrid.DataSource = dataTable;
+            string sortExpression = null;
+            if(sortExpression != null)
+            {
+                DataView view = dataTable.AsDataView();
+                this.Sort
+            }
+
             this.SearchResultsGrid.DataBind();
         }
 
