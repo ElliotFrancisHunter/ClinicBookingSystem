@@ -36,16 +36,16 @@
                 <asp:BoundField DataField="IsActive" HeaderText="Status" SortExpression="IsActive" ItemStyle-Width="150" >
                 <ItemStyle Width="150px" />
                 </asp:BoundField>
-                <asp:BoundField DataField="PatientID" HeaderText="Patient" SortExpression="Patient" ItemStyle-Width="150" >
+                <asp:BoundField DataField="PatientID" HeaderText="Patient" SortExpression="PatientID" ItemStyle-Width="150" >
 <ItemStyle Width="150px"></ItemStyle>
                 </asp:BoundField>
-                <asp:BoundField DataField="StartDateTime" HeaderText="Date/Time" SortExpression="Date/Time" ItemStyle-Width="150">
+                <asp:BoundField DataField="StartDateTime" HeaderText="Date/Time" SortExpression="StartDateTime" ItemStyle-Width="150">
 <ItemStyle Width="150px"></ItemStyle>
                 </asp:BoundField>
-                <asp:BoundField DataField="DurationID" HeaderText="Duration" SortExpression="Duration" ItemStyle-Width="150" >
+                <asp:BoundField DataField="DurationID" HeaderText="Duration" SortExpression="DurationID" ItemStyle-Width="150" >
 <ItemStyle Width="150px"></ItemStyle>
                 </asp:BoundField>
-                <asp:BoundField DataField="ClinicID" HeaderText="Clinic" SortExpression="Clinic" ItemStyle-Width="150" >
+                <asp:BoundField DataField="ClinicID" HeaderText="Clinic" SortExpression="ClinicID" ItemStyle-Width="150" >
 <ItemStyle Width="150px"></ItemStyle>
                 </asp:BoundField>
             </Columns>

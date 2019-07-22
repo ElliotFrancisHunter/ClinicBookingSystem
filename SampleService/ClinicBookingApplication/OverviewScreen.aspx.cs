@@ -299,7 +299,7 @@ namespace ClinicBookingApplication
         /// <param name="e">
         /// The trigger for the event.
         /// </param>
-        protected void AppointmentsSorting(object sender, EventArgs e)
+        protected void AppointmentsSorting(object sender, GridViewSortEventArgs e)
         {
             this.MakeCurrentAppointmentsTable();
             var dataTable = Session["appointmentDataTable"] as DataTable;
@@ -308,7 +308,7 @@ namespace ClinicBookingApplication
             {
                 return;
             }
-
+            
             dataTable.DefaultView.Sort = e.SortExpression + " " + this.GetSortDirection(e.SortExpression);
             this.SearchResultsGrid.DataSource = this.Session["appointmentDataTable"];
             this.SearchResultsGrid.DataBind();
