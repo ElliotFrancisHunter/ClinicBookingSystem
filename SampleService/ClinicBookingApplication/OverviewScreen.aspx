@@ -27,7 +27,7 @@
     
     <h3> Search Criteria</h3>
     <h3> &nbsp;
-        <asp:DropDownList ID="SeatchCriteria" runat="server">
+        <asp:DropDownList ID="SearchCriteria" runat="server">
         <asp:ListItem>AppointmentDuration</asp:ListItem>
         <asp:ListItem>AppointmentType</asp:ListItem>
          <asp:ListItem>AppointmentUrgency</asp:ListItem>

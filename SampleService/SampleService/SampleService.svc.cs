@@ -619,6 +619,48 @@ namespace SampleService
         }
 
         /// <summary>
+        /// Get a filtered list of appointments.
+        /// </summary>
+        /// <param name="filterColumn">
+        /// The filter column.
+        /// </param>
+        /// <param name="searchTerm">
+        /// The search term.
+        /// </param>
+        /// <returns>
+        /// A filtered list of <see cref="AppointmentDataContract"/> instances.
+        /// </returns>
+        public List<AppointmentDataContract> GetFilteredAppointments(string filterColumn, string searchTerm)
+        {
+            this.logger.Log("BEGIN - GetFilteredAppointments");
+            List<Appointment> appointments;
+
+            using (var unitOfWork = new UnitOfWork())
+            {
+                try
+                {
+                    appointments = new BusinessHandler(unitOfWork).GetFilteredAppointments(filterColumn, searchTerm);
+                }
+                catch (ThisIsAnIssueException exception)
+                {
+                    throw new FaultException<InvalidAppointmentIdFault>(
+                        new InvalidAppointmentIdFault
+                            {
+                                Result = false,
+                                Message = exception.Message,
+                                Description = "Appointments not found"
+                            });
+                }
+                finally
+                {
+                    unitOfWork.Close();
+                }
+            }
+
+            return appointments.Select(this.MapToDataContract).ToList();
+        }
+
+        /// <summary>
         /// Maps the domain object to the data contract.
         /// </summary>
         /// <param name="domainObject">

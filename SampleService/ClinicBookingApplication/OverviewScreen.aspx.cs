@@ -261,21 +261,6 @@ namespace ClinicBookingApplication
         /// </param>
         protected void FilterGridViewClick(object sender, EventArgs e)
         {
-            var query = string.Empty;
-            try
-            {
-
-            }
-            catch (Exception exception)
-            {
-
-                HttpContext.Current.Response.Write(
-                    "<script>alert(Uh-oh! something went wrong!)</script>" + exception.Message);
-            }
-            finally
-            {
-                SqlConnecti
-            }
         }
 
         /// <summary>
