@@ -3,6 +3,7 @@
 
     <!DOCTYPE html>   
     <meta name="viewport" content ="width=device-width, initial-scale = 1.0">
+    <%-- ReSharper disable once UnusedLocals --%>
     <script>
         $(function () {
             $('#DateTimeTextBox').popover();
@@ -27,24 +28,24 @@
     <h3> Search Criteria</h3>
     <h3> &nbsp;<asp:TextBox ID="SearchByTagTextBox" runat="server" OnTextChanged="SearchByTagTextBoxTextChanged"></asp:TextBox>
         
-        <asp:GridView ID="SearchResultsGrid" CssClass="GridChanges" runat="server" AutoGenerateColumns="False" AllowSorting="true" OnSorting="AppointmentsSorting" OnSelectedIndexChanged="SearchResultsGridSelectedIndexChanged" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
+        <asp:GridView ID="SearchResultsGrid" CssClass="GridChanges" runat="server" AutoGenerateColumns="false" AllowSorting="true" OnSorting="AppointmentsSorting" OnSelectedIndexChanged="SearchResultsGridSelectedIndexChanged" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
             <Columns>
-                <asp:BoundField DataField="AppointmentID" HeaderText="AppointmentNo." ItemStyle-Width ="30" Visible="False">
+                <asp:BoundField DataField="AppointmentID" HeaderText="AppointmentNo." SortExpression="AppointmentNo." ItemStyle-Width ="30" Visible="False">
 <ItemStyle Width="30px"></ItemStyle>
                 </asp:BoundField>
-                <asp:BoundField DataField="IsActive" HeaderText="Status" ItemStyle-Width="150" >
+                <asp:BoundField DataField="IsActive" HeaderText="Status" SortExpression="IsActive" ItemStyle-Width="150" >
                 <ItemStyle Width="150px" />
                 </asp:BoundField>
-                <asp:BoundField DataField="PatientID" HeaderText="Patient" ItemStyle-Width="150" >
+                <asp:BoundField DataField="PatientID" HeaderText="Patient" SortExpression="PatientID" ItemStyle-Width="150" >
 <ItemStyle Width="150px"></ItemStyle>
                 </asp:BoundField>
-                <asp:BoundField DataField="StartDateTime" HeaderText="Date/Time" ItemStyle-Width="150">
+                <asp:BoundField DataField="StartDateTime" HeaderText="Date/Time" SortExpression="StartDateTime" ItemStyle-Width="150">
 <ItemStyle Width="150px"></ItemStyle>
                 </asp:BoundField>
-                <asp:BoundField DataField="DurationID" HeaderText="Duration" ItemStyle-Width="150" >
+                <asp:BoundField DataField="DurationID" HeaderText="Duration" SortExpression="DurationID" ItemStyle-Width="150" >
 <ItemStyle Width="150px"></ItemStyle>
                 </asp:BoundField>
-                <asp:BoundField DataField="ClinicID" HeaderText="Clinic" ItemStyle-Width="150" >
+                <asp:BoundField DataField="ClinicID" HeaderText="Clinic" SortExpression="ClinicID" ItemStyle-Width="150" >
 <ItemStyle Width="150px"></ItemStyle>
                 </asp:BoundField>
             </Columns>
@@ -61,8 +62,8 @@
         <br/>
     <asp:DropDownList ID="PatientDropDownList" runat="server" Height="45px" Width="127px" OnSelectedIndexChanged="DropDownList1SelectedIndexChanged">
     </asp:DropDownList>
-        <asp:TextBox ID="DateTimeTextBox" runat="server" BackColor="White" BorderColor="Black" OnTextChanged="DateTimeTextBoxTextChanged" OnClientClick= "return false"
-             title="User Guide" data-content="" data-placement="top" TabIndex="0" data-trigger="focus">yyyy MM dd HH:mm</asp:TextBox>
+        <asp:TextBox ID="DateTimeTextBox" runat="server" BackColor="White" BorderColor="Black" OnTextChanged="DateTimeTextBoxTextChanged"
+               TabIndex="0">yyyy MM dd HH:mm</asp:TextBox>
 
         <asp:DropDownList ID="DurationDropDownList" runat="server">
         </asp:DropDownList>
