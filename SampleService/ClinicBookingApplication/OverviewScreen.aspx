@@ -3,6 +3,7 @@
 
     <!DOCTYPE html>   
     <meta name="viewport" content ="width=device-width, initial-scale = 1.0">
+    <%-- ReSharper disable once UnusedLocals --%>
     <script>
         $(function () {
             $('#DateTimeTextBox').popover();

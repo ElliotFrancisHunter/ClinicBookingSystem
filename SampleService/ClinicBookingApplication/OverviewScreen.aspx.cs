@@ -85,7 +85,7 @@ namespace ClinicBookingApplication
         }
 
         /// <summary>
-        /// Creates data table for list of specialties linked to clinics ///TODO ACTUALLY MAKE THIS FUNCTION AS DESIRED ///
+        /// Creates data table for list of specialties linked to clinics.
         /// </summary>
         public void MakeClinicSpecialtyTable()
         {
@@ -149,9 +149,9 @@ namespace ClinicBookingApplication
         /// </summary>
         public void MakeCurrentAppointmentsTable()
         {
-            var dataTable = new DataTable();
+            var appointmentDataTable = new DataTable();
             var appointments = new SampleServiceClient().GetAppointments();
-            dataTable.Columns.AddRange(new[]
+            appointmentDataTable.Columns.AddRange(new[]
                                            {
                                                new DataColumn("AppointmentID", typeof(string)),
                                                new DataColumn("IsActive", typeof(string)),
@@ -164,7 +164,7 @@ namespace ClinicBookingApplication
              
             foreach (var appointment in appointments)
             {
-                dataTable.Rows.Add(
+                appointmentDataTable.Rows.Add(
                     appointment.AppointmentId,
                     appointment.IsActive ? "Active" : "Cancelled",
                     string.Join(" ", appointment.Patient.FirstName, appointment.Patient.Surname),
@@ -173,14 +173,9 @@ namespace ClinicBookingApplication
                     appointment.Clinic.CodeDescription,
                     appointment.Specialty.CodeDescription);
             }
-            this.SearchResultsGrid.DataSource = dataTable;
-            string sortExpression = null;
-            if(sortExpression != null)
-            {
-                DataView view = dataTable.AsDataView();
-                this.Sort
-            }
 
+            this.Session["appointmentDataTable"] = appointmentDataTable;
+            this.SearchResultsGrid.DataSource = appointmentDataTable;
             this.SearchResultsGrid.DataBind();
         }
 
@@ -294,22 +289,28 @@ namespace ClinicBookingApplication
         {
         }
 
-
         /// <summary>
         /// Function that will handle all sorting of GridView.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">
+        /// The object that handles any actions carried out.
+        /// </param>
+        /// <param name="e">
+        /// The trigger for the event.
+        /// </param>
         protected void AppointmentsSorting(object sender, EventArgs e)
         {
-            this.SetSortDirection(sortDirection: "ASC");
             this.MakeCurrentAppointmentsTable();
-            
-        }
+            var dataTable = Session["appointmentDataTable"] as DataTable;
 
-        protected void SetSortDirection(string sortDirection)
-        {
-            sortDirection = sortDirection == "ASC" ? "DESC" : "ASC";
+            if (dataTable == null)
+            {
+                return;
+            }
+
+            dataTable.DefaultView.Sort = e.SortExpression + " " + this.GetSortDirection(e.SortExpression);
+            this.SearchResultsGrid.DataSource = this.Session["appointmentDataTable"];
+            this.SearchResultsGrid.DataBind();
         }
 
         /// <summary>
@@ -352,18 +353,53 @@ namespace ClinicBookingApplication
         }
 
         /// <summary>
-        /// blkhaskfhd
+        /// Sets a default data value for the clinic drop down list.
         /// </summary>
         /// <param name="sender">
-        /// 
+        ///  The object that handles any initiated actions.
         /// </param>
-        /// <param name="e"></param>
+        /// <param name="e">
+        /// The event trigger.
+        /// </param>
         protected void ClinicDropDownList_OnDataBound(object sender, EventArgs e)
         {
             if (this.ClinicDropDownList.Items.Count > 0)
             {
                 this.ClinicDropDownList.SelectedIndex = 0;
             }
+        }
+
+        /// <summary>
+        /// Gets the current sort direction.
+        /// </summary>
+        /// <param name="column">
+        /// The column.
+        /// </param>
+        /// <returns>
+        /// A string indicating current sort direction.
+        /// </returns>
+        private string GetSortDirection(string column)
+        {
+            var sortDirection = "ASC";
+
+            var sortExpression = ViewState["SortExpression"] as string;
+
+            if (sortExpression != null)
+            {
+                if (sortExpression == column)
+                {
+                    var lastDirection = ViewState["SortDirection"] as string;
+                    if ((lastDirection != null) && (lastDirection == "ASC"))
+                    {
+                        sortDirection = "DESC";
+                    }
+                }
+            }
+
+            this.ViewState["SortDirection"] = sortDirection;
+            this.ViewState["SortExpression"] = column;
+
+            return sortDirection;
         }
     }
 }
