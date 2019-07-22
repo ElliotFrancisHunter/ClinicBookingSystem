@@ -11,7 +11,9 @@ namespace ClinicBookingApplication
 {
     using System;
     using System.Data;
+    using System.Data.SqlClient;
     using System.Globalization;
+    using System.Web;
     using System.Web.UI;
     using System.Web.UI.WebControls;
 
@@ -259,7 +261,21 @@ namespace ClinicBookingApplication
         /// </param>
         protected void FilterGridViewClick(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var query = string.Empty;
+            try
+            {
+
+            }
+            catch (Exception exception)
+            {
+
+                HttpContext.Current.Response.Write(
+                    "<script>alert(Uh-oh! something went wrong!)</script>" + exception.Message);
+            }
+            finally
+            {
+                SqlConnecti
+            }
         }
 
         /// <summary>
