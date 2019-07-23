@@ -13,6 +13,7 @@ namespace SampleRepository
     using System.Collections.Generic;
     using System.Linq;
     using Core;
+    using NHibernate.Criterion;
     using SampleDomain;
 
     /// <summary>
@@ -301,6 +302,30 @@ namespace SampleRepository
         {
             return this.unitOfWork.Session.QueryOver<ClinicSpecialty>()
                 .Where(x => x.Clinic.ClinicId == clinicCode).List<ClinicSpecialty>().ToList();
+        }
+
+        /// <summary>
+        /// Gets the filtered appointments.
+        /// </summary>
+        /// <param name="filterColumn">
+        /// The filter column
+        /// </param>
+        /// <param name="searchTerm">
+        /// The search term.
+        /// </param>
+        /// <returns>
+        /// A list of filtered <see cref="Appointment"/> instances.
+        /// </returns>
+        public List<Appointment> GetFilteredAppointments(string filterColumn, string searchTerm)
+        {
+            return
+                this.unitOfWork.Session.QueryOver<Appointment>()
+                    .Where(
+                        new LikeExpression(
+                            filterColumn,
+                            string.Format("%{0}%", searchTerm)))
+                    .List()
+                    .ToList();
         }
     }
 }
