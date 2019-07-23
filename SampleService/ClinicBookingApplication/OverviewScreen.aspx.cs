@@ -263,12 +263,9 @@ namespace ClinicBookingApplication
                 new SampleServiceClient().GetFilteredAppointments(
                     this.SearchCriteria.SelectedValue,
                     this.SearchByTagTextBox.Text);
-            Console.WriteLine(filteredAppointments);
 
-            var dataTable = Session["appointmentDataTable"] as DataTable;
+            var dataTable = new DataTable();
 
-            if (dataTable != null)
-            {
                 dataTable.Columns.AddRange(new[]
                                                {
                                                    new DataColumn("AppointmentID", typeof(string)),
@@ -290,9 +287,8 @@ namespace ClinicBookingApplication
                         appointment.Clinic.CodeDescription,
                         appointment.Specialty.CodeDescription);
                 }
-            }
-
-            this.SearchResultsGrid.DataSource = this.Session["appointmentDataTable"];
+            
+            this.SearchResultsGrid.DataSource = dataTable;
             this.SearchResultsGrid.DataBind();
         }
 

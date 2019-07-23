@@ -32,8 +32,8 @@
         <asp:ListItem Text="Appointment Type" Value="AppointmentType"></asp:ListItem>
          <asp:ListItem Text="Urgency" Value="Urgency"></asp:ListItem>
          <asp:ListItem Text="Clinic" Value="Clinic"></asp:ListItem>
-         <asp:ListItem Text="Patient" Value="Patient"></asp:ListItem>
-         <asp:ListItem Text="Speciality" Value="Specialty"></asp:ListItem>
+         <asp:ListItem Text="Patient Code" Value="Patient"></asp:ListItem>
+         <asp:ListItem Text="Speciality Code" Value="Specialty"></asp:ListItem>
          </asp:DropDownList>
 
         <asp:TextBox ID="SearchByTagTextBox" runat="server" OnTextChanged="SearchByTagTextBoxTextChanged"></asp:TextBox>
