@@ -425,8 +425,9 @@ namespace ClinicBookingApplication
         /// </param>
         protected void CancelAppointment(object sender, GridViewEditEventArgs e)
         {
+
             var deadAppointment = new SampleServiceClient().GetAppointment(this.SearchResultsGrid.SelectedRow.RowIndex);
-            deadAppointment.IsActive = false;
+            
         }
 
         protected void UpdateGrid(object sender, GridViewUpdatedEventArgs e)
