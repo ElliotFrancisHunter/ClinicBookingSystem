@@ -320,7 +320,12 @@ namespace SampleRepository
         {
             return
                 this.unitOfWork.Session.QueryOver<Appointment>()
-                    .Where(x => x.Duration.DurationId.IsLike(searchTerm, MatchMode.Anywhere, '%')).List<Appointment>().ToList();
+                    .Where(
+                        new LikeExpression(
+                            filterColumn,
+                            string.Format("%{0}%", searchTerm)))
+                    .List()
+                    .ToList();
         }
     }
 }

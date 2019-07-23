@@ -141,6 +141,18 @@
   <wsdl:message name="ISampleService_GetFilteredClinicSpecialties_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetFilteredClinicSpecialtiesResponse" />
   </wsdl:message>
+  <wsdl:message name="ISampleService_GetFilteredClinicSpecialties_InvalidClinicSpecialtyFaultFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q9:InvalidClinicSpecialtyFault" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetFilteredAppointments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilteredAppointments" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetFilteredAppointments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilteredAppointmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISampleService_GetFilteredAppointments_InvalidAppointmentIdFaultFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q10:InvalidAppointmentIdFault" />
+  </wsdl:message>
   <wsdl:portType name="ISampleService">
     <wsdl:operation name="SetAppointment">
       <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/SetAppointment" message="tns:ISampleService_SetAppointment_InputMessage" />
@@ -221,6 +233,12 @@
     <wsdl:operation name="GetFilteredClinicSpecialties">
       <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetFilteredClinicSpecialties" message="tns:ISampleService_GetFilteredClinicSpecialties_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetFilteredClinicSpecialtiesResponse" message="tns:ISampleService_GetFilteredClinicSpecialties_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISampleService/GetFilteredClinicSpecialtiesInvalidClinicSpecialtyFaultFault" name="InvalidClinicSpecialtyFaultFault" message="tns:ISampleService_GetFilteredClinicSpecialties_InvalidClinicSpecialtyFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFilteredAppointments">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetFilteredAppointments" message="tns:ISampleService_GetFilteredAppointments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/GetFilteredAppointmentsResponse" message="tns:ISampleService_GetFilteredAppointments_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISampleService/GetFilteredAppointmentsInvalidAppointmentIdFaultFault" name="InvalidAppointmentIdFaultFault" message="tns:ISampleService_GetFilteredAppointments_InvalidAppointmentIdFaultFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ISampleService" type="tns:ISampleService">
@@ -410,6 +428,21 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="InvalidClinicSpecialtyFaultFault">
+        <soap:fault use="literal" name="InvalidClinicSpecialtyFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFilteredAppointments">
+      <soap:operation soapAction="http://tempuri.org/ISampleService/GetFilteredAppointments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="InvalidAppointmentIdFaultFault">
+        <soap:fault use="literal" name="InvalidAppointmentIdFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="SampleService">

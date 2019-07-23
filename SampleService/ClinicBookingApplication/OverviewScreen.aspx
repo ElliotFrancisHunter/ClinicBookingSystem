@@ -28,12 +28,12 @@
     <h3> Search Criteria</h3>
     <h3> &nbsp;
         <asp:DropDownList ID="SearchCriteria" runat="server">
-        <asp:ListItem>AppointmentDuration</asp:ListItem>
-        <asp:ListItem>AppointmentType</asp:ListItem>
-         <asp:ListItem>AppointmentUrgency</asp:ListItem>
-         <asp:ListItem>Clinic</asp:ListItem>
-         <asp:ListItem>Patient</asp:ListItem>
-         <asp:ListItem>Specialty</asp:ListItem>
+        <asp:ListItem Text="Duration" Value="Duration"></asp:ListItem>
+        <asp:ListItem Text="Appointment Type" Value="AppointmentType"></asp:ListItem>
+         <asp:ListItem Text="Urgency" Value="Urgency"></asp:ListItem>
+         <asp:ListItem Text="Clinic" Value="Clinic"></asp:ListItem>
+         <asp:ListItem Text="Patient" Value="Patient"></asp:ListItem>
+         <asp:ListItem Text="Speciality" Value="Specialty"></asp:ListItem>
          </asp:DropDownList>
 
         <asp:TextBox ID="SearchByTagTextBox" runat="server" OnTextChanged="SearchByTagTextBoxTextChanged"></asp:TextBox>
