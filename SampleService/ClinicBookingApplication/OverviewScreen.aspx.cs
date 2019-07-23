@@ -249,6 +249,50 @@ namespace ClinicBookingApplication
         }
 
         /// <summary>
+        /// Function that governs behavior after filter button has been clicked.
+        /// </summary>
+        /// <param name="sender">
+        /// The object that handles the behavior.
+        /// </param>
+        /// <param name="e">
+        /// The event trigger.
+        /// </param>
+        protected void FilterGridViewClick(object sender, EventArgs e)
+        {
+            var filteredAppointments =
+                new SampleServiceClient().GetFilteredAppointments(
+                    this.SearchCriteria.SelectedValue,
+                    this.SearchByTagTextBox.Text);
+
+            var dataTable = new DataTable();
+
+                dataTable.Columns.AddRange(new[]
+                                               {
+                                                   new DataColumn("AppointmentID", typeof(string)),
+                                                   new DataColumn("IsActive", typeof(string)),
+                                                   new DataColumn("PatientID", typeof(string)),
+                                                   new DataColumn("StartDateTime", typeof(string)),
+                                                   new DataColumn("DurationID", typeof(string)),
+                                                   new DataColumn("ClinicID", typeof(string)),
+                                                   new DataColumn("SpecialtyID", typeof(string))
+                                               });
+                foreach (var appointment in filteredAppointments)
+                {
+                    dataTable.Rows.Add(
+                        appointment.AppointmentId,
+                        appointment.IsActive ? "Active" : "Cancelled",
+                        string.Join(" ", appointment.Patient.FirstName, appointment.Patient.Surname),
+                        appointment.StartDateTime,
+                        appointment.Duration.AppointmentLength,
+                        appointment.Clinic.CodeDescription,
+                        appointment.Specialty.CodeDescription);
+                }
+            
+            this.SearchResultsGrid.DataSource = dataTable;
+            this.SearchResultsGrid.DataBind();
+        }
+
+        /// <summary>
         /// Actions taken when index of clinic drop down is changed. 
         /// This will change values stored in specialty drop down,
         /// simulating our clinic specialties.
@@ -300,7 +344,7 @@ namespace ClinicBookingApplication
         /// The trigger for the event.
         /// </param>
         protected void AppointmentsSorting(object sender, GridViewSortEventArgs e)
-        {
+        {           
             this.MakeCurrentAppointmentsTable();
             var dataTable = Session["appointmentDataTable"] as DataTable;
 
@@ -308,7 +352,7 @@ namespace ClinicBookingApplication
             {
                 return;
             }
-            
+
             dataTable.DefaultView.Sort = e.SortExpression + " " + this.GetSortDirection(e.SortExpression);
             this.SearchResultsGrid.DataSource = this.Session["appointmentDataTable"];
             this.SearchResultsGrid.DataBind();
