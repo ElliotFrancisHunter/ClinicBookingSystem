@@ -255,5 +255,21 @@ namespace SampleService
         [OperationContract]
         [FaultContract(typeof(InvalidClinicSpecialtyFault))]
         List<ClinicSpecialtyDataContract> GetFilteredClinicSpecialties(string clinicCode);
+
+        /// <summary>
+        /// Gets a list of filtered appointments.
+        /// </summary>
+        /// <param name="filterColumn">
+        /// The filter column.
+        /// </param>
+        /// <param name="searchTerm">
+        /// The search term.
+        /// </param>
+        /// <returns>
+        /// A list of filtered <see cref="AppointmentDataContract"/> instances.
+        /// </returns>
+        [FaultContract(typeof(InvalidAppointmentIdFault))]
+        [OperationContract]
+        List<AppointmentDataContract> GetFilteredAppointments(string filterColumn, string searchTerm);
     }
 }

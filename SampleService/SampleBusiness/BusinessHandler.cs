@@ -375,5 +375,22 @@ namespace SampleBusiness
         {
             return new CustomRepository(this.unitOfWork).GetFilteredClinicSpecialties(clinicCode);
         }
+
+        /// <summary>
+        /// Gets the filtered appointments.
+        /// </summary>
+        /// <param name="filterColumn">
+        /// The filter column
+        /// </param>
+        /// <param name="searchTerm">
+        /// The search term.
+        /// </param>
+        /// <returns>
+        /// A list of filtered <see cref="Appointment"/> instances.
+        /// </returns>
+        public List<Appointment> GetFilteredAppointments(string filterColumn, string searchTerm)
+        {
+            return new CustomRepository(this.unitOfWork).GetFilteredAppointments(filterColumn, searchTerm);
+        }
     }
 }
