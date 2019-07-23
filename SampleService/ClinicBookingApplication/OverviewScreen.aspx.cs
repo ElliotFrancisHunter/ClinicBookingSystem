@@ -415,6 +415,26 @@ namespace ClinicBookingApplication
         }
 
         /// <summary>
+        /// Gets the row the cancel appointment button was clicked and sets active status to false.
+        /// </summary>
+        /// <param name="sender">
+        /// The object that handles the instructions within the method.
+        /// </param>
+        /// <param name="e">
+        /// The event trigger.
+        /// </param>
+        protected void CancelAppointment(object sender, GridViewEditEventArgs e)
+        {
+            var deadAppointment = new SampleServiceClient().GetAppointment(this.SearchResultsGrid.SelectedRow.RowIndex);
+            deadAppointment.IsActive = false;
+        }
+
+        protected void UpdateGrid(object sender, GridViewUpdatedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
         /// Gets the current sort direction.
         /// </summary>
         /// <param name="column">
@@ -445,16 +465,6 @@ namespace ClinicBookingApplication
             this.ViewState["SortExpression"] = column;
 
             return sortDirection;
-        }
-
-        protected void CancelAppointment(object sender, GridViewEditEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        protected void UpdateGrid(object sender, GridViewUpdatedEventArgs e)
-        {
-            throw new NotImplementedException();
         }
     }
 }
