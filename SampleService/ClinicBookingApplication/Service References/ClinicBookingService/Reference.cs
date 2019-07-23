@@ -9,6 +9,10 @@
 //------------------------------------------------------------------------------
 
 namespace ClinicBookingApplication.ClinicBookingService {
+    using System.Runtime.Serialization;
+    using System;
+    
+    
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="AppointmentDataContract", Namespace="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts")]
@@ -1680,10 +1684,20 @@ namespace ClinicBookingApplication.ClinicBookingService {
         System.Threading.Tasks.Task<ClinicBookingApplication.ClinicBookingService.ClinicSpecialtyDataContract[]> GetClinicSpecialtiesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/GetFilteredClinicSpecialties", ReplyAction="http://tempuri.org/ISampleService/GetFilteredClinicSpecialtiesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ClinicBookingApplication.ClinicBookingService.InvalidClinicSpecialtyFault), Action="http://tempuri.org/ISampleService/GetFilteredClinicSpecialtiesInvalidClinicSpecia" +
+            "ltyFaultFault", Name="InvalidClinicSpecialtyFault", Namespace="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts")]
         ClinicBookingApplication.ClinicBookingService.ClinicSpecialtyDataContract[] GetFilteredClinicSpecialties(string clinicCode);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/GetFilteredClinicSpecialties", ReplyAction="http://tempuri.org/ISampleService/GetFilteredClinicSpecialtiesResponse")]
         System.Threading.Tasks.Task<ClinicBookingApplication.ClinicBookingService.ClinicSpecialtyDataContract[]> GetFilteredClinicSpecialtiesAsync(string clinicCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/GetFilteredAppointments", ReplyAction="http://tempuri.org/ISampleService/GetFilteredAppointmentsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ClinicBookingApplication.ClinicBookingService.InvalidAppointmentIdFault), Action="http://tempuri.org/ISampleService/GetFilteredAppointmentsInvalidAppointmentIdFaul" +
+            "tFault", Name="InvalidAppointmentIdFault", Namespace="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts")]
+        ClinicBookingApplication.ClinicBookingService.AppointmentDataContract[] GetFilteredAppointments(string filterColumn, string searchTerm);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/GetFilteredAppointments", ReplyAction="http://tempuri.org/ISampleService/GetFilteredAppointmentsResponse")]
+        System.Threading.Tasks.Task<ClinicBookingApplication.ClinicBookingService.AppointmentDataContract[]> GetFilteredAppointmentsAsync(string filterColumn, string searchTerm);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1855,6 +1869,14 @@ namespace ClinicBookingApplication.ClinicBookingService {
         
         public System.Threading.Tasks.Task<ClinicBookingApplication.ClinicBookingService.ClinicSpecialtyDataContract[]> GetFilteredClinicSpecialtiesAsync(string clinicCode) {
             return base.Channel.GetFilteredClinicSpecialtiesAsync(clinicCode);
+        }
+        
+        public ClinicBookingApplication.ClinicBookingService.AppointmentDataContract[] GetFilteredAppointments(string filterColumn, string searchTerm) {
+            return base.Channel.GetFilteredAppointments(filterColumn, searchTerm);
+        }
+        
+        public System.Threading.Tasks.Task<ClinicBookingApplication.ClinicBookingService.AppointmentDataContract[]> GetFilteredAppointmentsAsync(string filterColumn, string searchTerm) {
+            return base.Channel.GetFilteredAppointmentsAsync(filterColumn, searchTerm);
         }
     }
 }
