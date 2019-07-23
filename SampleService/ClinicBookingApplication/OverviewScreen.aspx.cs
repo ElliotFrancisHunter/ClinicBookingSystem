@@ -265,31 +265,34 @@ namespace ClinicBookingApplication
                     this.SearchByTagTextBox.Text);
             Console.WriteLine(filteredAppointments);
 
-            var dataTable = new DataTable();
+            var dataTable = Session["appointmentDataTable"] as DataTable;
 
-            dataTable.Columns.AddRange(new[]
-                                           {
-                                               new DataColumn("AppointmentID", typeof(string)),
-                                               new DataColumn("IsActive", typeof(string)),
-                                               new DataColumn("PatientID", typeof(string)),
-                                               new DataColumn("StartDateTime", typeof(string)),
-                                               new DataColumn("DurationID", typeof(string)),
-                                               new DataColumn("ClinicID", typeof(string)),
-                                               new DataColumn("SpecialtyID", typeof(string))
-                                           });
-            foreach (var appointment in filteredAppointments)
+            if (dataTable != null)
             {
-                dataTable.Rows.Add(
-                    appointment.AppointmentId,
-                    appointment.IsActive ? "Active" : "Cancelled",
-                    string.Join(" ", appointment.Patient.FirstName, appointment.Patient.Surname),
-                    appointment.StartDateTime,
-                    appointment.Duration.AppointmentLength,
-                    appointment.Clinic.CodeDescription,
-                    appointment.Specialty.CodeDescription);
+                dataTable.Columns.AddRange(new[]
+                                               {
+                                                   new DataColumn("AppointmentID", typeof(string)),
+                                                   new DataColumn("IsActive", typeof(string)),
+                                                   new DataColumn("PatientID", typeof(string)),
+                                                   new DataColumn("StartDateTime", typeof(string)),
+                                                   new DataColumn("DurationID", typeof(string)),
+                                                   new DataColumn("ClinicID", typeof(string)),
+                                                   new DataColumn("SpecialtyID", typeof(string))
+                                               });
+                foreach (var appointment in filteredAppointments)
+                {
+                    dataTable.Rows.Add(
+                        appointment.AppointmentId,
+                        appointment.IsActive ? "Active" : "Cancelled",
+                        string.Join(" ", appointment.Patient.FirstName, appointment.Patient.Surname),
+                        appointment.StartDateTime,
+                        appointment.Duration.AppointmentLength,
+                        appointment.Clinic.CodeDescription,
+                        appointment.Specialty.CodeDescription);
+                }
             }
 
-            this.SearchResultsGrid.DataSource = dataTable;
+            this.SearchResultsGrid.DataSource = this.Session["appointmentDataTable"];
             this.SearchResultsGrid.DataBind();
         }
 
