@@ -74,6 +74,20 @@ namespace SampleRepository
         List<Appointment> GetAppointments();
 
         /// <summary>
+        /// Gets the filtered appointments.
+        /// </summary>
+        /// <param name="filterColumn">
+        /// The filter column
+        /// </param>
+        /// <param name="searchTerm">
+        /// The search term.
+        /// </param>
+        /// <returns>
+        /// A list of filtered <see cref="Appointment"/> instances.
+        /// </returns>
+        List<Appointment> GetFilteredAppointments(string filterColumn, string searchTerm);
+
+        /// <summary>
         /// Get the duration id.
         /// </summary>
         /// <param name="id">

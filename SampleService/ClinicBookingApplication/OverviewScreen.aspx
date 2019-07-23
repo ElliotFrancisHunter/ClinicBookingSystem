@@ -26,7 +26,18 @@
     
     
     <h3> Search Criteria</h3>
-    <h3> &nbsp;<asp:TextBox ID="SearchByTagTextBox" runat="server" OnTextChanged="SearchByTagTextBoxTextChanged"></asp:TextBox>
+    <h3> &nbsp;
+        <asp:DropDownList ID="SearchCriteria" runat="server">
+        <asp:ListItem Text="Duration" Value="Duration"></asp:ListItem>
+        <asp:ListItem Text="Appointment Type" Value="AppointmentType"></asp:ListItem>
+         <asp:ListItem Text="Urgency" Value="Urgency"></asp:ListItem>
+         <asp:ListItem Text="Clinic" Value="Clinic"></asp:ListItem>
+         <asp:ListItem Text="Patient Code" Value="Patient"></asp:ListItem>
+         <asp:ListItem Text="Speciality Code" Value="Specialty"></asp:ListItem>
+         </asp:DropDownList>
+
+        <asp:TextBox ID="SearchByTagTextBox" runat="server" OnTextChanged="SearchByTagTextBoxTextChanged"></asp:TextBox>
+        <asp:Button ID="FilterButton" OnClick="FilterGridViewClick" Text="Search" runat="server"/>
         
         <asp:GridView ID="SearchResultsGrid" CssClass="GridChanges" runat="server" AutoGenerateColumns="false" AllowSorting="true" OnSorting="AppointmentsSorting" OnSelectedIndexChanged="SearchResultsGridSelectedIndexChanged" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
             <Columns>
