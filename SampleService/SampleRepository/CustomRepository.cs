@@ -13,10 +13,7 @@ namespace SampleRepository
     using System.Collections.Generic;
     using System.Linq;
     using Core;
-
     using NHibernate.Criterion;
-    using NHibernate.Mapping;
-
     using SampleDomain;
 
     /// <summary>
@@ -323,7 +320,7 @@ namespace SampleRepository
         {
             return
                 this.unitOfWork.Session.QueryOver<Appointment>()
-                    .Where(x => x.Duration.DurationId.IsLike(searchTerm, MatchMode.Exact, '%')).List<Appointment>().ToList();
+                    .Where(x => x.Duration.DurationId.IsLike(searchTerm, MatchMode.Anywhere, '%')).List<Appointment>().ToList();
         }
     }
 }
