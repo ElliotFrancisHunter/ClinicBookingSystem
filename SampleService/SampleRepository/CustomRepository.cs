@@ -323,7 +323,7 @@ namespace SampleRepository
         {
             return
                 this.unitOfWork.Session.QueryOver<Appointment>()
-                    .Where(x => x.Duration.DurationId.IsLike(filterColumn, searchTerm,).List<Appointment>.ToList());
+                    .Where(x => x.Duration.DurationId.IsLike(searchTerm, MatchMode.Exact, '%')).List<Appointment>().ToList();
         }
     }
 }
