@@ -446,5 +446,15 @@ namespace ClinicBookingApplication
 
             return sortDirection;
         }
+
+        protected void CancelAppointment(object sender, GridViewEditEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected void UpdateGrid(object sender, GridViewUpdatedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
