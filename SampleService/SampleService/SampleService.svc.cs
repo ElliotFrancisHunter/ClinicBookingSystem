@@ -15,7 +15,6 @@ namespace SampleService
     using System.Collections.Generic;
     using System.Linq;
     using System.ServiceModel;
-    using System.Web.UI.WebControls;
 
     using Core;
     using SampleBusiness;
@@ -179,6 +178,44 @@ namespace SampleService
 
             var mappedContract = this.MapToDataContract(domainObject);
             return mappedContract;
+        }
+
+        /// <summary>
+        /// Deletes an appointment instance by id.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// A boolean value indicating whether instance has been deleted.
+        /// </returns>
+        public bool DeleteAppointment(int id)
+        {
+            this.logger.Log("BEGIN - DeleteAppointment");
+
+            bool domainObject;
+
+            using (var unitOfWork = new UnitOfWork())
+            {
+                try
+                {
+                    domainObject = new BusinessHandler(unitOfWork).DeleteAppointment(id);
+                }
+                catch (ThisIsAnIssueException exception)
+                {
+                    throw new FaultException<InvalidAppointmentIdFault>(new InvalidAppointmentIdFault
+                    {
+                        Result = false,
+                        Message = exception.Message,
+                        Description = "Appointment not found."
+                    });
+                }
+                finally
+                {
+                    unitOfWork.Close();
+                }
+            }
+            return domainObject;
         }
 
         /// <summary>
