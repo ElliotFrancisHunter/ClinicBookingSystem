@@ -67,6 +67,17 @@ namespace SampleBusiness
         Appointment GetAppointment(int id);
 
         /// <summary>
+        /// Alters appointment of given id.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// The appointment.
+        /// </returns>
+        Appointment AlterAppointment(int id);
+
+        /// <summary>
         /// Get a list of all appointment instances.
         /// </summary>
         /// <returns>

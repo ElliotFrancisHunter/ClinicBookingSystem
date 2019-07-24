@@ -83,6 +83,20 @@ namespace SampleBusiness
         }
 
         /// <summary>
+        /// Alters appointment of given id.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// The appointment.
+        /// </returns>
+        public Appointment AlterAppointment(int id)
+        {
+            return new CustomRepository(this.unitOfWork).AlterAppointment(id);
+        }
+
+        /// <summary>
         /// Get a specific appointment id.
         /// </summary>
         /// <param name="id">
