@@ -122,6 +122,20 @@ namespace SampleRepository
         }
 
         /// <summary>
+        /// Deletes an appointment instance by id.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        public void DeleteAppointment(int id)
+        {
+            var appointment = this.GetAppointment(id);
+
+            this.unitOfWork.Session.Delete(appointment);
+            this.unitOfWork.Session.Transaction.Commit();          
+        }
+
+        /// <summary>
         /// Get a list of all appointment instances.
         /// </summary>
         /// <returns>
