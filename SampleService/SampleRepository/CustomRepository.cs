@@ -103,6 +103,23 @@ namespace SampleRepository
         }
 
         /// <summary>
+        /// Changes the 'IsActive' variable to show if an appointment is cancelled or not.
+        /// </summary>
+        /// <param name="appointment">
+        /// The appointment.
+        /// </param>
+        /// <returns>
+        /// The altered <see cref="Appointment"/>
+        /// </returns>
+        public Appointment AlterAppointment(Appointment appointment)
+        {
+            appointment.IsActive = !appointment.IsActive;
+
+            this.unitOfWork.Session.SaveOrUpdate(appointment);
+            return appointment;
+        }
+
+        /// <summary>
         /// Get a list of all appointment instances.
         /// </summary>
         /// <returns>
