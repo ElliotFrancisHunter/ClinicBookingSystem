@@ -377,7 +377,7 @@ namespace ClinicBookingApplication
             {
                 return;
             }
-            var selectedRow = this.SearchResultsGrid.SelectedRow;
+
             var id = Convert.ToInt32(gridViewCommandEventArgs.CommandArgument);
             new SampleServiceClient().AlterAppointment(id);
             if (gridViewCommandEventArgs.CommandName != "AlterAppointment")
@@ -407,8 +407,7 @@ namespace ClinicBookingApplication
        /// The row index.
        /// </param>
         protected void AlterAppointmentStatusClick(object sender, CommandEventArgs commandEventArgs)
-        {
-            
+        {          
         }
 
         /// <summary>
@@ -507,6 +506,11 @@ namespace ClinicBookingApplication
             this.ViewState["SortExpression"] = column;
 
             return sortDirection;
+        }
+
+        protected void DeleteAppointment(object sender, GridViewDeleteEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }
