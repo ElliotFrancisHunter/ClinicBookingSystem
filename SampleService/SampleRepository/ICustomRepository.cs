@@ -74,7 +74,15 @@ namespace SampleRepository
         /// <returns>
         /// The appointment.
         /// </returns>
-       Appointment AlterAppointment(int id);
+        Appointment AlterAppointment(int id);
+
+        /// <summary>
+        /// Deletes an appointment instance by id.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        void DeleteAppointment(int id);
 
         /// <summary>
         /// Get a list of all appointment instances.

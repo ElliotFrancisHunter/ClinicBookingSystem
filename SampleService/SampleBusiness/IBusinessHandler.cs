@@ -78,6 +78,14 @@ namespace SampleBusiness
         Appointment AlterAppointment(int id);
 
         /// <summary>
+        /// Deletes an appointment instance by id.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        void DeleteAppointment(int id);
+
+        /// <summary>
         /// Get a list of all appointment instances.
         /// </summary>
         /// <returns>
