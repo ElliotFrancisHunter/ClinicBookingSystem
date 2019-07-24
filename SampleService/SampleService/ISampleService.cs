@@ -77,6 +77,19 @@ namespace SampleService
         AppointmentDataContract GetAppointment(int id);
 
         /// <summary>
+        /// Alters appointment of given id.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// The appointment.
+        /// </returns>
+        [OperationContract]
+        [FaultContract(typeof(InvalidAppointmentIdFault))]
+        AppointmentDataContract AlterAppointment(int id);
+
+        /// <summary>
         /// Get a list of all appointment instances.
         /// </summary>
         /// <returns>

@@ -103,6 +103,25 @@ namespace SampleRepository
         }
 
         /// <summary>
+        /// Alters appointment of given id.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// The appointment.
+        /// </returns>
+        public Appointment AlterAppointment(int id)
+        {
+            var appointment = this.GetAppointment(id);
+            appointment.IsActive = !appointment.IsActive;
+
+            this.unitOfWork.Session.SaveOrUpdate(appointment);
+            this.unitOfWork.Session.Transaction.Commit();
+            return appointment;
+        }
+
+        /// <summary>
         /// Get a list of all appointment instances.
         /// </summary>
         /// <returns>
