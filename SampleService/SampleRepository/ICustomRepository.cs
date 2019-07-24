@@ -82,7 +82,10 @@ namespace SampleRepository
         /// <param name="id">
         /// The id.
         /// </param>
-        void DeleteAppointment(int id);
+        /// <returns>
+        /// A boolean value indicating whether instance has been deleted.
+        /// </returns>
+        bool DeleteAppointment(int id);
 
         /// <summary>
         /// Get a list of all appointment instances.

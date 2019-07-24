@@ -95,9 +95,12 @@ namespace SampleService
         /// <param name="id">
         /// The id.
         /// </param>
+        /// <returns>
+        /// A boolean value indicating whether instance has been deleted.
+        /// </returns>
         [OperationContract]
         [FaultContract(typeof(InvalidAppointmentIdFault))]
-        void DeleteAppointment(int id);
+        bool DeleteAppointment(int id);
 
         /// <summary>
         /// Get a list of all appointment instances.

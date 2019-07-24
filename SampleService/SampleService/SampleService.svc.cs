@@ -15,7 +15,6 @@ namespace SampleService
     using System.Collections.Generic;
     using System.Linq;
     using System.ServiceModel;
-    using System.Web.UI.WebControls;
 
     using Core;
     using SampleBusiness;
