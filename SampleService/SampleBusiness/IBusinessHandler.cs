@@ -67,15 +67,15 @@ namespace SampleBusiness
         Appointment GetAppointment(int id);
 
         /// <summary>
-        /// Changes the 'IsActive' variable to show if an appointment is cancelled or not.
+        /// Alters appointment of given id.
         /// </summary>
-        /// <param name="appointment">
-        /// The appointment.
+        /// <param name="id">
+        /// The id.
         /// </param>
         /// <returns>
-        /// The altered <see cref="Appointment"/>
+        /// The appointment.
         /// </returns>
-        Appointment AlterAppointment(Appointment appointment);
+        Appointment AlterAppointment(int id);
 
         /// <summary>
         /// Get a list of all appointment instances.

@@ -77,17 +77,17 @@ namespace SampleService
         AppointmentDataContract GetAppointment(int id);
 
         /// <summary>
-        /// Changes the 'IsActive' variable to show if an appointment is cancelled or not.
+        /// Alters appointment of given id.
         /// </summary>
-        /// <param name="appointment">
-        /// The appointment.
+        /// <param name="id">
+        /// The id.
         /// </param>
         /// <returns>
-        /// The altered <see cref="AppointmentDataContract"/>
+        /// The appointment.
         /// </returns>
         [OperationContract]
         [FaultContract(typeof(InvalidAppointmentIdFault))]
-        AppointmentDataContract AlterAppointment(Appointment appointment);
+        AppointmentDataContract AlterAppointment(int id);
 
         /// <summary>
         /// Get a list of all appointment instances.

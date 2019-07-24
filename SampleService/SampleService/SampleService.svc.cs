@@ -142,15 +142,15 @@ namespace SampleService
         }
 
         /// <summary>
-        /// Changes the 'IsActive' variable to show if an appointment is cancelled or not.
+        /// Alters appointment of given id.
         /// </summary>
-        /// <param name="appointment">
-        /// The appointment.
+        /// <param name="id">
+        /// The id.
         /// </param>
         /// <returns>
-        /// The altered <see cref="Appointment"/>
+        /// The appointment.
         /// </returns>
-        public AppointmentDataContract AlterAppointment(Appointment appointment)
+        public AppointmentDataContract AlterAppointment(int id)
         {
             this.logger.Log("BEGIN - AlterAppointment");
 
@@ -160,7 +160,7 @@ namespace SampleService
             {
                 try
                 {
-                    domainObject = new BusinessHandler(unitOfWork).AlterAppointment(appointment);
+                    domainObject = new BusinessHandler(unitOfWork).AlterAppointment(id);
                 }
                 catch (ThisIsAnIssueException exception)
                 {
