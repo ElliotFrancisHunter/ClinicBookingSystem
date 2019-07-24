@@ -320,20 +320,7 @@ namespace ClinicBookingApplication
             this.SpecialtyDropDownList.DataValueField = "ClinicSpecialtyID";
             this.SpecialtyDropDownList.DataBind();
         }
-
-        /// <summary>
-        /// Functions carried out once value in drop down is changed.
-        /// </summary>
-        /// <param name="sender">
-        /// The sender object that performs required actions.
-        /// </param>
-        /// <param name="e">
-        /// The events that acts as a trigger.
-        /// </param>
-        protected void DropDownList1SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
+     
         /// <summary>
         /// Function that will handle all sorting of GridView.
         /// </summary>
@@ -356,6 +343,85 @@ namespace ClinicBookingApplication
             dataTable.DefaultView.Sort = e.SortExpression + " " + this.GetSortDirection(e.SortExpression);
             this.SearchResultsGrid.DataSource = this.Session["appointmentDataTable"];
             this.SearchResultsGrid.DataBind();
+        }
+
+        /// <summary>
+        /// Sets a default data value for the clinic drop down list.
+        /// </summary>
+        /// <param name="sender">
+        ///  The object that handles any initiated actions.
+        /// </param>
+        /// <param name="e">
+        /// The event trigger.
+        /// </param>
+        protected void ClinicDropDownList_OnDataBound(object sender, EventArgs e)
+        {
+            if (this.ClinicDropDownList.Items.Count > 0)
+            {
+                this.ClinicDropDownList.SelectedIndex = 0;
+            }
+        }
+
+        /// <summary>
+        /// Alters appointment status.
+        /// </summary>
+        /// <param name="sender">
+        /// The object that handles method actions.
+        /// </param>
+        /// <param name="gridViewCommandEventArgs">
+        /// The event trigger.
+        /// </param>
+        protected void CancelAppointment(object sender, GridViewCommandEventArgs gridViewCommandEventArgs)
+        {
+            if (gridViewCommandEventArgs.CommandName != "AlterAppointment")
+            {
+                return;
+            }
+            var selectedRow = this.SearchResultsGrid.SelectedRow;
+            var id = Convert.ToInt32(gridViewCommandEventArgs.CommandArgument);
+            new SampleServiceClient().AlterAppointment(id);
+            if (gridViewCommandEventArgs.CommandName != "AlterAppointment")
+            {
+                return;
+            }
+
+            var dataTable = this.Session["appointmentDataTable"] as DataTable;
+
+            if (dataTable == null)
+            {
+                return;
+            }
+
+            this.SearchResultsGrid.DataSource = this.Session["appointmentDataTable"];
+            this.SearchResultsGrid.DataBind();
+            this.MakeCurrentAppointmentsTable();
+        }
+
+       /// <summary>
+       /// Alters the appointment status on button click.
+       /// </summary>
+       /// <param name="sender">
+       /// Object that handles method events.
+       /// </param>
+       /// <param name="commandEventArgs">
+       /// The row index.
+       /// </param>
+        protected void AlterAppointmentStatusClick(object sender, CommandEventArgs commandEventArgs)
+        {
+            
+        }
+
+        /// <summary>
+        /// Updates the grid once any changes have been made
+        /// </summary>
+        /// <param name="sender">
+        /// The object that handles any actions within the method.
+        /// </param>
+        /// <param name="e">
+        /// The trigger.
+        /// </param>
+        protected void UpdateGrid(object sender, GridViewUpdatedEventArgs e)
+        {
         }
 
         /// <summary>
@@ -398,20 +464,16 @@ namespace ClinicBookingApplication
         }
 
         /// <summary>
-        /// Sets a default data value for the clinic drop down list.
+        /// Functions carried out once value in drop down is changed.
         /// </summary>
         /// <param name="sender">
-        ///  The object that handles any initiated actions.
+        /// The sender object that performs required actions.
         /// </param>
         /// <param name="e">
-        /// The event trigger.
+        /// The events that acts as a trigger.
         /// </param>
-        protected void ClinicDropDownList_OnDataBound(object sender, EventArgs e)
+        protected void DropDownList1SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.ClinicDropDownList.Items.Count > 0)
-            {
-                this.ClinicDropDownList.SelectedIndex = 0;
-            }
         }
 
         /// <summary>

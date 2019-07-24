@@ -1583,6 +1583,13 @@ namespace ClinicBookingApplication.ClinicBookingService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/GetAppointment", ReplyAction="http://tempuri.org/ISampleService/GetAppointmentResponse")]
         System.Threading.Tasks.Task<ClinicBookingApplication.ClinicBookingService.AppointmentDataContract> GetAppointmentAsync(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/AlterAppointment", ReplyAction="http://tempuri.org/ISampleService/AlterAppointmentResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ClinicBookingApplication.ClinicBookingService.InvalidAppointmentIdFault), Action="http://tempuri.org/ISampleService/AlterAppointmentInvalidAppointmentIdFaultFault", Name="InvalidAppointmentIdFault", Namespace="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts")]
+        ClinicBookingApplication.ClinicBookingService.AppointmentDataContract AlterAppointment(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/AlterAppointment", ReplyAction="http://tempuri.org/ISampleService/AlterAppointmentResponse")]
+        System.Threading.Tasks.Task<ClinicBookingApplication.ClinicBookingService.AppointmentDataContract> AlterAppointmentAsync(int id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/GetAppointments", ReplyAction="http://tempuri.org/ISampleService/GetAppointmentsResponse")]
         ClinicBookingApplication.ClinicBookingService.AppointmentDataContract[] GetAppointments();
         
@@ -1741,6 +1748,14 @@ namespace ClinicBookingApplication.ClinicBookingService {
         
         public System.Threading.Tasks.Task<ClinicBookingApplication.ClinicBookingService.AppointmentDataContract> GetAppointmentAsync(int id) {
             return base.Channel.GetAppointmentAsync(id);
+        }
+        
+        public ClinicBookingApplication.ClinicBookingService.AppointmentDataContract AlterAppointment(int id) {
+            return base.Channel.AlterAppointment(id);
+        }
+        
+        public System.Threading.Tasks.Task<ClinicBookingApplication.ClinicBookingService.AppointmentDataContract> AlterAppointmentAsync(int id) {
+            return base.Channel.AlterAppointmentAsync(id);
         }
         
         public ClinicBookingApplication.ClinicBookingService.AppointmentDataContract[] GetAppointments() {
