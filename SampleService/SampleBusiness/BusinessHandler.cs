@@ -127,6 +127,25 @@ namespace SampleBusiness
         }
 
         /// <summary>
+        /// Deletes an appointment instance by id.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// A boolean value indicating whether instance has been deleted.
+        /// </returns>
+        public bool DeleteAppointment(int id)
+        {
+            if (id == default(int))
+            {
+                throw new ThisIsAnIssueException("AppointmentID is not valid");
+            }
+
+            return new CustomRepository(this.unitOfWork).DeleteAppointment(id);
+        }
+
+        /// <summary>
         /// Get the custom data
         /// </summary>
         /// <param name="id">
