@@ -15,6 +15,8 @@ namespace SampleService
     using System.Collections.Generic;
     using System.Linq;
     using System.ServiceModel;
+    using System.Web.UI.WebControls;
+
     using Core;
     using SampleBusiness;
     using SampleDataContracts.DomainDataContracts;
@@ -126,6 +128,46 @@ namespace SampleService
                     {
                         Result = false,
                         Message = e.Message,
+                        Description = "Appointment not found."
+                    });
+                }
+                finally
+                {
+                    unitOfWork.Close();
+                }
+            }
+
+            var mappedContract = this.MapToDataContract(domainObject);
+            return mappedContract;
+        }
+
+        /// <summary>
+        /// Changes the 'IsActive' variable to show if an appointment is cancelled or not.
+        /// </summary>
+        /// <param name="appointment">
+        /// The appointment.
+        /// </param>
+        /// <returns>
+        /// The altered <see cref="Appointment"/>
+        /// </returns>
+        public AppointmentDataContract AlterAppointment(Appointment appointment)
+        {
+            this.logger.Log("BEGIN - AlterAppointment");
+
+            Appointment domainObject;
+
+            using (var unitOfWork = new UnitOfWork())
+            {
+                try
+                {
+                    domainObject = new BusinessHandler(unitOfWork).AlterAppointment(appointment);
+                }
+                catch (ThisIsAnIssueException exception)
+                {
+                    throw new FaultException<InvalidAppointmentIdFault>(new InvalidAppointmentIdFault
+                    {
+                        Result = false,
+                        Message = exception.Message,
                         Description = "Appointment not found."
                     });
                 }
