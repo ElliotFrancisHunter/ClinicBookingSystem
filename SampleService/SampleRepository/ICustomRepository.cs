@@ -65,6 +65,17 @@ namespace SampleRepository
         /// </returns>
         Appointment GetAppointment(int id);
 
+       /// <summary>
+       /// Changes the 'IsActive' variable to show if an appointment is cancelled or not.
+       /// </summary>
+       /// <param name="appointment">
+       /// The appointment.
+       /// </param>
+       /// <returns>
+       /// The altered <see cref="Appointment"/>
+       /// </returns>
+       Appointment AlterAppointment(Appointment appointment);
+
         /// <summary>
         /// Get a list of all appointment instances.
         /// </summary>
