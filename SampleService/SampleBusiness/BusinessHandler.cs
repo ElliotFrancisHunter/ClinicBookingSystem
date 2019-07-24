@@ -83,6 +83,25 @@ namespace SampleBusiness
         }
 
         /// <summary>
+        /// Changes the 'IsActive' variable to show if an appointment is cancelled or not.
+        /// </summary>
+        /// <param name="appointment">
+        /// The appointment.
+        /// </param>
+        /// <returns>
+        /// The altered <see cref="Appointment"/>
+        /// </returns>
+        public Appointment AlterAppointment(Appointment appointment)
+        {
+            if (appointment == null)
+            {
+                throw new ThisIsAnIssueException("Appointment doesn't exist!");
+            }
+
+            return new CustomRepository(this.unitOfWork).AlterAppointment(appointment);
+        }
+
+        /// <summary>
         /// Get a specific appointment id.
         /// </summary>
         /// <param name="id">
