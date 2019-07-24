@@ -116,6 +116,7 @@ namespace SampleRepository
             appointment.IsActive = !appointment.IsActive;
 
             this.unitOfWork.Session.SaveOrUpdate(appointment);
+            this.unitOfWork.Session.Transaction.Commit();
             return appointment;
         }
 
