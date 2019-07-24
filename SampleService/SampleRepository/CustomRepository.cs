@@ -122,6 +122,25 @@ namespace SampleRepository
         }
 
         /// <summary>
+        /// Deletes an appointment instance by id.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// A boolean value indicating whether instance has been deleted.
+        /// </returns>
+        public bool DeleteAppointment(int id)
+        {        
+            var appointment = this.GetAppointment(id);
+
+            this.unitOfWork.Session.Delete(appointment);
+            this.unitOfWork.Session.Transaction.Commit();
+
+            return true;
+        }
+
+        /// <summary>
         /// Get a list of all appointment instances.
         /// </summary>
         /// <returns>
