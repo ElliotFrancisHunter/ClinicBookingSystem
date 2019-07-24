@@ -363,41 +363,52 @@ namespace ClinicBookingApplication
         }
 
         /// <summary>
-        /// Gets the row the cancel appointment button was clicked and sets active status to false.
+        /// Alters appointment status.
         /// </summary>
         /// <param name="sender">
-        /// The object that handles the instructions within the method.
+        /// The object that handles method actions.
         /// </param>
-        /// <param name="e">
+        /// <param name="gridViewCommandEventArgs">
         /// The event trigger.
         /// </param>
-        protected void CancelAppointment(object sender, GridViewEditEventArgs e)
+        protected void CancelAppointment(object sender, GridViewCommandEventArgs gridViewCommandEventArgs)
         {
-           new SampleServiceClient().AlterAppointment(this.SearchResultsGrid.SelectedRow.RowIndex);
+            if (gridViewCommandEventArgs.CommandName != "AlterAppointment")
+            {
+                return;
+            }
+            var selectedRow = this.SearchResultsGrid.SelectedRow;
+            var id = Convert.ToInt32(gridViewCommandEventArgs.CommandArgument);
+            new SampleServiceClient().AlterAppointment(id);
+            if (gridViewCommandEventArgs.CommandName != "AlterAppointment")
+            {
+                return;
+            }
 
-           var dataTable = Session["appointmentDataTable"] as DataTable;
+            var dataTable = this.Session["appointmentDataTable"] as DataTable;
 
-           if (dataTable == null)
-           {
-               return;
-           }
+            if (dataTable == null)
+            {
+                return;
+            }
 
-           this.SearchResultsGrid.DataSource = this.Session["appointmentDataTable"];
-           this.SearchResultsGrid.DataBind();
+            this.SearchResultsGrid.DataSource = this.Session["appointmentDataTable"];
+            this.SearchResultsGrid.DataBind();
+            this.MakeCurrentAppointmentsTable();
         }
 
-        /// <summary>
-        /// Alters the status of appointment selected. 
-        /// </summary>
-        /// <param name="sender">
-        /// The object that handles any method actions.
-        /// </param>
-        /// <param name="e">
-        /// The event trigger.
-        /// </param>
-        protected void AlterAppointmentStatusClick(object sender, GridViewEditEventArgs e)
+       /// <summary>
+       /// Alters the appointment status on button click.
+       /// </summary>
+       /// <param name="sender">
+       /// Object that handles method events.
+       /// </param>
+       /// <param name="commandEventArgs">
+       /// The row index.
+       /// </param>
+        protected void AlterAppointmentStatusClick(object sender, CommandEventArgs commandEventArgs)
         {
-            this.CancelAppointment(sender, e);
+            
         }
 
         /// <summary>

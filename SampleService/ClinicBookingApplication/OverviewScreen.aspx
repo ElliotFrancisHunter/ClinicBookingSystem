@@ -39,7 +39,7 @@
         <asp:TextBox ID="SearchByTagTextBox" runat="server" OnTextChanged="SearchByTagTextBoxTextChanged"></asp:TextBox>
         <asp:Button ID="FilterButton" OnClick="FilterGridViewClick" Text="Search" runat="server"/>
         
-        <asp:GridView ID="SearchResultsGrid" CssClass="GridChanges" runat="server" AutoGenerateColumns="false" AllowSorting="true" OnSorting="AppointmentsSorting" OnSelectedIndexChanged="SearchResultsGridSelectedIndexChanged" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnRowEditing="CancelAppointment" OnRowUpdated="UpdateGrid">
+        <asp:GridView ID="SearchResultsGrid" DataKeyNames="AppointmentID"  CssClass="GridChanges" runat="server" AutoGenerateColumns="false" AllowSorting="true" OnSorting="AppointmentsSorting" OnRowCommand="CancelAppointment" OnSelectedIndexChanged="SearchResultsGridSelectedIndexChanged" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnRowUpdated="UpdateGrid">
             <Columns>
                 <asp:BoundField DataField="AppointmentID" HeaderText="AppointmentNo." SortExpression="AppointmentNo." ItemStyle-Width ="30" Visible="False">
 <ItemStyle Width="30px"></ItemStyle>
@@ -61,7 +61,7 @@
                 </asp:BoundField>
                 <asp:TemplateField>
                 <ItemTemplate>
-                    <asp:Button ID="CancelAppointmentButton" Text="Cancel Appointment" runat="server" />
+                    <asp:Button ID="CancelAppointmentButton" Text="Change Status" CommandName="AlterAppointment" CommandArgument='<%# Eval("AppointmentID") %>' runat="server" />
                 </ItemTemplate>
                         
                    
