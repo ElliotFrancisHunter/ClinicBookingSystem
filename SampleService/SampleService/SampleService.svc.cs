@@ -215,6 +215,7 @@ namespace SampleService
                     unitOfWork.Close();
                 }
             }
+
             return domainObject;
         }
 
