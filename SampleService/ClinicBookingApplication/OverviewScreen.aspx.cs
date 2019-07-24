@@ -371,13 +371,13 @@ namespace ClinicBookingApplication
         /// <param name="gridViewCommandEventArgs">
         /// The event trigger.
         /// </param>
-        protected void CancelAppointment(object sender, GridViewCommandEventArgs gridViewCommandEventArgs)
+        protected void CancelOrDeleteAppointment(object sender, GridViewCommandEventArgs gridViewCommandEventArgs)
         {
             if (gridViewCommandEventArgs.CommandName != "AlterAppointment")
             {
                 return;
             }
-            var selectedRow = this.SearchResultsGrid.SelectedRow;
+
             var id = Convert.ToInt32(gridViewCommandEventArgs.CommandArgument);
             new SampleServiceClient().AlterAppointment(id);
             if (gridViewCommandEventArgs.CommandName != "AlterAppointment")
@@ -397,6 +397,37 @@ namespace ClinicBookingApplication
             this.MakeCurrentAppointmentsTable();
         }
 
+        /// <summary>
+        /// Deletes appointment by ID.
+        /// </summary>
+        /// <param name="sender">
+        /// The object that handles method actions.
+        /// </param>
+        /// <param name="e">
+        /// The event trigger.
+        /// </param>
+        protected void DeleteAppointment(object sender, GridViewDeleteEventArgs e)
+        {      
+        }
+
+        /// <summary>
+        /// 'UX' Asks user to confirm deletion.
+        /// </summary>
+        /// <param name="sender">
+        ///  The object that handles method actions.
+        /// </param>
+        /// <param name="e">
+        /// The trigger.
+        /// </param>
+        protected void Confirmation(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                var delButton = (LinkButton)e.Row.FindControl("DeleteAppointmentButton");
+                delButton.Attributes.Add("onclick", "javascript:return " + "confirm('Are you sure you want to delete? " + DataBinder.Eval(e.Row.DataItem, "AppointmentID") + "')'");
+            }
+        }
+
        /// <summary>
        /// Alters the appointment status on button click.
        /// </summary>
@@ -407,8 +438,7 @@ namespace ClinicBookingApplication
        /// The row index.
        /// </param>
         protected void AlterAppointmentStatusClick(object sender, CommandEventArgs commandEventArgs)
-        {
-            
+        {          
         }
 
         /// <summary>
