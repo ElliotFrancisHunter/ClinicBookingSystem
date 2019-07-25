@@ -106,7 +106,7 @@ namespace SampleBusiness
 
                 if (setStartTime <= existingAppointment.StartDateTime.TimeOfDay.Add(TimeSpan.Parse(existingAppointment.Duration.AppointmentLength.ToString())) && (existingAppointment.StartDateTime.TimeOfDay <= setEndTime))
                 {
-                    throw new Exception("Appointments cannot overlap");      
+                    throw new ThisIsAnIssueException("Appointments cannot overlap");      
                 }
             }
 

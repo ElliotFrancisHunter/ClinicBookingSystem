@@ -12,6 +12,7 @@ namespace ClinicBookingApplication
     using System;
     using System.Data;
     using System.Globalization;
+    using System.ServiceModel;
     using System.Web.UI;
     using System.Web.UI.WebControls;
 
@@ -246,9 +247,9 @@ namespace ClinicBookingApplication
                     this.UrgencyDropDownList.SelectedValue,
                     this.AppointmentTypeDropDownList.SelectedValue);
             }
-            catch (Exception)
+            catch (FaultException<InvalidAppointmentIdFault> exception)
             {
-                throw new Exception("Appointment clash! Check date and time <3");
+                this.ErrorLabel.Text = exception.Detail.Description;
             }
 
             this.MakeCurrentAppointmentsTable();

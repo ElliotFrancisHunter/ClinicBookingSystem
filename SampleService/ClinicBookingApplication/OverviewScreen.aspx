@@ -15,8 +15,6 @@
                 document.getElementById("LoadDone").style.display = "block";  }, 1500);
         });
     </script>
-
-    
     <div id="loader"></div>
     <div style="display: none;" id="LoadDone" class="animate-bottom">
     <h1> OVERVIEW SCREEN</h1>
@@ -63,6 +61,7 @@
                 <ItemTemplate>
                     <asp:Button ID="CancelAppointmentButton" Text="Change Status" CommandName="AlterAppointment" CommandArgument='<%# Eval("AppointmentID") %>' runat="server" />
                     <asp:LinkButton ID="DeleteAppointmentButton" Text="Delete Appointment" CommandName="DeleteAppointment" CommandArgument='<%# Eval("AppointmentID") %>' runat="server" />
+                   
                 </ItemTemplate>
                         
                    
@@ -96,6 +95,7 @@
         
 
         <asp:Button ID="NewAppointmentButton" runat="server" Height="34px" OnClick="NewAppointmentButtonClick" Text="Submit" />
+        <asp:Label ID="ErrorLabel" Text="" runat="server"></asp:Label>
         <asp:RequiredFieldValidator
          ControlToValidate = "DateTimeTextBox" Display="Dynamic" 
          ErrorMessage="Please enter a valid DATE and TIME." ID="rfvDateTime"
