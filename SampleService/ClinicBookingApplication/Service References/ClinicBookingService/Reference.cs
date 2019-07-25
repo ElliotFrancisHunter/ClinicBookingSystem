@@ -1590,6 +1590,14 @@ namespace ClinicBookingApplication.ClinicBookingService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/AlterAppointment", ReplyAction="http://tempuri.org/ISampleService/AlterAppointmentResponse")]
         System.Threading.Tasks.Task<ClinicBookingApplication.ClinicBookingService.AppointmentDataContract> AlterAppointmentAsync(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/DeleteAppointment", ReplyAction="http://tempuri.org/ISampleService/DeleteAppointmentResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ClinicBookingApplication.ClinicBookingService.InvalidAppointmentIdFault), Action="http://tempuri.org/ISampleService/DeleteAppointmentInvalidAppointmentIdFaultFault" +
+            "", Name="InvalidAppointmentIdFault", Namespace="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts")]
+        bool DeleteAppointment(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/DeleteAppointment", ReplyAction="http://tempuri.org/ISampleService/DeleteAppointmentResponse")]
+        System.Threading.Tasks.Task<bool> DeleteAppointmentAsync(int id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/GetAppointments", ReplyAction="http://tempuri.org/ISampleService/GetAppointmentsResponse")]
         ClinicBookingApplication.ClinicBookingService.AppointmentDataContract[] GetAppointments();
         
@@ -1756,6 +1764,14 @@ namespace ClinicBookingApplication.ClinicBookingService {
         
         public System.Threading.Tasks.Task<ClinicBookingApplication.ClinicBookingService.AppointmentDataContract> AlterAppointmentAsync(int id) {
             return base.Channel.AlterAppointmentAsync(id);
+        }
+        
+        public bool DeleteAppointment(int id) {
+            return base.Channel.DeleteAppointment(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteAppointmentAsync(int id) {
+            return base.Channel.DeleteAppointmentAsync(id);
         }
         
         public ClinicBookingApplication.ClinicBookingService.AppointmentDataContract[] GetAppointments() {

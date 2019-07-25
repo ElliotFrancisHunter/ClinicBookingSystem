@@ -373,18 +373,37 @@ namespace ClinicBookingApplication
         /// </param>
         protected void CancelOrDeleteAppointment(object sender, GridViewCommandEventArgs gridViewCommandEventArgs)
         {
-            if (gridViewCommandEventArgs.CommandName != "AlterAppointment")
+            switch (gridViewCommandEventArgs.CommandName)
             {
-                return;
-            }
+                case "AlterAppointment":
 
-            var id = Convert.ToInt32(gridViewCommandEventArgs.CommandArgument);
-            new SampleServiceClient().AlterAppointment(id);
-            if (gridViewCommandEventArgs.CommandName != "AlterAppointment")
-            {
-                return;
-            }
+                    if (gridViewCommandEventArgs.CommandName != "AlterAppointment")
+                    {
+                        return;
+                    }
 
+                    var id = Convert.ToInt32(gridViewCommandEventArgs.CommandArgument);
+                    new SampleServiceClient().AlterAppointment(id);
+                    if (gridViewCommandEventArgs.CommandName != "AlterAppointment")
+                    {
+                        return;
+                    }
+
+                    break;
+
+                case "DeleteAppointment":
+
+                    if (gridViewCommandEventArgs.CommandName != "DeleteAppointment")
+                    {
+                        return;
+                    }
+
+                    var deleteId = Convert.ToInt32(gridViewCommandEventArgs.CommandArgument);
+                    new SampleServiceClient().DeleteAppointment(deleteId);
+
+                    break;
+            }
+      
             var dataTable = this.Session["appointmentDataTable"] as DataTable;
 
             if (dataTable == null)
