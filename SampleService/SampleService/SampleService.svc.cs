@@ -82,18 +82,33 @@ namespace SampleService
             this.logger.Log("BEGIN - SetAppointment");
 
             Appointment domainObject;
-
+            
             using (var unitOfWork = new UnitOfWork())
             {
-                domainObject = new BusinessHandler(unitOfWork).SetAppointment(
-                    isActive,
-                    patientId,
-                    startDateTime,
-                    durationId,
-                    clinicId,
-                    urgencyId,
-                    appointmentTypeId);
-                unitOfWork.Close();
+                try
+                {
+                    domainObject = new BusinessHandler(unitOfWork).SetAppointment(
+                        isActive,
+                        patientId,
+                        startDateTime,
+                        durationId,
+                        clinicId,
+                        urgencyId,
+                        appointmentTypeId);
+                }
+                catch (ThisIsAnIssueException exception)
+                {
+                    throw new FaultException<InvalidAppointmentIdFault>(new InvalidAppointmentIdFault
+                                                                            {
+                                                                                Result = false,
+                                                                                Message = exception.Message,
+                                                                                Description = "Appointments clash! Check date and time <3"
+                                                                            });
+                }
+                finally
+                {
+                    unitOfWork.Close();
+                }
             }
 
             var mappedContract = this.MapToDataContract(domainObject);
