@@ -72,6 +72,14 @@ namespace SampleBusiness
             string urgencyId,
             string appointmentTypeId)
         {
+            var setStartTime = startDateTime.TimeOfDay;
+            var setStartDate = startDateTime.Date;
+
+            if ()
+            {
+                return null;
+            }
+
             return new CustomRepository(this.unitOfWork).SetAppointment(
           isActive,
           patientId,
