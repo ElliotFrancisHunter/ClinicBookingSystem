@@ -74,10 +74,20 @@ namespace SampleBusiness
         {
             var setStartTime = startDateTime.TimeOfDay;
             var setStartDate = startDateTime.Date;
+            var setEndTime = startDateTime.TimeOfDay.Add(TimeSpan.Parse(durationId));
+            var existingAppointments = this.GetAppointments();
 
-            if ()
+            foreach (var existingAppointment in existingAppointments)
             {
-                return null;
+                if (setStartDate == existingAppointment.StartDateTime)
+                {
+                    return null;
+                }
+
+                if (setStartTime <= existingAppointment.StartDateTime.TimeOfDay.Add(TimeSpan.Parse(existingAppointment.Duration.AppointmentLength.ToString())) && (existingAppointment.StartDateTime.TimeOfDay <= setEndTime))
+                {
+                    return null;
+                }
             }
 
             return new CustomRepository(this.unitOfWork).SetAppointment(
