@@ -11,6 +11,8 @@ namespace SampleBusiness
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
+
     using Core;
     using SampleDomain;
     using SampleRepository;
@@ -72,9 +74,27 @@ namespace SampleBusiness
             string urgencyId,
             string appointmentTypeId)
         {
+            
             var setStartTime = startDateTime.TimeOfDay;
             var setStartDate = startDateTime.Date;
-            var setEndTime = startDateTime.TimeOfDay.Add(TimeSpan.Parse(durationId));
+            var newTimeSpan = TimeSpan.Zero;
+
+            if (durationId.Contains("Five"))
+            {
+                newTimeSpan = newTimeSpan.Add(new TimeSpan(0, 5, 0));
+            }
+
+            if (durationId.Contains("Ten"))
+            {
+                newTimeSpan = newTimeSpan.Add(new TimeSpan(0,10,0));
+            }
+
+            if (durationId.Contains("Fifteen"))
+            {
+                newTimeSpan = newTimeSpan.Add(new TimeSpan(0, 15, 0));
+            }
+
+            var setEndTime = startDateTime.TimeOfDay.Add(newTimeSpan);
             var existingAppointments = this.GetAppointments();
 
             foreach (var existingAppointment in existingAppointments)
