@@ -235,15 +235,21 @@ namespace ClinicBookingApplication
             {
                 throw new Exception("MUST BE IN FORMAT: dd MM yyyy HH:mm:ss");
             }
-              
-            new SampleServiceClient().SetAppointment(
-                true,
-                this.PatientDropDownList.SelectedValue,
-                textBoxDateTime,
-                this.DurationDropDownList.SelectedValue,
-                this.ClinicDropDownList.SelectedValue,
-                this.UrgencyDropDownList.SelectedValue,
-                this.AppointmentTypeDropDownList.SelectedValue);
+            try
+            {
+                new SampleServiceClient().SetAppointment(
+                    true,
+                    this.PatientDropDownList.SelectedValue,
+                    textBoxDateTime,
+                    this.DurationDropDownList.SelectedValue,
+                    this.ClinicDropDownList.SelectedValue,
+                    this.UrgencyDropDownList.SelectedValue,
+                    this.AppointmentTypeDropDownList.SelectedValue);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Appointment clash! Check date and time <3");
+            }
 
             this.MakeCurrentAppointmentsTable();
         }
