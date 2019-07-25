@@ -1571,6 +1571,7 @@ namespace ClinicBookingApplication.ClinicBookingService {
     public interface ISampleService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/SetAppointment", ReplyAction="http://tempuri.org/ISampleService/SetAppointmentResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ClinicBookingApplication.ClinicBookingService.InvalidAppointmentIdFault), Action="http://tempuri.org/ISampleService/SetAppointmentInvalidAppointmentIdFaultFault", Name="InvalidAppointmentIdFault", Namespace="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts")]
         ClinicBookingApplication.ClinicBookingService.AppointmentDataContract SetAppointment(bool isActive, string patientId, System.DateTime startDateTime, string durationId, string clinicId, string urgencyId, string appointmentTypeId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISampleService/SetAppointment", ReplyAction="http://tempuri.org/ISampleService/SetAppointmentResponse")]

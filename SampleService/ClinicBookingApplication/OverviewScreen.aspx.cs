@@ -12,6 +12,7 @@ namespace ClinicBookingApplication
     using System;
     using System.Data;
     using System.Globalization;
+    using System.ServiceModel;
     using System.Web.UI;
     using System.Web.UI.WebControls;
 
@@ -235,15 +236,21 @@ namespace ClinicBookingApplication
             {
                 throw new Exception("MUST BE IN FORMAT: dd MM yyyy HH:mm:ss");
             }
-              
-            new SampleServiceClient().SetAppointment(
-                true,
-                this.PatientDropDownList.SelectedValue,
-                textBoxDateTime,
-                this.DurationDropDownList.SelectedValue,
-                this.ClinicDropDownList.SelectedValue,
-                this.UrgencyDropDownList.SelectedValue,
-                this.AppointmentTypeDropDownList.SelectedValue);
+            try
+            {
+                new SampleServiceClient().SetAppointment(
+                    true,
+                    this.PatientDropDownList.SelectedValue,
+                    textBoxDateTime,
+                    this.DurationDropDownList.SelectedValue,
+                    this.ClinicDropDownList.SelectedValue,
+                    this.UrgencyDropDownList.SelectedValue,
+                    this.AppointmentTypeDropDownList.SelectedValue);
+            }
+            catch (FaultException<InvalidAppointmentIdFault> exception)
+            {
+                this.ErrorLabel.Text = exception.Detail.Description;
+            }
 
             this.MakeCurrentAppointmentsTable();
         }
