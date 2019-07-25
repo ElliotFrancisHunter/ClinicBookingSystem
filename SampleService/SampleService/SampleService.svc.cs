@@ -98,12 +98,14 @@ namespace SampleService
                 }
                 catch (ThisIsAnIssueException exception)
                 {
+
                     throw new FaultException<InvalidAppointmentIdFault>(new InvalidAppointmentIdFault
                                                                             {
                                                                                 Result = false,
                                                                                 Message = exception.Message,
                                                                                 Description = "Appointments clash! Check date and time <3"
-                                                                            });
+                                                                            },
+                        new FaultReason(exception.Message));
                 }
                 finally
                 {
