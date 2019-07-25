@@ -54,6 +54,7 @@ namespace SampleService
         /// The SetAppointment AppointmentDataContract.
         /// </returns>
         [OperationContract]
+        [FaultContract(typeof(InvalidAppointmentIdFault))]
         AppointmentDataContract SetAppointment(
             bool isActive,
             string patientId,

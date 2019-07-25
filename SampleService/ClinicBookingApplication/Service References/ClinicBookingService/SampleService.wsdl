@@ -3,10 +3,10 @@
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:52718/SampleService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:52718/SampleService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" />
       <xsd:import schemaLocation="http://localhost:52718/SampleService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:52718/SampleService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SampleDataContracts.DomainDataContracts" />
       <xsd:import schemaLocation="http://localhost:52718/SampleService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/SampleDomain" />
-      <xsd:import schemaLocation="http://localhost:52718/SampleService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="ISampleService_SetAppointment_InputMessage">
@@ -15,6 +15,9 @@
   <wsdl:message name="ISampleService_SetAppointment_OutputMessage">
     <wsdl:part name="parameters" element="tns:SetAppointmentResponse" />
   </wsdl:message>
+  <wsdl:message name="ISampleService_SetAppointment_InvalidAppointmentIdFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q1:InvalidAppointmentIdFault" />
+  </wsdl:message>
   <wsdl:message name="ISampleService_GetAppointment_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAppointment" />
   </wsdl:message>
@@ -22,7 +25,7 @@
     <wsdl:part name="parameters" element="tns:GetAppointmentResponse" />
   </wsdl:message>
   <wsdl:message name="ISampleService_GetAppointment_InvalidAppointmentIdFaultFault_FaultMessage">
-    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q1:InvalidAppointmentIdFault" />
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q2:InvalidAppointmentIdFault" />
   </wsdl:message>
   <wsdl:message name="ISampleService_AlterAppointment_InputMessage">
     <wsdl:part name="parameters" element="tns:AlterAppointment" />
@@ -31,7 +34,7 @@
     <wsdl:part name="parameters" element="tns:AlterAppointmentResponse" />
   </wsdl:message>
   <wsdl:message name="ISampleService_AlterAppointment_InvalidAppointmentIdFaultFault_FaultMessage">
-    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q2:InvalidAppointmentIdFault" />
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q3:InvalidAppointmentIdFault" />
   </wsdl:message>
   <wsdl:message name="ISampleService_DeleteAppointment_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteAppointment" />
@@ -40,7 +43,7 @@
     <wsdl:part name="parameters" element="tns:DeleteAppointmentResponse" />
   </wsdl:message>
   <wsdl:message name="ISampleService_DeleteAppointment_InvalidAppointmentIdFaultFault_FaultMessage">
-    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q3:InvalidAppointmentIdFault" />
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q4:InvalidAppointmentIdFault" />
   </wsdl:message>
   <wsdl:message name="ISampleService_GetAppointments_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAppointments" />
@@ -55,7 +58,7 @@
     <wsdl:part name="parameters" element="tns:GetAppointmentDurationDataResponse" />
   </wsdl:message>
   <wsdl:message name="ISampleService_GetAppointmentDurationData_InvalidDurationFaultFault_FaultMessage">
-    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q4:InvalidDurationFault" />
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q5:InvalidDurationFault" />
   </wsdl:message>
   <wsdl:message name="ISampleService_GetAllAppointmentDurationData_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllAppointmentDurationData" />
@@ -70,7 +73,7 @@
     <wsdl:part name="parameters" element="tns:GetAppointmentTypeIdResponse" />
   </wsdl:message>
   <wsdl:message name="ISampleService_GetAppointmentTypeId_InvalidAppointmentTypeFaultFault_FaultMessage">
-    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q5:InvalidAppointmentTypeFault" />
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q6:InvalidAppointmentTypeFault" />
   </wsdl:message>
   <wsdl:message name="ISampleService_GetAppointmentTypes_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAppointmentTypes" />
@@ -85,7 +88,7 @@
     <wsdl:part name="parameters" element="tns:GetUrgencyResponse" />
   </wsdl:message>
   <wsdl:message name="ISampleService_GetUrgency_InvalidDurationFaultFault_FaultMessage">
-    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q6:InvalidDurationFault" />
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q7:InvalidDurationFault" />
   </wsdl:message>
   <wsdl:message name="ISampleService_GetUrgencies_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUrgencies" />
@@ -100,7 +103,7 @@
     <wsdl:part name="parameters" element="tns:GetClinicIdResponse" />
   </wsdl:message>
   <wsdl:message name="ISampleService_GetClinicId_InvalidClinicFaultFault_FaultMessage">
-    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q7:InvalidClinicFault" />
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q8:InvalidClinicFault" />
   </wsdl:message>
   <wsdl:message name="ISampleService_GetClinics_InputMessage">
     <wsdl:part name="parameters" element="tns:GetClinics" />
@@ -115,7 +118,7 @@
     <wsdl:part name="parameters" element="tns:GetPatientResponse" />
   </wsdl:message>
   <wsdl:message name="ISampleService_GetPatient_InvalidPatientFaultFault_FaultMessage">
-    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q8:InvalidPatientFault" />
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q9:InvalidPatientFault" />
   </wsdl:message>
   <wsdl:message name="ISampleService_GetPatients_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPatients" />
@@ -130,7 +133,7 @@
     <wsdl:part name="parameters" element="tns:GetSpecialtyResponse" />
   </wsdl:message>
   <wsdl:message name="ISampleService_GetSpecialty_InvalidSpecialtyFaultFault_FaultMessage">
-    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q9:InvalidSpecialtyFault" />
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q10:InvalidSpecialtyFault" />
   </wsdl:message>
   <wsdl:message name="ISampleService_GetSpecialties_InputMessage">
     <wsdl:part name="parameters" element="tns:GetSpecialties" />
@@ -145,7 +148,7 @@
     <wsdl:part name="parameters" element="tns:GetClinicSpecialtyResponse" />
   </wsdl:message>
   <wsdl:message name="ISampleService_GetClinicSpecialty_InvalidClinicSpecialtyFaultFault_FaultMessage">
-    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q10:InvalidClinicSpecialtyFault" />
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q11:InvalidClinicSpecialtyFault" />
   </wsdl:message>
   <wsdl:message name="ISampleService_GetClinicSpecialties_InputMessage">
     <wsdl:part name="parameters" element="tns:GetClinicSpecialties" />
@@ -160,7 +163,7 @@
     <wsdl:part name="parameters" element="tns:GetFilteredClinicSpecialtiesResponse" />
   </wsdl:message>
   <wsdl:message name="ISampleService_GetFilteredClinicSpecialties_InvalidClinicSpecialtyFaultFault_FaultMessage">
-    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q11:InvalidClinicSpecialtyFault" />
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q12:InvalidClinicSpecialtyFault" />
   </wsdl:message>
   <wsdl:message name="ISampleService_GetFilteredAppointments_InputMessage">
     <wsdl:part name="parameters" element="tns:GetFilteredAppointments" />
@@ -169,12 +172,13 @@
     <wsdl:part name="parameters" element="tns:GetFilteredAppointmentsResponse" />
   </wsdl:message>
   <wsdl:message name="ISampleService_GetFilteredAppointments_InvalidAppointmentIdFaultFault_FaultMessage">
-    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q12:InvalidAppointmentIdFault" />
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/SampleDataContracts.FaultDataContracts" name="detail" element="q13:InvalidAppointmentIdFault" />
   </wsdl:message>
   <wsdl:portType name="ISampleService">
     <wsdl:operation name="SetAppointment">
       <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/SetAppointment" message="tns:ISampleService_SetAppointment_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISampleService/SetAppointmentResponse" message="tns:ISampleService_SetAppointment_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISampleService/SetAppointmentInvalidAppointmentIdFaultFault" name="InvalidAppointmentIdFaultFault" message="tns:ISampleService_SetAppointment_InvalidAppointmentIdFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAppointment">
       <wsdl:input wsaw:Action="http://tempuri.org/ISampleService/GetAppointment" message="tns:ISampleService_GetAppointment_InputMessage" />
@@ -279,6 +283,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="InvalidAppointmentIdFaultFault">
+        <soap:fault use="literal" name="InvalidAppointmentIdFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetAppointment">
       <soap:operation soapAction="http://tempuri.org/ISampleService/GetAppointment" style="document" />
